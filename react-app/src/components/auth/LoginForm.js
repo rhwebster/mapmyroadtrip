@@ -6,7 +6,7 @@ import * as sessionActions from "../../store/session";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const authenticate = useSelector((state) => state.session.authenticate);
   // console.log(user)
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  if (authenticated) {
+  if (authenticate) {
     return <Redirect to="/" />;
   }
 

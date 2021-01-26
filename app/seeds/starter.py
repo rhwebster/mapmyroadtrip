@@ -6,7 +6,6 @@ daphne = User(username='daphne', email='diamondoftheseason@gmail.com', password=
 
 def seed_users():
 
-
     db.session.add(simon)
     db.session.add(daphne)
     db.session.commit()
@@ -18,9 +17,6 @@ route66 = Trip(title='Haunted Route 66', user_id=simon.id,  start_date='2020-04-
 
 def seed_trips():
 
-    
-
-   
     db.session.add(yellowstone)
     db.session.add(grand_canyon)
     db.session.add(route66)
@@ -36,7 +32,7 @@ dreams = JournalEntry(title='New Dreams & Better Scenes', trip_id=grand_canyon.i
 def seed_journal_entries():
 
 
-    
+
     db.session.add(rainbow)
     db.session.add(road)
     db.session.add(bear)
@@ -53,7 +49,7 @@ telescope = Photo(entry_id=telescope.id, photos_url='../../public/images/telesco
 dreams = Photo(entry_id=dreams.id, photos_url='../../public/images/dream.jpg')
 def seed_photos():
 
-    
+
 
     db.session.add(rainbow)
     db.session.add(road)
@@ -82,4 +78,3 @@ def undo_journal_entries():
 def undo_photos():
     db.session.execute('TRUNCATE photos;')
     db.session.commit()
-
