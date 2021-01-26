@@ -17,3 +17,29 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+def render_picture(data):
+
+    render_pic = base64.b64encode(data).decode('ascii')
+    return render_pic
+
+
+# @app.route('/upload', methods=['POST'])
+# def upload():
+
+#    file = request.files['inputFile']
+#    data = file.read()
+#    render_file = render_picture(data)
+#    text = request.form['text']
+#    location = request.form['location']
+
+#    newFile = FileContent(name=file.filename, data=data,
+#                          rendered_data=render_file, text=text, location=location)
+#    db.session.add(newFile)
+#    db.session.commit()
+#    flash(f'Pic {newFile.name} uploaded Text: {newFile.text} Location:
+#          {newFile.location}')
+
+#    return render_template('upload.html')
+
