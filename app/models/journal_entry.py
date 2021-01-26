@@ -2,7 +2,7 @@ from .db import db
 
 
 class JournalEntry(db.Model):
-    __table_name__ = "journal_entries"
+    __tablename__ = "journal_entries"
 
     id = db.Column(db.INTEGER, primary_key=True)
     title = db.Column(db.VARCHAR, nullable=False)
@@ -12,5 +12,5 @@ class JournalEntry(db.Model):
     lat = db.Column(db.FLOAT, nullable=False)
     lon = db.Column(db.FLOAT, nullable=False)
 
-    # trip = db.relationship("Trip", back_populates="journal_entries")
+    trip = db.relationship("Trip", back_populates="journal_entries")
     photos = db.relationship("Photo", back_populates="journal_entry")

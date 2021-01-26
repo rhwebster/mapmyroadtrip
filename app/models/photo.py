@@ -2,7 +2,7 @@ from .db import db
 
 
 class Photo(db.Model):
-    __table_name__ = "photos"
+    __tablename__ = "photos"
 
     id = db.Column(db.Integer, primary_key=True)
     entry_id = db.Column(db.INTEGER, db.ForeignKey("journal_entries.id"), nullable=False)
