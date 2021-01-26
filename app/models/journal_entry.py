@@ -6,11 +6,11 @@ class JournalEntry(db.Model):
 
     id = db.Column(db.INTEGER, primary_key=True)
     title = db.Column(db.VARCHAR, nullable=False)
-    trip_id = db.Column(db.INTEGER, db.ForeignKey("trip.id"), nullable=False)
+    trip_id = db.Column(db.INTEGER, db.ForeignKey("trips.id"), nullable=False)
     image = db.Column(db.VARCHAR, nullable=True)
     entry = db.Column(db.TEXT, nullable=False)
-    latitude = db.Column(db.FLOAT, nullable=False)
-    longitude = db.Column(db.FLOAT, nullable=False)
+    lat = db.Column(db.FLOAT, nullable=False)
+    lon = db.Column(db.FLOAT, nullable=False)
 
-    trip = db.relationship("Trip", back_populates='journal_entries')
+    # trip = db.relationship("Trip", back_populates="journal_entries")
     photos = db.relationship("Photo", back_populates="journal_entry")
