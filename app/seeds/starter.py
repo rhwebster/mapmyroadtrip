@@ -23,9 +23,9 @@ def seed_trips():
     grand_canyon = Trip(title='Grand Canyon Birthday', user=daphne, start_date=' 2020-09-27', end_date=None, start_lat=37.769893, start_lon=-122.421123, end_lat=36.106964, end_lon=-112.112999, private=False)
     route66 = Trip(title='Haunted Route 66', user=simon, start_date='2020-04-14', end_date=None, start_lat=40.712776, start_lon=-74.005974, end_lat=35.0820877, end_lon=-106.9566669, private=True)
 
-    
 
-   
+
+
     db.session.add(yellowstone)
     db.session.add(grand_canyon)
     db.session.add(route66)
@@ -45,7 +45,7 @@ def seed_journal_entries():
     telescope = JournalEntry(title='Radio Telescope Detour', trip=grand_canyon, entry="Ulysses, Ulysses — Soaring through all the galaxies. In search of Earth, flying in to the night. Ulysses, Ulysses — Fighting evil and tyranny, with all his power, and with all of his might. Ulysses — no-one else can do the things you do. Ulysses — like a bolt of thunder from the blue. Ulysses — always fighting all the evil forces bringing peace and justice to all.", lat=34.0727173, lon=-107.8232042)
     dreams = JournalEntry(title='New Dreams & Better Scenes', trip=grand_canyon, entry="Hey there where ya goin’, not exactly knowin’, who says you have to call just one place home. He’s goin’ everywhere, B.J. McKay and his best friend Bear. He just keeps on movin’, ladies keep improvin’, every day is better than the last. New dreams and better scenes, and best of all I don’t pay property tax. Rollin’ down to Dallas, who’s providin’ my palace, off to New Orleans or who knows where. Places new and ladies, too, I’m B.J. McKay and this is my best friend Bear.", lat=38.4902857001479, lon=-105.33556666613165)
 
-    
+
     db.session.add(rainbow)
     db.session.add(road)
     db.session.add(bear)
@@ -69,7 +69,7 @@ def seed_photos():
     flight = Photo(journal_entry=flight, photos_url='../../public/images/shadow.jpg')
     telescope = Photo(journal_entry=telescope, photos_url='../../public/images/telescope.jpg')
     dreams = Photo(journal_entry=dreams, photos_url='../../public/images/dream.jpg')
-    
+
 
     db.session.add(rainbow)
     db.session.add(road)
@@ -98,4 +98,3 @@ def undo_journal_entries():
 def undo_photos():
     db.session.execute('TRUNCATE photos;')
     db.session.commit()
-
