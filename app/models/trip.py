@@ -2,7 +2,7 @@ from .db import db
 
 
 class Trip(db.Model):
-    __table_name__ = "trips"
+    __tablename__ = "trips"
 
     id = db.Column(db.INTEGER, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
@@ -17,4 +17,4 @@ class Trip(db.Model):
     private = db.Column(db.BOOLEAN, default=True)
 
     user = db.relationship("User", back_populates="trips")
-    journal_entries = db.relationship("JournalEntry", backref="trips")
+    journal_entries = db.relationship("JournalEntry", back_populates="trip")

@@ -8,17 +8,15 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    pass
-    # seed_users()
-    # seed_trips()
-    # seed_journal_entries()
-    # seed_photos()
+    seed_users()
+    seed_trips()
+    seed_journal_entries()
+    seed_photos()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    pass
-    # undo_users()
-    # undo_trips()
-    # undo_journal_entries()
-    # undo_photos()
+    undo_users()
+    undo_trips()
+    undo_journal_entries()
+    undo_photos()
