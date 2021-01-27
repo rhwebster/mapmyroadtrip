@@ -32,49 +32,35 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavBar />
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route> */}
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm  />
-        </Route>
-        <Route path="/map">
-          <RoadTripMap />
-        </Route>
-        <ProtectedRoute path="/users" exact={true}>
-           <Route path="/dash" exact={true}>
-      <div className='wrapper'>
-          <Nav  />
-          <main className="main">
-          <SearchBar  />
-          <Trips  />
-          <Entries  />
-          </main>
-          <Profile  />      
-        </div>
-        </Route>
-         <Route path="/login" exact={true}>
-          <LoginForm
-          />
+        <Route path="/dash" exact={true}>
+          <div className='wrapper'>
+            <Nav  />
+            <main className="main">
+            <SearchBar  />
+            <Trips  />
+            <Entries  />
+            </main>
+            <Profile  />
+          </div>
         </Route>
         {/* <Route path="/sign-up" exact={true}>
           <SignUpForm  />
-        </Route> 
-        <Route path="/map">
+        </Route> */}
+        {/* <Route path="/map">
           <RoadTripMap />
-        </Route>
-        <ProtectedRoute path="/users" exact={true}>
+        </Route> */}
+        {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        </ProtectedRoute>
       </Switch>
-      
     </BrowserRouter>
   );
 }
