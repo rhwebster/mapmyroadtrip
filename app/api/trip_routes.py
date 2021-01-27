@@ -20,7 +20,8 @@ def get_a_trip(trip_id):
     trip = Trips.query.get(Trip.id = trip_id)
     if not trip:
         return {}, 404
-    return {'trip': trip}
+    trip_json = jsonify({'trip': trip.to_dict()})
+    return trip_json
 
 @trip_routes.route('/<int:user_id>/trips', methods=['POST'])
 @login_required
