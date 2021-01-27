@@ -8,7 +8,7 @@ trip_routes = Blueprint('trip', __name__)
 @trip_routes.route('/<int:user_id>/trips')
 @login_required
 def get_trips(user_id):
-    trips = Trips.query.filter(Trip.user_id == user_id).all()
+    trips = Trip.query.filter(Trip.user_id == user_id).all()
     if not trips:
         return {}, 404
     trip_list = [trips.to_dict() for trip in trips]
@@ -17,7 +17,7 @@ def get_trips(user_id):
 @trip_routes.route('/int:user_id>/trips/<int:trip_id>')
 @login_required
 def get_a_trip(trip_id):
-    trip = Trips.query.get(trip_id)
+    trip = Trip.query.get(trip_id)
     if not trip:
         return {}, 404
     trip_json = jsonify({'trip': trip.to_dict()})
@@ -51,7 +51,7 @@ def post_trip():
 @trip_routes.route('/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
-    trip = Trips.query.get(trip_id)
+    trip = Trip.query.get(trip_id)
 
     if trip:
         db.session.delete(trip)
