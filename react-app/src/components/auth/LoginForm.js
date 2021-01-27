@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+// import './LoginFormModal.css'
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
-  // console.log(user)
+  const history = useHistory();
+  const authenticate = useSelector((state) => state.session.authenticate);
+
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +17,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     setErrors([]);
-
     dispatch(sessionActions.login({email, password}))
 
   };
@@ -24,13 +25,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setEmail(e.target.value);
   };
 
+  if (authenticate) {
+    return <Redirect to="/" />;
+  }
+
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <form onSubmit={onLogin}>
@@ -58,7 +59,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <button type="submit" onClick={() => history.push("/dash")}>Login</button>
       </div>
     </form>
   );

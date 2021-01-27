@@ -28,7 +28,7 @@ const RoadTripMap = ({ setAuthenticated }) => {
 }
 
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
-  const [zoom, setZoom] = useState(11);
+  const [zoom, setZoom] = useState(20);
 
   return (
     <>
