@@ -35,9 +35,9 @@ function App() {
         {/* <Route path="/sign-up" exact={true}>
           <SignUpForm  />
         </Route> */}
-        {/* <Route path="/map">
+        <Route path="/map">
           <RoadTripMap />
-        </Route> */}
+        </Route>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>

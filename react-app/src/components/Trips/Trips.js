@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Trips() {
   return (
-   
-    
+
+
       <section class="section">
         <header class="section__header">
           <h2 class="section__title">Trips</h2>
@@ -64,7 +64,7 @@ export default function Trips() {
           </li>
         </ul>
       </section>
-    
-   
+
+
   );
 }

@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
+import { useSelector } from "react-redux";
 import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
 
-const RoadTripMap = ({ setAuthenticated }) => {
+const RoadTripMap = () => {
+  const [markerShown, setMarkerShown] = useState(false)
+  const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
+  const [zoom, setZoom] = useState(20);
+  
+  const authenticate = useSelector((state) => state.session.authenticate);
+
+  if (!authenticate) {
+    return null;
+  }
   const { GOOGLE_MAP_API_KEY} = process.env;
 
   const getMapOptions = (maps) => {
@@ -14,7 +24,6 @@ const RoadTripMap = ({ setAuthenticated }) => {
     };
   };
 
-  const [markerShown, setMarkerShown] = useState(false)
   const onMapClick = (e) => {
     console.log('LATLONG----------->',e)
     // isMarkerShown:true
@@ -27,8 +36,6 @@ const RoadTripMap = ({ setAuthenticated }) => {
           />)
 }
 
-  const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
-  const [zoom, setZoom] = useState(20);
 
   return (
     <>
