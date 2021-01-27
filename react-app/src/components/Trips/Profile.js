@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function Profile() {
     return (
-        <div className='wrapper'>
             <aside class="aside">
         <section class="section">
           <div class="aside__control">
@@ -32,6 +31,5 @@ export default function Profile() {
           </ul>
         </section>
       </aside>
-        </div>
     )
 }
