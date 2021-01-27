@@ -5,7 +5,7 @@ from app.models import Trip, User
 trip_routes = Blueprint('trip', __name__)
 
 
-@trip_routes.route('/user/<int:user_id>/trips')
+@trip_routes.route('/<int:user_id>/trips')
 @login_required
 def get_trips(user_id):
     trips = Trips.query.filter(Trip.user_id == user_id).all()
@@ -14,15 +14,15 @@ def get_trips(user_id):
     trip_list = [trips.to_dict() for trip in trips]
     return {'trips': trip_list} 
 
-@trip_routes.route('/user/int:user_id>/trips/<int:trip_id>')
+@trip_routes.route('/int:user_id>/trips/<int:trip_id>')
 @login_required
 def get_a_trip(trip_id):
-    trip = Trips.query.filter(Trip.id = trip_id).all()
+    trip = Trips.query.get(Trip.id = trip_id)
     if not trip:
         return {}, 404
     return {'trip': trip}
 
-@trip_routes.route('/user/<int:user_id>/trips', methods=['POST'])
+@trip_routes.route('/<int:user_id>/trips', methods=['POST'])
 @login_required
 def post_trip():
     data = request.json
@@ -47,12 +47,14 @@ def post_trip():
         print(error)
         return {'errors': ['An error occured while retrieving the data']}, 500
 
-@trip_routes.route('/user/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
+@trip_routes.route('/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
+    trip = Trips.query.get(Trip.id = trip_id)
+
     if trip:
         db.session.delete(trip)
         db.session.commit()
-        return {'message': f'Trip: {trip_title} was successfully deleted'}
+        return {'message': f'Trip: {trip.title} was successfully deleted'}
     else:
-        return {'errors': f'Trip: {trip_title} was not found'}
+        return {'errors': f'Trip: {trip.title} was not found'}
