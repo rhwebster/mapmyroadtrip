@@ -32,29 +32,29 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='wrapper'>
       <Switch>
            <Route path="/dash" exact={true}>
+      <div className='wrapper'>
           <Nav  />
           <main className="main">
           <SearchBar  />
           <Trips  />
           <Entries  />
           </main>
-          <Profile  />
-          
+          <Profile  />      
+        </div>
         </Route>
-        {/* <Route path="/login" exact={true}>
+         <Route path="/login" exact={true}>
           <LoginForm
           />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        {/* <Route path="/sign-up" exact={true}>
           <SignUpForm  />
-        </Route> */}
-        {/* <Route path="/map">
+        </Route> 
+        <Route path="/map">
           <RoadTripMap />
-        </Route> */}
-        {/* <ProtectedRoute path="/users" exact={true}>
+        </Route>
+        <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} >
@@ -64,7 +64,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute> */}
       </Switch>
-      </div>
+      
     </BrowserRouter>
   );
 }
