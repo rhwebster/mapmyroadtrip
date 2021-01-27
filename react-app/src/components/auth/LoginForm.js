@@ -3,7 +3,11 @@ import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import styled from 'styled-components';
 // import './LoginFormModal.css'
+
+
+
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -34,6 +38,7 @@ const LoginForm = () => {
   };
 
   return (
+    
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error) => (
@@ -62,6 +67,7 @@ const LoginForm = () => {
         <button type="submit" onClick={() => history.push("/dash")}>Login</button>
       </div>
     </form>
+   
   );
 };
 
