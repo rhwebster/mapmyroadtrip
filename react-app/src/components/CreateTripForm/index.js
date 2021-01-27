@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {addTrip} from '../../store/trips'
-import { Formik, Form, useField } from 'formik';
+import { Formik, Form, useField, useFormikContext } from 'formik';
 import * as Yup from 'yup';
+import DatePicker from 'react-datepicker';
+import PlacesAutoComplete from 'react-places-autocomplete';
+import { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
 // import css
 
-const TextInput = ({ label, ...props }) => {
+const TextField = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
         <>
@@ -16,6 +19,36 @@ const TextInput = ({ label, ...props }) => {
         </>
     );
 };
+
+const DatePickerField = ({ label, ...props }) => {
+    const { setFieldValue } = useFormikContext();
+    const [field] = useField(props);
+    return (
+        <>
+        <label htmlFor={props.id || props.name}>{label}</label>
+        <DatePicker
+            {...field}
+            {...props}
+            selected={(field.value && new Date(field.value)) || null}
+            onChange={val => {
+                setFieldValue(field.name, val);
+            }}
+         />
+        </>
+    );
+};
+
+const PrivacyPickerField = ({ label, ...props }) => {
+    const { setFieldValue } = useFormikContext();
+    const [field] = useField(props);
+    return (
+        <>
+        <label htmlFor={props.id || props.name}>{label}</label>
+
+        </>
+    )
+
+}
 
 const CreateTripForm = () => {
     const dispatch = useDispatch();
@@ -31,6 +64,7 @@ const CreateTripForm = () => {
                     start_date: '',
                     end_date: '',
                     start_lat: '',
+                    start_lon: '',
                     end_lat: '',
                     end_lon: '',
                     private: true,
@@ -39,10 +73,34 @@ const CreateTripForm = () => {
                     title: Yup.string()
                         .max(150, 'Must be 150 characters or less')
                         .required('Required'),
-                    start_date: Yup
+                    start_date: Yup.date()
+                        .required('Required'),
+                    private: Yup.boolean()
+                        .required('Required'),
                 })}
+                onSubmit={(values) => {
+                    dispatch(addTrip(values))
+                }}
 
             >
+                <Form>
+                    <TextField
+                        label="Trip Title"
+                        name="title"
+                        type="text"
+                    /><br/>
+                    <DatePickerField
+                        label="Start Date of Trip"
+                        name="start_date"
+                    />
+                    <DatePickerField
+                        label="End Date of Trip"
+                        name="end_date"
+                    />
+
+
+
+                </Form>
 
 
 
