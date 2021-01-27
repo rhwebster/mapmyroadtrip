@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "formik": "^2.2.6",
     "google-map-react": "^2.1.9",
     "http-proxy-middleware": "^1.0.5",
     "js-cookie": "^2.2.1",
@@ -17,7 +18,8 @@
     "react-toastify": "^7.0.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "react-scripts start",
