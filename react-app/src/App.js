@@ -17,19 +17,17 @@ import Entries from './components/Trips/Entries'
 import Profile from './components/Trips/Profile'
 import Header from './components/Trips/Header'
 
+
 function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
       dispatch(sessionActions.authenticate())
       setLoaded(true);
   }, [dispatch]);
-
   if (!loaded) {
     return null;
   }
-
   return (
     <BrowserRouter>
       <NavBar />
@@ -64,5 +62,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
+
