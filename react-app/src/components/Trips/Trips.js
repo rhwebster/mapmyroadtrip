@@ -11,9 +11,9 @@ export default function Trips() {
             View all
           </a>
         </header>
-        <ul class="team">
-          <li class="team__item">
-            <a class="team__link focus--box-shadow" href="#">
+        <ul class="trips">
+          <li class="trips__item">
+            <a class="trips__link focus--box-shadow" href="#">
               <div class="team__header">
                 <button
                   class="setting setting--absolute focus--box-shadow"
@@ -29,8 +29,8 @@ export default function Trips() {
                   </svg>
                 </button>
               </div>
-              <div class="team__inform">
-                <p class="team__name">Vegas</p>
+              <div class="trips__inform">
+                <p class="trips__name">Vegas</p>
                 <time class="date" datetime="2020-05-05T10:00:00">
                   05 May, 2020
                 </time>
