@@ -30,7 +30,7 @@ export const login = (user) => async (dispatch) => {
 };
 
 export const authenticate = () => async dispatch => {
-    const res = await fetch('/api/auth');
+    const res = await fetch('/api/auth/');
     if (res.ok) {
       let data = await res.json()
       dispatch(setUser(data));

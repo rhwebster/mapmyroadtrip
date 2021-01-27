@@ -17,7 +17,7 @@ export const getJournalEntryPoints = (userId) => async dispatch => {
     const response = await fetch(`/api/map/${userId}`);
     if (response.ok) {
       let data = await response.json()
-      dispatch(setData(data));
+      dispatch(setData(data.coordinates));
     }
 };
 
@@ -29,14 +29,14 @@ export const getTripStartEndPoints= (userId) => async dispatch => {
     }
 };
 
-const initialState = { journalEntry: null };
+const initialState = { coordinates: null };
 
 const mapReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_DATA:
       newState = Object.assign({}, state);
-      newState.journalEntry = action.payload;
+      newState.coordinates = action.payload;
       return newState;
     // case REMOVE_USER:
     //   newState = Object.assign({}, state, { user: null, authenticate: false });

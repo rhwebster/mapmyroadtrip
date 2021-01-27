@@ -9,10 +9,17 @@ map_routes = Blueprint('map', __name__)
 # @login_required
 def getJournalPoints(id):
     entries = JournalEntry.query.join(Trip).join(User).filter(User.id == id).all()
-
+    print('ENTRIES------>', entries)
     entry_list = [entry.get_coordinates() for entry in entries]
     print('USERS BACKEND STUFF------->', entry_list)
     return {'coordinates': entry_list}
+
+# def getTripPoints(id):
+#     entries = Trip.query.join(User).join(User).filter(User.id == id).all()
+
+#     entry_list = [entry.get_coordinates() for entry in entries]
+#     print('USERS BACKEND STUFF------->', entry_list)
+#     return {'coordinates': entry_list}
 
 # @map_routes.route('/')
 # @login_required

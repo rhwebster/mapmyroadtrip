@@ -16,4 +16,4 @@ class JournalEntry(db.Model):
     photos = db.relationship("Photo", back_populates="journal_entry")
 
     def get_coordinates(self):
-        return {'lat':self.lat, 'lon': self.lon}
+        return (self.lat, self.lon)

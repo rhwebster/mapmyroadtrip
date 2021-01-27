@@ -16,13 +16,16 @@ import Journal from "./components/Journal/Journal";
 function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.authenticate());
     setLoaded(true);
   }, [dispatch]);
+
   if (!loaded) {
     return null;
   }
+  
   return (
     <BrowserRouter>
       <NavBar />
