@@ -4,6 +4,7 @@ import LogoutButton from './auth/LogoutButton';
 import { useSelector } from "react-redux";
 import LoginFormModal from './LoginFormModal/LoginFormModal';
 import { Modal } from '../context/Modal'
+import SignUpForm from './auth/SignUpForm';
 
 const NavBar = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
@@ -42,11 +43,11 @@ const NavBar = () => {
               <LoginFormModal />
               <button id="loginButton" onClick={() => {
                 setShowModal(true)
-                }}>LoginUp
+                }}>SignUp
               </button>
               {showModal && (
-                <Modal onClose={() => setShowModal(false)} name="login">
-                    <LoginFormModal />
+                <Modal onClose={() => setShowModal(false)} name="signUp">
+                    <SignUpForm />
                 </Modal>
             )}
               {/* <NavLink to="/signup">Sign Up</NavLink> */}

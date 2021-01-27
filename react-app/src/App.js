@@ -16,7 +16,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-      dispatch(sessionActions.authenticatee())
+      dispatch(sessionActions.authenticate())
       setLoaded(true);
   }, [dispatch]);
 
@@ -34,9 +34,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm  />
         </Route>
-        {/* <Route path="/map">
+        <Route path="/map">
           <RoadTripMap />
-        </Route> */}
+        </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>

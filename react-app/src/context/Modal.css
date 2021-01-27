@@ -28,7 +28,8 @@ html {
     justify-content: center;
     align-items: center;
     position: absolute;
-    background-color:white;
+    background-image:url(https://i.pinimg.com/originals/39/e3/87/39e387cc15f6610b539cb1c552a35831.gif);
+    background-size: 400px auto;
     height: 380px;
     width: 260px;
     border-radius: 10px;

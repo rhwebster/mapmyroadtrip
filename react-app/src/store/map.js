@@ -1,15 +1,15 @@
 
-const SET_USER = 'session/setUser';
-const REMOVE_USER = 'session/removeUser';
+const SET_POINT = 'session/setPoint';
+const REMOVE_POINT = 'session/removePoint';
 
-const setUser = (user) => {
+const setPoint = (coordinates) => {
   return {
-    type: SET_USER,
-    payload: user,
+    type: SET_POINT,
+    payload: coordinates,
   };
 };
 
-const removeUser = () => ({
+const removePoint = () => ({
   type: REMOVE_USER
 });
 
@@ -45,7 +45,7 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-const initialState = { user: null, authenticate: false };
+const initialState = { lat: null, lon: null };
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
