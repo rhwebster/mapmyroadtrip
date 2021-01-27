@@ -1,66 +1,49 @@
 
-const SET_POINT = 'session/setPoint';
+const SET_DATA = 'session/setData';
 const REMOVE_POINT = 'session/removePoint';
 
-const setPoint = (coordinates) => {
+const setData = (journal_entry) => {
   return {
-    type: SET_POINT,
-    payload: coordinates,
+    type: SET_DATA,
+    payload: journal_entry,
   };
 };
 
 const removePoint = () => ({
-  type: REMOVE_USER
+  type: REMOVE_POINT
 });
 
-export const login = (user) => async (dispatch) => {
-    const { email, password } = user;
-    const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email,
-            password,
-        }),
-    });
+export const getJournalEntryPoints = (userId) => async dispatch => {
+    const response = await fetch(`/api/map/${userId}`);
     if (response.ok) {
       let data = await response.json()
-      dispatch(setUser(data));
+      dispatch(setData(data));
     }
 };
 
-export const authenticate = () => async dispatch => {
+export const getTripStartEndPoints= (userId) => async dispatch => {
     const res = await fetch('/api/auth');
     if (res.ok) {
       let data = await res.json()
-      dispatch(setUser(data));
+      dispatch(setData(data));
     }
 };
 
-export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth/logout', {
-    method: 'DELETE'
-  });
-  dispatch(removeUser());
-  return response;
-};
+const initialState = { journalEntry: null };
 
-const initialState = { lat: null, lon: null };
-
-const sessionReducer = (state = initialState, action) => {
+const mapReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case SET_USER:
+    case SET_DATA:
       newState = Object.assign({}, state);
-      newState.user = action.payload;
-      newState.authenticate = true;
+      newState.journalEntry = action.payload;
       return newState;
-    case REMOVE_USER:
-      newState = Object.assign({}, state, { user: null, authenticate: false });
-      return newState;
+    // case REMOVE_USER:
+    //   newState = Object.assign({}, state, { user: null, authenticate: false });
+    //   return newState;
     default:
       return state;
   }
 };
 
-export default sessionReducer;
+export default mapReducer;

@@ -27,5 +27,3 @@ def entry(journal_entry_id):
 @login_required
 def new_entry():
     data = request.json
-
-    

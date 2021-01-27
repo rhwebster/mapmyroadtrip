@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
+import Journal from '../Journal/Journal';
 
 const RoadTripMap = () => {
   const [markerShown, setMarkerShown] = useState(false)
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
   const [zoom, setZoom] = useState(20);
-  
+
   const authenticate = useSelector((state) => state.session.authenticate);
 
   if (!authenticate) {
@@ -38,30 +39,31 @@ const RoadTripMap = () => {
 
 
   return (
-    <>
-     <div style={{ height: '500px', width: '100%' }}>
-        <GoogleMapReact id="map"
-          bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
-          defaultCenter={center}
-          defaultZoom={zoom}
-          onClick={() => setMarkerShown(true)}
-          options={getMapOptions}
-          >
-            {markerShown && (
-              document.addEventListener("click", (e)=> {
-                console.log(e)
-                // <Marker></Marker>
-              })
-              )}
-          <Marker
-            lat={39.737}
-            lng={-104.989}
-            name="My Marker"
-            color="blue"
-          />
-        </GoogleMapReact >
-      </div>
-    </>
+    <Journal />
+    // <>
+    //  <div style={{ height: '500px', width: '100%' }}>
+    //     <GoogleMapReact id="map"
+    //       bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
+    //       defaultCenter={center}
+    //       defaultZoom={zoom}
+    //       onClick={() => setMarkerShown(true)}
+    //       options={getMapOptions}
+    //       >
+    //         {markerShown && (
+    //           document.addEventListener("click", (e)=> {
+    //             console.log(e)
+    //             // <Marker></Marker>
+    //           })
+    //           )}
+    //       <Marker
+    //         lat={39.737}
+    //         lng={-104.989}
+    //         name="My Marker"
+    //         color="blue"
+    //       />
+    //     </GoogleMapReact >
+    //   </div>
+    // </>
   );
 }
 

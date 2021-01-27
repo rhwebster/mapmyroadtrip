@@ -10,6 +10,7 @@ import User from "./components/User";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
 import Dash from "./components/Dash/Dash";
+import Journal from "./components/Journal/Journal";
 
 
 function App() {
