@@ -17,7 +17,7 @@ def entries(trip_id):
 @entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>')
 @login_required
 def entry(journal_entry_id):
-    entry = JournalEntry.query.get(JournalEntry.id = entry_id)
+    entry = JournalEntry.query.get(entry_id)
 
     if not entry:
         return {}, 404

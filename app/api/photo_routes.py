@@ -19,7 +19,7 @@ def get_photos():
 @photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>')
 @login_required
 def get_photo():
-    photo = Photo.query.get(Photo.id == photo_id)
+    photo = Photo.query.get(photo_id)
 
     if not photo:
         return {}, 404
