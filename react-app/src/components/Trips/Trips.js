@@ -14,7 +14,7 @@ export default function Trips() {
         <ul class="trips">
           <li class="trips__item">
             <a class="trips__link focus--box-shadow" href="#">
-              <div class="team__header">
+              <div class="trips__header">
                 <button
                   class="setting setting--absolute focus--box-shadow"
                   type="button"
@@ -39,7 +39,7 @@ export default function Trips() {
           </li>
           <li class="trips__item">
             <a class="trips__link focus--box-shadow" href="#">
-              <div class="team__header">
+              <div class="trips__header">
                 <button
                   class="setting setting--absolute focus--box-shadow"
                   type="button"
