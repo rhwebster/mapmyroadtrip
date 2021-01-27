@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { useSelector } from "react-redux";
+import LoginFormModal from './LoginFormModal/LoginFormModal';
+import { Modal } from '../context/Modal'
+import SignUpForm from './auth/SignUpForm';
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = () => {
+  const authenticate = useSelector((state) => state.session.authenticate);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <nav>
       <ul>
@@ -27,9 +34,26 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink>
         </li>
         <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
+          <LogoutButton />
         </li>
       </ul>
+      <>
+      {!authenticate && (
+            <>
+              <LoginFormModal />
+              <button id="loginButton" onClick={() => {
+                setShowModal(true)
+                }}>SignUp
+              </button>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)} name="signUp">
+                    <SignUpForm />
+                </Modal>
+            )}
+              {/* <NavLink to="/signup">Sign Up</NavLink> */}
+            </>
+          )}
+      </>
     </nav>
   );
 }

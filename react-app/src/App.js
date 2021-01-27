@@ -22,7 +22,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-      dispatch(sessionActions.authenticatee())
+      dispatch(sessionActions.authenticate())
       setLoaded(true);
   }, [dispatch]);
 
@@ -34,6 +34,16 @@ function App() {
     <BrowserRouter>
       <div className='wrapper'>
       <Switch>
+        {/* <Route path="/login" exact={true}>
+          <LoginForm />
+        </Route> */}
+        <Route path="/sign-up" exact={true}>
+          <SignUpForm  />
+        </Route>
+        <Route path="/map">
+          <RoadTripMap />
+        </Route>
+        <ProtectedRoute path="/users" exact={true}>
            <Route path="/dash" exact={true}>
           <Nav  />
           <main className="main">

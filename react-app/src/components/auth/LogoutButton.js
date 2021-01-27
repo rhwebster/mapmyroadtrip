@@ -1,13 +1,13 @@
 import React from "react";
-import { logout } from "../../services/auth";
+import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
+import * as sessionActions from '../../store/session'
 
-const LogoutButton = ({setAuthenticated}) => {
-  const onLogout = async (e) => {
-    await logout();
-    setAuthenticated(false);
-  };
+const LogoutButton = () => {
+  const dispatch = useDispatch();
+  const authenticate = useSelector((state) => state.session.authenticate);
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button onClick={() => dispatch(sessionActions.logout())}>Logout</button>;
 };
 
 export default LogoutButton;
