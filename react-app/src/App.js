@@ -7,15 +7,10 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./services/auth";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
-import Nav from './components/Nav/Nav';
-import SearchBar from './components/SearchBar/index'
-import Trips from './components/Trips/Trips'
-import Entries from './components/Trips/Entries'
-import Profile from './components/Trips/Profile'
-import Header from './components/Trips/Header'
+import Dash from "./components/Dash/Dash";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -35,15 +30,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/dash" exact={true}>
-          <div className='wrapper'>
-            <Nav  />
-            <main className="main">
-            <SearchBar  />
-            <Trips  />
-            <Entries  />
-            </main>
-            <Profile  />
-          </div>
+          <Dash />
         </Route>
         {/* <Route path="/sign-up" exact={true}>
           <SignUpForm  />
