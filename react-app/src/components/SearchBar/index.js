@@ -3,7 +3,7 @@ import React from "react";
 export default function SearchBar() {
   return (
       
-    <main className="main">
+    
       <header class="header">
         <div class="header__wrapper">
           <form action="" class="search">
@@ -35,6 +35,6 @@ export default function SearchBar() {
           </div>
         </div>
       </header>
-    </main>
+   
   );
 }

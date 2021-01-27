@@ -3,7 +3,7 @@ import React from "react";
 export default function Trips() {
   return (
    
-    <div className="main">
+    
       <section class="section">
         <header class="section__header">
           <h2 class="section__title">Trips</h2>
@@ -39,7 +39,7 @@ export default function Trips() {
           </li>
         </ul>
       </section>
-    </div>
+    
    
   );
 }

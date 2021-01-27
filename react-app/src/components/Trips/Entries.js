@@ -3,7 +3,7 @@ import React from "react";
 export default function Entries() {
   return (
     
-    <div className="main">
+
       <section class="section">
         <header class="section__header">
           <h2 class="section__title">Entries</h2>
@@ -59,6 +59,6 @@ export default function Entries() {
           </li>
         </ul>
       </section>
-    </div>
+  
   );
 }

@@ -36,13 +36,12 @@ function App() {
       <Switch>
            <Route path="/dash" exact={true}>
           <Nav  />
+          <main className="main">
           <SearchBar  />
           <Trips  />
           <Entries  />
+          </main>
           <Profile  />
-        </Route>
-          <Route path="/dashfinal" exact={true}>
-          <Header  />
           
         </Route>
         {/* <Route path="/login" exact={true}>
