@@ -6,6 +6,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.helpers import *
 # from app.config import Config
 from werkzeug.utils import secure_filename
+import boto3
+import mimetypes
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -100,8 +102,12 @@ def upload_file():
 
     # if file and allowed_file(file.filename):
     file.filename = secure_filename(file.filename)
-    output = upload_file_to_s3(file, Config.S3_BUCKET)
-    return {'output': str(output)}
+    file_mimetype = mimetypes.guess_type(file.filename)
+    s3 = boto3.resource('s3')
+    uploaded_file = s3.Bucket('tripKeeper').object(Key=file.filename, Body=file, ASCL='public-read', ContentType=file_mimetype[0])
+    # output = upload_file_to_s3(file, Config.S3_BUCKET)
+    # return {'output': str(output)}
+    return {'value': 'Something!!!!!!!!!!'}
 
 
 @auth_routes.route('/unauthorized')
