@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Trip, JournalEntry
+from app.helpers import *
+
 
 entry_routes = Blueprint('entry', __name__)
 
@@ -24,7 +26,8 @@ def entry(entry_id):
     entry_json = jsonify({'entry': entry.to_dict()})
     return entry_json
 
-@entry_routes.route('entries/<int:entry_id>', methods=['POST'])
+
+@entry_routes.route('entries/<int:entry_id>', methods=['PUT'])
 @login_required
 def new_entry():
     data = request.json

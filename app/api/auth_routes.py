@@ -85,8 +85,6 @@ def sign_up():
 
 @auth_routes.route('/test', methods=['POST'])
 def upload_file():
-    for thing in request.files:
-        print(thing)
 
     if "image" not in request.files:
         print("No image key in request.files")
