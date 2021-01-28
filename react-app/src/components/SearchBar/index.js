@@ -25,7 +25,7 @@ export default function SearchBar() {
               <span class="profile__name">Jessica</span>
               <img
                 class="profile__img"
-                src="./img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
+                // src="./img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                 alt="Profile picture"
                 loading="lazy"
               />
@@ -33,6 +33,6 @@ export default function SearchBar() {
           </div>
         </div>
       </header>
-   
+
   );
 }

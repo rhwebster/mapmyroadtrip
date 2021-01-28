@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Header() {
     return (
-      
+
     <div class="wrapper">
         {/* NavBar */}
       <nav class="nav">
@@ -213,7 +213,7 @@ export default function Header() {
                     <span class="status status--published">Published</span>
                   </div>
                   <div class="project__element project__setting">
-                    
+
                   </div>
                 </div>
               </a>

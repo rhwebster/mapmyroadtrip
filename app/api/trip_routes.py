@@ -18,6 +18,7 @@ def get_trips(user_id):
 @login_required
 def get_a_trip(trip_id):
     trip = Trip.query.get(trip_id)
+
     if not trip:
         return {}, 404
     trip_json = jsonify({'trip': trip.to_dict()})
