@@ -104,7 +104,7 @@ def upload_file():
     file.filename = secure_filename(file.filename)
     file_mimetype = mimetypes.guess_type(file.filename)
     s3 = boto3.resource('s3')
-    uploaded_file = s3.Bucket('tripKeeper').object(Key=file.filename, Body=file, ASCL='public-read', ContentType=file_mimetype[0])
+    uploaded_file = s3.Bucket('tripKeeper').put_object(Key=file.filename, Body=file, ACL='public-read', ContentType=file_mimetype[0])
     # output = upload_file_to_s3(file, Config.S3_BUCKET)
     # return {'output': str(output)}
     return {'value': 'Something!!!!!!!!!!'}
