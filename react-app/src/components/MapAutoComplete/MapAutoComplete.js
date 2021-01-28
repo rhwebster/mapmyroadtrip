@@ -3,8 +3,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocom
 import useOnclickOutside from 'react-cool-onclickoutside';
 import Marker from '../Marker/Marker';
 
-const MapAutoComplete = (addedMarkers) => {
-  const [center, setCenter] = useState({lat: 0, lng: 0 });
+const MapAutoComplete = ({setAddedMarkers}) => {
 
   const {
     ready,
@@ -43,16 +42,7 @@ const MapAutoComplete = (addedMarkers) => {
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
           console.log('📍 Coordinates: ', { lat, lng });
-          setCenter({ lat, lng })
-          console.log('center',center)
-          return (
-            <Marker
-                lat={lat}
-                lng={lng}
-                name="My Marker"
-                color="red"
-              />
-          )
+          setAddedMarkers({ 'lat': lat, 'lng': lng })
       }).catch(error => {
         console.log('😱 Error: ', error)
       });
