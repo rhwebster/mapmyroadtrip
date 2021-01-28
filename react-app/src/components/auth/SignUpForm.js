@@ -89,6 +89,7 @@ export const StyledAuth = styled.div`
 `;
 
 const SignUpForm = ({authenticated}) => {
+  const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -98,9 +99,6 @@ const SignUpForm = ({authenticated}) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
-      if (!user.errors) {
-
-      }
     }
   };
 
@@ -137,7 +135,7 @@ const SignUpForm = ({authenticated}) => {
             </label>
             <input
               id="change-avatar"
-              accept="image/*"
+              accept="tripkeeper/*"
               type="file"
               // onChange={handleImageUpload}
             />
@@ -148,7 +146,7 @@ const SignUpForm = ({authenticated}) => {
             </label>
             <input
               id="change-avatar-link"
-              accept="image/*"
+              accept="tripkeeper/*"
               type="file"
               // onChange={handleImageUpload}
             />
