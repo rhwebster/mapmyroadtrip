@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, required
+from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Trip, User, JournalEntry, Photo
 
@@ -27,7 +27,7 @@ def get_photo():
     return photo_json
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=[POST])
+@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=['POST'])
 @login_required
 def new_photo():
     data = request.json
@@ -45,7 +45,7 @@ def new_photo():
         return {'errors': ['An error occurred while retrieving the data']}, 500
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=[DELETE])
+@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=['DELETE'])
 @login_required
 def delete_photo(photo_id):
     photo = Photo.query.get(photo_id)
@@ -55,8 +55,3 @@ def delete_photo(photo_id):
         return {'message': f'Photo Id: {photo.id} was successfully deleted'}
     else:
         return {'errors': f'Photo Id: {photo.id} could not be found'}
-    
-
-
-
-
