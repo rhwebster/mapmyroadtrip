@@ -92,6 +92,26 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
+@auth_routes.route('/test', methods=['POST'])
+def upload_file():
+
+    if "user_file" not in request.files:
+        return "No user_file key in request.files"
+
+    file = request.files["user_file"]
+
+    if file.filename == "":
+        return "Please select a file"
+
+    if file and allowed_file(file.filename):
+        file.filename = secure_filename(file.filename)
+        output = upload_file_to_s3(file, app.config["S3_BUCKET"])
+        return str(output)
+
+    else:
+        return redirect("/")
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """

@@ -89,6 +89,7 @@ export const StyledAuth = styled.div`
 `;
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,6 +104,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       }
     }
   };
+
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
