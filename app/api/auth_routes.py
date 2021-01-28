@@ -8,6 +8,7 @@ from app.helpers import *
 from werkzeug.utils import secure_filename
 import boto3
 import mimetypes
+from app.config import Config
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -103,10 +104,11 @@ def upload_file():
     # if file and allowed_file(file.filename):
     file.filename = secure_filename(file.filename)
     file_mimetype = mimetypes.guess_type(file.filename)
-    s3 = boto3.resource('s3')
-    uploaded_file = s3.Bucket('tripKeeper').put_object(Key=file.filename, Body=file, ACL='public-read', ContentType=file_mimetype[0])
+    s3 = boto3.resource('s3', aws_access_key_id=Config.S3_KEY, aws_secret_access_key=Config.S3_SECRET)
+    uploaded_file = s3.Bucket(Config.S3_BUCKET).put_object(Key=file.filename, Body=file, ACL='public-read', ContentType=file_mimetype[0])
     # output = upload_file_to_s3(file, Config.S3_BUCKET)
     # return {'output': str(output)}
+    console.log(upload_file)
     return {'value': 'Something!!!!!!!!!!'}
 
 
