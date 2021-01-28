@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import Journal from '../Journal/Journal';
+import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 
 const RoadTripMap = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,8 @@ const RoadTripMap = () => {
 
   return (
     <>
+    {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
+    <MapAutoComplete />
      <div style={{ height: '500px', width: '100%' }}>
         <GoogleMapReact id="map"
           bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
@@ -63,9 +66,8 @@ const RoadTripMap = () => {
           >
           {journalEntryCoordinates &&
           journalEntryCoordinates.map(feature => {
-            console.log(feature)
             return (
-              <Marker
+              <Marker key={feature[0]}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"
