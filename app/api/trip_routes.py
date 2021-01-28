@@ -5,7 +5,7 @@ from app.models import Trip, User
 trip_routes = Blueprint('trip', __name__)
 
 
-@trip_routes.route('/<int:user_id>/trips')
+@trip_routes.route('/users/<int:user_id>/trips')
 @login_required
 def get_trips(user_id):
     trips = Trip.query.filter(Trip.user_id == user_id).all()
@@ -14,7 +14,8 @@ def get_trips(user_id):
     trip_list = [trips.to_dict() for trip in trips]
     return {'trips': trip_list}
 
-@trip_routes.route('/int:user_id>/trips/<int:trip_id>')
+
+@trip_routes.route('/trips/<int:trip_id>')
 @login_required
 def get_a_trip(trip_id):
     trip = Trip.query.get(trip_id)
@@ -24,7 +25,7 @@ def get_a_trip(trip_id):
     trip_json = jsonify({'trip': trip.to_dict()})
     return trip_json
 
-@trip_routes.route('/<int:user_id>/trips', methods=['POST'])
+@trip_routes.route('/trips/<int:trip_id>', methods=['POST'])
 @login_required
 def post_trip():
     data = request.json
@@ -44,12 +45,12 @@ def post_trip():
         db.session.add(trip)
         db.session.commit()
         return {'trip': trip.to_dict()}
-    # except SQLAlchemyError as e:
-    #     error = str(e.__dict__['orig'])
-    #     print(error)
-    #     return {'errors': ['An error occured while retrieving the data']}, 500
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        print(error)
+        return {'errors': ['An error occured while retrieving the data']}, 500
 
-@trip_routes.route('/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
+@trip_routes.route('/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
     trip = Trip.query.get(trip_id)

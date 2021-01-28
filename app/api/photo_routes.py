@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Trip, User, JournalEntry, Photo
+from app.models import JournalEntry, Photo
 
 photo_routes = Blueprint('trip', __name__)
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos')
+@photo_routes.route('entries/<int:entry_id>/photos/')
 @login_required
 def get_photos():
     photos = Photo.query.filter(Photo.entry_id == entry_id).all()
@@ -16,7 +16,7 @@ def get_photos():
     return {'photos': photo_list}
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>')
+@photo_routes.route('/photos/<int:photo_id>')
 @login_required
 def get_photo():
     photo = Photo.query.get(photo_id)
@@ -27,7 +27,7 @@ def get_photo():
     return photo_json
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=['POST'])
+@photo_routes.route('/photos/<int:photo_id>', methods=['POST'])
 @login_required
 def new_photo():
     data = request.json
@@ -45,7 +45,7 @@ def new_photo():
     #     return {'errors': ['An error occurred while retrieving the data']}, 500
 
 
-@photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=['DELETE'])
+@photo_routes.route('/photos/<int:photo_id>', methods=['DELETE'])
 @login_required
 def delete_photo(photo_id):
     photo = Photo.query.get(photo_id)

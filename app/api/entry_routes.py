@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Trip, User, JournalEntry
+from app.models import Trip, JournalEntry
 
 entry_routes = Blueprint('entry', __name__)
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries')
+@entry_routes.route('trips/<int:trip_id>/entries')
 @login_required
 def entries(trip_id):
     entries = JournalEntry.query.filter(JournalEntry.trip_id == trip_id).all()
@@ -14,9 +14,9 @@ def entries(trip_id):
     entry_list = [entries.to_dict() for entry in entries]
     return {'journal_entries': entry_list}
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>')
+@entry_routes.route('entries/<int:entry_id>')
 @login_required
-def entry(journal_entry_id):
+def entry(entry_id):
     entry = JournalEntry.query.get(entry_id)
 
     if not entry:
@@ -24,7 +24,7 @@ def entry(journal_entry_id):
     entry_json = jsonify({'entry': entry.to_dict()})
     return entry_json
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=['POST'])
+@entry_routes.route('entries/<int:entry_id>', methods=['POST'])
 @login_required
 def new_entry():
     data = request.json
@@ -40,12 +40,12 @@ def new_entry():
         db.session.add(entry)
         db.session.commit()
         return entry
-    # except SQLAlchemyError as e:
-    #     error = str(e.__dict__['orig'])
-    #     print(error)
-    #     return {'errors': ['An error occured while retrieving the data']}, 500
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        print(error)
+        return {'errors': ['An error occured while retrieving the data']}, 500
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=['DELETE'])
+@entry_routes.route('/entries/<int:entry_id>', methods=['DELETE'])
 @login_required
 def delete_entry(entry_id):
     entry = JournalEntry.query.get(entry_id)
