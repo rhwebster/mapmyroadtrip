@@ -259,13 +259,14 @@ button {
 }
 
 .search__input {
+  /* position: relative; */
   width: calc(100% - 4.125rem);
   padding: 0 1rem;
   border: 1px solid var(--alabaster);
   background-color: var(--alabaster);
   font-size: 1.2rem;
   color: var(--dune);
-  border-radius: 0 0.625rem 0.625rem 0;
+  border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
   transition: border-color 0.3s ease;
 }
 
