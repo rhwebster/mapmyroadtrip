@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User
 
+from .helpers import *
+
 user_routes = Blueprint('users', __name__)
 
 
@@ -25,21 +27,5 @@ def render_picture(data):
     return render_pic
 
 
-# @app.route('/upload', methods=['POST'])
-# def upload():
 
-#    file = request.files['inputFile']
-#    data = file.read()
-#    render_file = render_picture(data)
-#    text = request.form['text']
-#    location = request.form['location']
-
-#    newFile = FileContent(name=file.filename, data=data,
-#                          rendered_data=render_file, text=text, location=location)
-#    db.session.add(newFile)
-#    db.session.commit()
-#    flash(f'Pic {newFile.name} uploaded Text: {newFile.text} Location:
-#          {newFile.location}')
-
-#    return render_template('upload.html')
 

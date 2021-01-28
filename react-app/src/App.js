@@ -16,6 +16,7 @@ import Trips from './components/Trips/Trips'
 import Entries from './components/Trips/Entries'
 import Profile from './components/Trips/Profile'
 import Header from './components/Trips/Header'
+import Test from './components/Test'
 
 
 function App() {
@@ -43,9 +44,12 @@ function App() {
             <Profile  />
           </div>
         </Route>
-        {/* <Route path="/sign-up" exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm  />
-        </Route> */}
+        </Route>
+        <Route path="/test" exact={true}>
+          <Test  />
+        </Route>
         {/* <Route path="/map">
           <RoadTripMap />
         </Route> */}

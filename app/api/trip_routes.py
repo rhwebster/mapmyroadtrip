@@ -51,7 +51,11 @@ def post_trip():
 @trip_routes.route('/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
+<<<<<<< Updated upstream
     trip = Trip.query.get(trip_id)
+=======
+    trip = Trips.query.get(trip_id)
+>>>>>>> Stashed changes
 
     if trip:
         db.session.delete(trip)
