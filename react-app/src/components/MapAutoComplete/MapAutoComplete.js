@@ -72,9 +72,9 @@ const MapAutoComplete = () => {
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === 'OK' && <ul>{renderSuggestions()}</ul>}
         </div>
-        <script async defer type="text/javascript"
+        {/* <script async defer type="text/javascript"
         src={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}&libraries=places`}
-        ></script>
+        ></script> */}
     </>
   );
 };

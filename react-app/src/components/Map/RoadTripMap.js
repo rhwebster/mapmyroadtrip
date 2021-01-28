@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
+// import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import Journal from '../Journal/Journal';
@@ -28,14 +29,14 @@ const RoadTripMap = () => {
   if (!authenticate) {
     return null;
   }
-  const { GOOGLE_MAP_API_KEY} = process.env;
+  const { GOOGLE_MAP_API_KEY } = process.env;
 
   const getMapOptions = (maps) => {
     return {
       disableDefaultUI: true,
       mapTypeControl: true,
       streetViewControl: true,
-      // styles: [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'on' }] }],
+      styles: [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'on' }] }],
     };
   };
 
@@ -67,12 +68,19 @@ const RoadTripMap = () => {
           {journalEntryCoordinates &&
           journalEntryCoordinates.map(feature => {
             return (
+              <>
               <Marker key={feature[0]}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"
               color="blue"
-            />
+              />
+              {/* <MapViewDirections
+              origin={{'latitude': feature[0]}, {'longitude': feature[1]}}
+              destination={{'latitude': feature[0]}, {'longitude': feature[1]}}
+              apikey={GOOGLE_MAP_API_KEY}
+              /> */}
+            </>
               )
             })}
             {/* {markerShown && (
