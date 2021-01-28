@@ -11,11 +11,15 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
     """
     Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
     """
+    # for thing in file:
+    #     print(thing)
+    print(file.filename)
+    print(file.content_type)
     try:
         s3.upload_fileobj(
             file,
             bucket_name,
-            file.filename,
+            str(file.filename),
             ExtraArgs={
                 "ACL": acl,
                 "ContentType": file.content_type
