@@ -89,6 +89,7 @@ export const StyledAuth = styled.div`
 `;
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -99,10 +100,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
       if (!user.errors) {
-        setAuthenticated(true);
+        // setAuthenticated(true);
       }
     }
   };
+
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -137,7 +140,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             </label>
             <input
               id="change-avatar"
-              accept="image/*"
+              accept="tripkeeper/*"
               type="file"
               // onChange={handleImageUpload}
             />
@@ -148,7 +151,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             </label>
             <input
               id="change-avatar-link"
-              accept="image/*"
+              accept="tripkeeper/*"
               type="file"
               // onChange={handleImageUpload}
             />
