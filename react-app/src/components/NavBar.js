@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from "react-redux";
 import LoginFormModal from './LoginFormModal/LoginFormModal';
-import { Modal } from '../context/Modal';
-import SignUpForm from './auth/SignUpForm';
+import SignUpFormModal from './SignUpFormModal/SignUpFormModal'
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -36,74 +35,23 @@ const Menu = styled.ul`
 
 const Item = styled.li``;
 
-const Link = styled.a`
+export const Link = styled.a`
   color: white;
   text-decoration: none;
-
+  padding: 0px 15px 0px 0px;
   :hover {
     text-decoration: underline;
   }
 `;
 
-const NavIcon = styled.button`
-  background: none;
-  cursor: pointer;
-  border: none;
-  outline: none;
 
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-
-const Line = styled.span`
-  display: block;
-  border-radius: 50px;
-  width: 25px;
-  height: 3px;
-  margin: 5px;
-  background-color: #fff;
-  transition: width 0.4s ease-in-out;
-
-  :nth-child(2) {
-    width: ${props => (props.open ? "40%" : "70%")};
-  }
-`;
-
-
-
-const NavBar = ({isLoaded}) => {
+const NavBar = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
   const [showModal, setShowModal] = useState(false);
 
-  if (authenticate) {
-    sessionLinks = (
-      <>
-        <Item>
-          <LogoutButton />
-        </Item>
-      </>
-    );
-  } else {
-    sessionLinks = (
-      <>
-      <Item>
-        <Link href="/login" exact={true}>
-          Login
-        </Link>
-      </Item>
-      <Item>
-        <Link href="/sign-up" exact={true}>
-          Sign Up
-        </Link>
-      </Item>
-      </>
-    );
-  }
-
   return (
     <>
-    <Nav {...NavBar}>
+    <Nav>
       <Logo>TripKeeper</Logo>
       <Menu > 
         <Item>
@@ -112,45 +60,18 @@ const NavBar = ({isLoaded}) => {
           </Link>  
         </Item>
         <>
-      {!authenticate && (
-            <>
-              <LoginFormModal />
-              <button id="loginButton" onClick={() => {
-                setShowModal(true)
-                }}>SignUp
-              </button>
-              {showModal && (
-                <Modal onClose={() => setShowModal(false)} name="signUp">
-                    <SignUpForm />
-                </Modal>
-            )}
-            </>
-          )}
-      </>
+        {!authenticate && (
+          <LoginFormModal />
+        )}
+        {!authenticate && (
+          <SignUpFormModal />
+        )}
+        {authenticate && (
+          <LogoutButton />
+        )}
+        </>
       </Menu>      
     </Nav>
-      {/* <Overlay open={toggle}>
-        <OverlayMenu open={toggle}>
-        <Item>
-          <Link href="/" exact={true}>
-            Home
-          </Link>
-        </Item>
-        <Item>
-          <Link href="/login" exact={true}>
-            Login
-          </Link>
-        </Item>
-        <Item>
-          <Link href="/sign-up" exact={true}>
-            Sign Up
-          </Link>
-        </Item>
-          <LogoutButton />
-        
-        </OverlayMenu>
-      </Overlay> */}
-     
     </>
       
   );

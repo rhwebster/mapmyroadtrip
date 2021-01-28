@@ -55,22 +55,14 @@ const CreateTripForm = () => {
                         label="End Date of Trip"
                         name="end_date"
                     />
-                    <
+
                     <label>
-                    <Field 
-                        type="radio"    
-                        name="private" 
-                        value={true} 
-                    />
-                    Private
+                        <RadioField name="private" value={true}/>
+                        Private
                     </label>
                     <label>
-                    <Field 
-                        type="radio" 
-                        name="private" 
-                        value={false} 
-                    />
-                    Public
+                        <RadioField name="private" value={false}/>
+                        Public
                     </label>
                     <button type="submit">Create Trip</button>
                 </Form>

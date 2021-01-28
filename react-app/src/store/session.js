@@ -54,20 +54,23 @@ export const logout = () => async (dispatch) => {
 
 export const setPic = (file) => async (dispatch) => {
 
-  const { profPic } = file;
   const formData = new FormData();
 
   // for single file
-  if (profPic) formData.append("image", profPic);
+  formData.append("image", file);
 
   const res = await fetch(`/api/auth/test`, {
     method: "POST",
     body: formData,
   });
 
-  console.log(res)
+  if (res.ok) {
+  const data = await res.json()
 
-  dispatch(setProfilePic(res.data.file));
+  dispatch(setProfilePic(data.file));
+  } else {
+    console.log('error')
+  }
 };
 
 const initialState = { user: null, authenticate: false };
