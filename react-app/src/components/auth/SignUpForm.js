@@ -88,7 +88,7 @@ export const StyledAuth = styled.div`
   }
 `;
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({authenticated}) => {
   const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -99,13 +99,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
-      if (!user.errors) {
-        // setAuthenticated(true);
-      }
     }
   };
-
-
 
   const updateUsername = (e) => {
     setUsername(e.target.value);

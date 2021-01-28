@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default function Profile() {
     return (
@@ -21,8 +22,10 @@ export default function Profile() {
           </div>
           <ul class="statistics">
             <li class="statistics__entry">
-              <a class="statistics__entry-description" href="#">Trips</a
-              ><span class="statistics__entry-quantity">2</span>
+              <NavLink class="statistics__entry-description" exact to="/map">Trips
+                <i className="fas fa-home"></i>
+              </NavLink>
+              <span class="statistics__entry-quantity">2</span>
             </li>
             <li class="statistics__entry">
               <a class="statistics__entry-description" href="#">Entries</a
