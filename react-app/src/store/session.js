@@ -1,6 +1,7 @@
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const SET_PROFILE_PIC = 'session/setProfilePic';
 
 const setUser = (user) => {
   return {
@@ -12,6 +13,12 @@ const setUser = (user) => {
 const removeUser = () => ({
   type: REMOVE_USER
 });
+
+const setProfilePic = (file) => ({
+  type: SET_PROFILE_PIC, 
+  payload: file
+});
+
 
 export const login = (user) => async (dispatch) => {
     const { email, password } = user;
@@ -45,6 +52,24 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+export const setPic = (file) => async (dispatch) => {
+
+  const { profPic } = file;
+  const formData = new FormData();
+
+  // for single file
+  if (profPic) formData.append("image", profPic);
+
+  const res = await fetch(`/api/auth/test`, {
+    method: "POST",
+    body: formData,
+  });
+
+  console.log(res)
+
+  dispatch(setProfilePic(res.data.file));
+};
+
 const initialState = { user: null, authenticate: false };
 
 const sessionReducer = (state = initialState, action) => {
@@ -58,6 +83,8 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null, authenticate: false });
       return newState;
+      case SET_PROFILE_PIC:
+      return { ...state, file: action.payload };
     default:
       return state;
   }

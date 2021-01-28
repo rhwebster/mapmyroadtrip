@@ -45,3 +45,17 @@ export const signUp = async (username, email, password) => {
   });
   return await response.json();
 }
+
+export const setPic = async (data) => {
+  const response = await fetch("/api/auth/test", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+     data
+    }),
+  });
+  return await response.json();
+}
+
