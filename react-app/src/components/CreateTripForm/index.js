@@ -1,54 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {addTrip} from '../../store/trips'
-import { Formik, Form, useField, useFormikContext } from 'formik';
+import {addTrip} from '../../store/trip'
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import DatePicker from 'react-datepicker';
+import { TextField, DatePickerField, RadioField } from '../FormFields'
 import PlacesAutoComplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
 // import css
 
-const TextField = ({ label, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-        <>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <input className="text-input" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-        </>
-    );
-};
-
-const DatePickerField = ({ label, ...props }) => {
-    const { setFieldValue } = useFormikContext();
-    const [field] = useField(props);
-    return (
-        <>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <DatePicker
-            {...field}
-            {...props}
-            selected={(field.value && new Date(field.value)) || null}
-            onChange={val => {
-                setFieldValue(field.name, val);
-            }}
-         />
-        </>
-    );
-};
-
-const PrivacyPickerField = ({ label, ...props }) => {
-    const { setFieldValue } = useFormikContext();
-    const [field] = useField(props);
-    return (
-        <>
-        <label htmlFor={props.id || props.name}>{label}</label>
-
-        </>
-    )
-
-}
 
 const CreateTripForm = () => {
     const dispatch = useDispatch();
@@ -97,17 +55,28 @@ const CreateTripForm = () => {
                         label="End Date of Trip"
                         name="end_date"
                     />
-
-
-
+                    <
+                    <label>
+                    <Field 
+                        type="radio"    
+                        name="private" 
+                        value={true} 
+                    />
+                    Private
+                    </label>
+                    <label>
+                    <Field 
+                        type="radio" 
+                        name="private" 
+                        value={false} 
+                    />
+                    Public
+                    </label>
+                    <button type="submit">Create Trip</button>
                 </Form>
-
-
-
             </Formik>
         </div>
-    )
-
+    );
 };
 
 export default CreateTripForm
