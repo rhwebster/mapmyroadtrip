@@ -38,10 +38,10 @@ const NavBar = () => {
       </ul>
       <>
       {!authenticate && (
-        <>
           <LoginFormModal />
-          <SignUpFormModal />
-        </>
+      )}
+      {!authenticate && (
+        <SignUpFormModal />
       )}
       </>
     </nav>

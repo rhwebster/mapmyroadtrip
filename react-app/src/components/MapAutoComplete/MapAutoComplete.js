@@ -4,7 +4,7 @@ import useOnclickOutside from 'react-cool-onclickoutside';
 import Marker from '../Marker/Marker';
 
 const MapAutoComplete = (addedMarkers) => {
-  const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
+  const [center, setCenter] = useState({lat: 0, lng: 0 });
 
   const {
     ready,
@@ -27,12 +27,14 @@ const MapAutoComplete = (addedMarkers) => {
 
   const handleInput = e => {
     // Update the keyword of the input element
+
     setValue(e.target.value);
   };
 
   const handleSelect = ({ description }) => () => {
     // When user selects a place, we can replace the keyword without request data from API
     // by setting the second parameter as "false"
+
     setValue(description, false);
     clearSuggestions();
 
@@ -41,6 +43,8 @@ const MapAutoComplete = (addedMarkers) => {
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
           console.log('📍 Coordinates: ', { lat, lng });
+          setCenter({ lat, lng })
+          console.log('center',center)
           return (
             <Marker
                 lat={lat}
