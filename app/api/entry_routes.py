@@ -40,10 +40,10 @@ def new_entry():
         db.session.add(entry)
         db.session.commit()
         return entry
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occured while retrieving the data']}, 500
+    # except SQLAlchemyError as e:
+    #     error = str(e.__dict__['orig'])
+    #     print(error)
+    #     return {'errors': ['An error occured while retrieving the data']}, 500
 
 @entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=[DELETE])
 @login_required

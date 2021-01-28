@@ -39,10 +39,10 @@ def new_photo():
         db.session.add(photo)
         db.session.commit()
         return {'photo': photo.to_dict()}
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occurred while retrieving the data']}, 500
+    # except SQLAlchemyError as e:
+    #     error = str(e.__dict__['orig'])
+    #     print(error)
+    #     return {'errors': ['An error occurred while retrieving the data']}, 500
 
 
 @photo_routes.route('/<int:user_id>/<int:trip_id>/<int:entry_id>/photos/<int:photo_id>', methods=[DELETE])

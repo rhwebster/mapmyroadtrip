@@ -43,10 +43,10 @@ def post_trip():
         db.session.add(trip)
         db.session.commit()
         return {'trip': trip.to_dict()}
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occured while retrieving the data']}, 500
+    # except SQLAlchemyError as e:
+    #     error = str(e.__dict__['orig'])
+    #     print(error)
+    #     return {'errors': ['An error occured while retrieving the data']}, 500
 
 @trip_routes.route('/<int:user_id>/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
