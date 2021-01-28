@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -10,22 +10,18 @@ import User from "./components/User";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
 import Dash from "./components/Dash/Dash";
-import Journal from "./components/Journal/Journal";
 
 
 function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
-    dispatch(sessionActions.authenticate());
-    setLoaded(true);
+      dispatch(sessionActions.authenticate())
+      setLoaded(true);
   }, [dispatch]);
-
   if (!loaded) {
     return null;
   }
-  
   return (
     <BrowserRouter>
       <NavBar />
@@ -36,16 +32,16 @@ function App() {
         {/* <Route path="/sign-up" exact={true}>
           <SignUpForm  />
         </Route> */}
-        <Route path="/map">
+        {/* <Route path="/map">
           <RoadTripMap />
-        </Route>
+        </Route> */}
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute> */}
-        <ProtectedRoute path="/" exact={true}>
+        <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
