@@ -7,13 +7,10 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./services/auth";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
-import Dash from "./components/Dash/Dash";
 import Test from './components/Test'
-
-
+import Dash from "./components/Dash/Dash";
 
 function App() {
   const dispatch = useDispatch();
