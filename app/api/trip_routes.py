@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, required
+from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Trip, User
 

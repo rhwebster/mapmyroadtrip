@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, required
+from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Trip, User, JournalEntry
 
@@ -24,7 +24,7 @@ def entry(journal_entry_id):
     entry_json = jsonify({'entry': entry.to_dict()})
     return entry_json
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=[POST])
+@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=['POST'])
 @login_required
 def new_entry():
     data = request.json
@@ -45,7 +45,7 @@ def new_entry():
         print(error)
         return {'errors': ['An error occured while retrieving the data']}, 500
 
-@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=[DELETE])
+@entry_routes.route('/<int:user_id>/<int:trip_id>/entries/<int:entry_id>', methods=['DELETE'])
 @login_required
 def delete_entry(entry_id):
     entry = JournalEntry.query.get(entry_id)

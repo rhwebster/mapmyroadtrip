@@ -1,6 +1,6 @@
 import boto3
 import botocore
-from config import S3_KEY, S3_SECRET, S3_BUCKET
+from .config import S3_KEY, S3_SECRET, S3_BUCKET
 
 s3 = boto3.client(
     "s3",
@@ -21,7 +21,7 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
             bucket_name,
             file.filename,
             ExtraArgs={
-                "ACL": acl
+                "ACL": acl,
                 "ContentType": file.content_type
             }
         )
