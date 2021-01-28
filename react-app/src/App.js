@@ -9,7 +9,6 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
-import Test from './components/Test'
 import Dash from "./components/Dash/Dash";
 import MapAutoComplete from "./components/MapAutoComplete/MapAutoComplete";
 
@@ -35,9 +34,6 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm  />
-        </Route>
-        <Route path="/test" exact={true}>
-          <Test  />
         </Route>
         <Route path="/map">
           <RoadTripMap />
