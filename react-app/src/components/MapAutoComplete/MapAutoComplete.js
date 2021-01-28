@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
+import Marker from '../Marker/Marker';
 
-const MapAutoComplete = () => {
+const MapAutoComplete = (addedMarkers) => {
+  const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
+
   const {
     ready,
     value,
@@ -37,7 +40,15 @@ const MapAutoComplete = () => {
     getGeocode({ address: description })
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
-        console.log('📍 Coordinates: ', { lat, lng });
+          console.log('📍 Coordinates: ', { lat, lng });
+          return (
+            <Marker
+                lat={lat}
+                lng={lng}
+                name="My Marker"
+                color="red"
+              />
+          )
       }).catch(error => {
         console.log('😱 Error: ', error)
       });
