@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
+import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 // import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
@@ -11,6 +12,7 @@ const RoadTripMap = () => {
   const dispatch = useDispatch();
   const [markerShown, setMarkerShown] = useState(false)
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
+  const [addedMarkers, setAddedMarkers] = useState([{lat: 0, lng: 0 }]);
   const [zoom, setZoom] = useState(20);
   const user = useSelector((state) => state.session.user);
 
@@ -23,8 +25,6 @@ const RoadTripMap = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
   const journalEntryCoordinates = useSelector((state) => state.map.coordinates);
   console.log(journalEntryCoordinates);
-  // console.log(journalEntryCoordinates.coordinates);
-
 
   if (!authenticate) {
     return null;
@@ -40,6 +40,7 @@ const RoadTripMap = () => {
     };
   };
 
+
   const onMapClick = (e) => {
     console.log('LATLONG----------->',e)
     // isMarkerShown:true
@@ -50,13 +51,12 @@ const RoadTripMap = () => {
             name="My Marker"
             color="blue"
           />)
-}
-
+  }
 
   return (
     <>
     {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
-    <MapAutoComplete />
+    <MapAutoComplete addedMarkers={addedMarkers}/>
      <div style={{ height: '500px', width: '100%' }}>
         <GoogleMapReact id="map"
           bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
@@ -68,27 +68,22 @@ const RoadTripMap = () => {
           {journalEntryCoordinates &&
           journalEntryCoordinates.map(feature => {
             return (
-              <>
               <Marker key={feature[0]}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"
               color="blue"
               />
-              {/* <MapViewDirections
-              origin={{'latitude': feature[0]}, {'longitude': feature[1]}}
-              destination={{'latitude': feature[0]}, {'longitude': feature[1]}}
-              apikey={GOOGLE_MAP_API_KEY}
-              /> */}
-            </>
+
               )
             })}
-            {/* {markerShown && (
+            {
               document.addEventListener("click", (e)=> {
                 console.log(e)
+                // onMapClick()
                 // <Marker></Marker>
               })
-              )} */}
+            }
           <Marker
             lat={39.737}
             lng={-104.989}
