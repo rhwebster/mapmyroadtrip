@@ -39,16 +39,24 @@ const DatePickerField = ({ label, ...props }) => {
 };
 
 const PrivacyPickerField = ({ label, ...props }) => {
-    const { setFieldValue } = useFormikContext();
     const [field] = useField(props);
     return (
         <>
         <label htmlFor={props.id || props.name}>{label}</label>
-
+        <Field type="radio" {...field} {...props} />
         </>
     )
 
 }
+
+<label>
+              <Field type="radio" name="picked" value="One" />
+              One
+            </label>
+            <label>
+              <Field type="radio" name="picked" value="Two" />
+              Two
+            </label>
 
 const CreateTripForm = () => {
     const dispatch = useDispatch();
