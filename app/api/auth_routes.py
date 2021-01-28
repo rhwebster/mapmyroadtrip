@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from .helpers import *
 # from .helpers import *
 
 auth_routes = Blueprint('auth', __name__)
@@ -64,17 +65,6 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
-
-    if "user_file" not in request.files:
-        return "No user_file key in request.files"
-    file = request.files["user_file"]
-    if file.filename == "":
-        return "Please select a file"
-    if file and allowed_file(file.filename):
-        file.filename = secure_filename(file.filename)
-        output = upload_file_to_s3(file, app.config["S3_BUCKET"])
-        return str(output)
-
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
