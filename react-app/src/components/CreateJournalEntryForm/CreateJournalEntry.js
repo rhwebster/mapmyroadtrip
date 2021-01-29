@@ -76,7 +76,20 @@ body {
 .contact-form-txtarea::placeholder {
     color: #aaa;
 }
-.contact-form-btn {
+.contact-form-btn-upload {
+    width: 30%;
+    border:none;
+    outline: none;
+    border-radius: 50px;
+    background: #8e2de2;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 10px;
+    margin: 5px;
+}
+.contact-form-btn-submit {
     width: 100%;
     border:none;
     outline: none;
@@ -87,6 +100,7 @@ body {
     padding: 10px 0;
     cursor: pointer;
     font-size: 10px;
+    margin: 5px;
 }
 input[type="file"] {
     display: none;
@@ -130,14 +144,12 @@ function CreateJournalEntry() {
         e.preventDefault();
         dispatch(setPic( profPic ))
             .then(file => {
-                dispatch(addEntry({title, tripId: 2, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
-                // console.log('FILE',file.output));
+                dispatch(addEntry({title, tripId: 1, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
             }).catch(error => {
                 console.log('😱 Error: ', error)
             });
 
         setProfPic(null);
-        // history.pushState()
     };
 
     const updateProfPic = (e) => {
@@ -186,7 +198,8 @@ function CreateJournalEntry() {
                             <input onChange={updateProfPic} type="file" name="user_file" />
                         </label>
                         <br></br>
-                        <button  className='contact-form-btn' type="submit" >Upload</button>
+                        <button  className='contact-form-btn-upload' type="submit" >Upload</button>
+                        <button  className='contact-form-btn-submit' type="submit" onClick={() => history.push("/dash")} >Submit Your Entry</button>
                     </form>
                 </div>
                 </div>

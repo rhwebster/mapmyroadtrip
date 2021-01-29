@@ -59,7 +59,7 @@ const JournalEntryMap = ({setLat, setLon}) => {
                 lat={addedLat}
                 lng={addedLon}
                 name="My Marker"
-                color="pink"
+                color="#8E2DE2"
                 />
             {journalEntryCoordinates &&
             journalEntryCoordinates.map(feature => {

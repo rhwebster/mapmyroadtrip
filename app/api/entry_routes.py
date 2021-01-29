@@ -32,10 +32,8 @@ def entry(entry_id):
 @login_required
 def new_entry():
     data = request.get_json(force=True)
-    # print('FILES------------------>',request.files["image"])
     print('ROUTE DATA------>',data)
 
-    # try:
     entry = JournalEntry(
         title=data['title'],
         trip_id=data['tripId'],
@@ -46,11 +44,7 @@ def new_entry():
     )
     db.session.add(entry)
     db.session.commit()
-    # return entry
-    # except SQLAlchemyError as e:
-    #     error = str(e.__dict__['orig'])
-    #     print(error)
-    #     return {'errors': ['An error occured while retrieving the data']}, 500
+    return {'added_journal_entry': str(entry)}
 
 @entry_routes.route('/entries/<int:entry_id>', methods=['DELETE'])
 @login_required
