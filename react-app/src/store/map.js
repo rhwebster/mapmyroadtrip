@@ -10,6 +10,14 @@ const setData = (journal_entry) => {
   };
 };
 
+const addData = (journal_entry_lat, journal_entry_lon) => {
+  return {
+    type: ADD_DATA,
+    journal_entry_lat,
+    journal_entry_lon,
+  };
+};
+
 const removePoint = () => ({
   type: REMOVE_POINT
 });
@@ -23,14 +31,10 @@ export const getAllJournalEntryPoints = (userId) => async dispatch => {
 };
 
 export const addJournalEntryPoints= (lat, lon) => async dispatch => {
-    const res = await fetch('/api/auth');
-    if (res.ok) {
-      let data = await res.json()
-      dispatch(setData(data));
-    }
+      dispatch(addData(lat, lon));
 };
 
-const initialState = { coordinates: null };
+const initialState = { coordinates: null, addedLat: null, addedLon: null };
 
 const mapReducer = (state = initialState, action) => {
   let newState;
@@ -38,6 +42,11 @@ const mapReducer = (state = initialState, action) => {
     case SET_DATA:
       newState = Object.assign({}, state);
       newState.coordinates = action.payload;
+      return newState;
+    case ADD_DATA:
+      newState = Object.assign({}, state);
+      newState.addedLat = action.journal_entry_lat;
+      newState.addedLon = action.journal_entry_lon;
       return newState;
     // case REMOVE_USER:
     //   newState = Object.assign({}, state, { user: null, authenticate: false });

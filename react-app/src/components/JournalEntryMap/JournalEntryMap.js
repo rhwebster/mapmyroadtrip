@@ -8,7 +8,7 @@ import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import './JournalEntryMap.css'
 
 
-const JournalEntryMap = () => {
+const JournalEntryMap = ({setLat, setLon}) => {
     const { GOOGLE_MAP_API_KEY } = process.env;
     const dispatch = useDispatch();
 
@@ -17,12 +17,16 @@ const JournalEntryMap = () => {
     const journalEntryCoordinates = useSelector((state) => state.map.coordinates);
 
     const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
-    const [addedMarkers, setAddedMarkers] = useState([{lat: 0, lng: 0 }]);
     const [zoom, setZoom] = useState(4);
+
+    const addedLat = useSelector((state) => state.map.addedLat);
+    const addedLon = useSelector((state) => state.map.addedLon);
 
     useEffect(() => {
         if (user) {
-        dispatch(mapActions.getAllJournalEntryPoints(user.id))
+            setLat(addedLat);
+            setLon(addedLon);
+            dispatch(mapActions.getAllJournalEntryPoints(user.id))
         }
     }, [dispatch, user]);
 
@@ -42,18 +46,18 @@ const JournalEntryMap = () => {
     return (
         <>
         {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
-        <MapAutoComplete setAddedMarkers={setAddedMarkers}/>
-        {console.log('Marker',addedMarkers.lat, addedMarkers.lng)}
+        <MapAutoComplete />
+        {console.log('Marker', addedLat, addedLon)}
         <div style={{ height: '500px', width: '100%' }}>
             <GoogleMapReact id="map"
-            bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
-            defaultCenter={center}
-            defaultZoom={zoom}
-            options={getMapOptions}
+                bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
+                defaultCenter={center}
+                defaultZoom={zoom}
+                options={getMapOptions}
             >
             <Marker
-                lat={addedMarkers.lat}
-                lng={addedMarkers.lng}
+                lat={addedLat}
+                lng={addedLon}
                 name="My Marker"
                 color="pink"
                 />

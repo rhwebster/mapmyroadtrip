@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from "react-redux";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
-import Marker from '../Marker/Marker';
+import { addJournalEntryPoints } from '../../store/map';
 
-const MapAutoComplete = ({setAddedMarkers}) => {
+const MapAutoComplete = ({...props}) => {
   const { GOOGLE_MAP_API_KEY } = process.env;
   const dispatch = useDispatch();
 
@@ -44,7 +44,9 @@ const MapAutoComplete = ({setAddedMarkers}) => {
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
           console.log('📍 Coordinates: ', { lat, lng });
-          setAddedMarkers({ 'lat': lat, 'lng': lng })
+          dispatch(addJournalEntryPoints(lat, lng))
+          // props.setLat(lat);
+          // props.setLon(lng);
       }).catch(error => {
         console.log('😱 Error: ', error)
       });

@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import { setPic } from "../../store/session";
 import styled from 'styled-components';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
+import { useParams, useHistory } from 'react-router-dom';
+import { addEntry } from '../../store/entry'
 
 const JournalEntry = styled.div`
 * {
@@ -101,6 +103,9 @@ label.custom-file-upload:hover {
 
 function CreateJournalEntry() {
     const dispatch = useDispatch();
+    const history = useHistory();
+    // const { entryId } = useParams();
+    // console.log('ENTRY:',entryId)
 
     const [title, setTitle] = useState("");
     const [profPic, setProfPic] = useState(null);
@@ -109,12 +114,26 @@ function CreateJournalEntry() {
     const [lat, setLat] = useState(null);
     const [lon, setLon] = useState(null);
 
+    const user = useSelector(state => state.session.user);
+    const authenticate = useSelector((state) => state.session.authenticate);
+    const addedLat = useSelector((state) => state.map.addedLat);
+    const addedLon = useSelector((state) => state.map.addedLon);
+
+    useEffect(() => {
+        if (user) {
+            setLat(addedLat);
+            setLon(addedLon);
+        }
+    }, [dispatch, user]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(setPic( profPic ))
+        dispatch(setPic( profPic ));
+        dispatch(addEntry({title, profPic, entry, lat, lon }));
 
         setProfPic(null);
-      };
+        // history.pushState()
+    };
 
     const updateProfPic = (e) => {
         const file = e.target.files[0];
@@ -129,15 +148,20 @@ function CreateJournalEntry() {
         }
     };
 
+    if (!authenticate) {
+        return null;
+    }
+
     return (
         <JournalEntry>
             <div className='contact-us'>
                 <div className='contact-map'>
-                    {/* <JournalEntryMap /> */}
+                    <JournalEntryMap setLat={setLat} setLon={setLon}/>
+                    {console.log('createJournalEntry:', lat, lon)}
                 <div className='contact-form'>
                     <h3>New entry</h3>
                     <form onSubmit={handleSubmit}>
-                        <input
+                        <input id='title'
                             type='title'
                             placeholder='Title'
                             className='contact-form-txt'
@@ -145,7 +169,7 @@ function CreateJournalEntry() {
                             onChange={(e) => setTitle(e.target.value)}
                             required
                         />
-                        <textarea
+                        <textarea id='entry'
                             placeholder='Dear Journal'
                             className='contact-form-txtarea'
                             value={entry}
@@ -157,7 +181,7 @@ function CreateJournalEntry() {
                             <input onChange={updateProfPic} type="file" name="user_file" />
                         </label>
                         <br></br>
-                        <button  className='contact-form-btn' type="submit">Upload</button>
+                        <button  className='contact-form-btn' type="submit" >Upload</button>
                     </form>
                 </div>
                 </div>

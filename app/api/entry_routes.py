@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Trip, JournalEntry
 from app.helpers import *
@@ -27,26 +27,28 @@ def entry(entry_id):
     return entry_json
 
 
-@entry_routes.route('entries/<int:entry_id>', methods=['PUT'])
+@entry_routes.route('/entries', methods=['GET','POST'])
 @login_required
 def new_entry():
-    data = request.json
+    form = JournalEntry()
 
-    try:
-        entry = JournalEntry(
-            title=data['title'],
-            image=data['image'],
-            entry=data['entry'],
-            lat=data['lat'],
-            lon=data['lon']
-        )
-        db.session.add(entry)
-        db.session.commit()
-        return entry
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occured while retrieving the data']}, 500
+    print('ROUTE DATA------>',form)
+
+    # try:
+    entry = JournalEntry(
+        title=form['title'],
+        image=form['image'],
+        entry=form['entry'],
+        lat=form['lat'],
+        lon=form['lon']
+    )
+    db.session.add(entry)
+    db.session.commit()
+    return entry
+    # except SQLAlchemyError as e:
+    #     error = str(e.__dict__['orig'])
+    #     print(error)
+    #     return {'errors': ['An error occured while retrieving the data']}, 500
 
 @entry_routes.route('/entries/<int:entry_id>', methods=['DELETE'])
 @login_required
