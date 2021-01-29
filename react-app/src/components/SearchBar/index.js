@@ -1,26 +1,44 @@
 import React from "react";
+import { Link} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components';
+
+const SearchStyled = styled.div`
+.search_box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.search_icon {
+  margin-top: .33em;
+}
+`
 
 export default function SearchBar() {
   return (
+    <SearchStyled>
       <header class="header">
         <div class="header__wrapper">
           <form action="" class="search">
-            {/* <button class="search__button focus--box-shadow" type="submit">
-              <svg
-                class="search__icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z" />
-              </svg>
-            </button> */}
-            <input
-              class="search__input focus--box-shadow"
-              type="text"
-              placeholder="Entry search"
-            />
+          <span class="search_box">
+            <div>
+              <input
+                class="search__input focus--box-shadow"
+                type="text"
+                placeholder="Entry search"
+              />
+            </div>
+            <div>
+              <Link to="/SEARCHSUBMIT">
+              <FontAwesomeIcon icon={faSearch} size="2x" className="search_icon"/>
+              </Link>
+            </div>
+          </span>
           </form>
-          <div class="profile">
+          
+          {/* <div class="profile">
             <button class="profile__button">
               <span class="profile__name">Jessica</span>
               <img
@@ -30,9 +48,9 @@ export default function SearchBar() {
                 loading="lazy"
               />
             </button>
-          </div>
+          </div> */}
         </div>
       </header>
-
+    </SearchStyled>
   );
 }
