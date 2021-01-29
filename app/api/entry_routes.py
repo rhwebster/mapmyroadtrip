@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Trip, JournalEntry
+from app.models import db, Trip, JournalEntry
 from app.helpers import *
+
 
 
 entry_routes = Blueprint('entry', __name__)
@@ -30,25 +31,20 @@ def entry(entry_id):
 @entry_routes.route('/entries', methods=['GET','POST'])
 @login_required
 def new_entry():
-    form = JournalEntry()
+    data = request.get_json(force=True)
+    print('ROUTE DATA------>',data)
 
-    print('ROUTE DATA------>',form)
-
-    # try:
     entry = JournalEntry(
-        title=form['title'],
-        image=form['image'],
-        entry=form['entry'],
-        lat=form['lat'],
-        lon=form['lon']
+        title=data['title'],
+        trip_id=data['tripId'],
+        image=data['profPic'],
+        entry=data['entry'],
+        lat=data['lat'],
+        lon=data['lon']
     )
     db.session.add(entry)
     db.session.commit()
-    return entry
-    # except SQLAlchemyError as e:
-    #     error = str(e.__dict__['orig'])
-    #     print(error)
-    #     return {'errors': ['An error occured while retrieving the data']}, 500
+    return {'added_journal_entry': str(entry)}
 
 @entry_routes.route('/entries/<int:entry_id>', methods=['DELETE'])
 @login_required

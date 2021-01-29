@@ -9,22 +9,16 @@ export const setNewEntry = (entryData) => {
 
 export const addEntry = (formObj ) => async (dispatch) => {
 
-    const { title ,profPic,entry, lat, lon } = formObj;
-    const formData = new FormData();
-    if (profPic) formData.append("image", profPic);
-    formData.append("title", title);
-    formData.append("image", profPic);
-    formData.append("entry", entry);
-    formData.append("lat", lat);
-    formData.append("lon", lon);
+    const { title ,tripId, profPic,entry, lat, lon } = formObj;
+    const formData = { title , tripId, profPic,entry, lat, lon };
 
     const res = await fetch(`/api/entry/entries`, {
       method: "POST",
-      body: formData,
+      body: JSON.stringify(formData),
     });
 
     console.log('STORE DATA---------->', formData)
-    const data = res.json();
+   
     dispatch(setNewEntry(res));
     return res
   };

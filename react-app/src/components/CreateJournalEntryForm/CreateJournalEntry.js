@@ -76,7 +76,20 @@ body {
 .contact-form-txtarea::placeholder {
     color: #aaa;
 }
-.contact-form-btn {
+.contact-form-btn-upload {
+    width: 30%;
+    border:none;
+    outline: none;
+    border-radius: 50px;
+    background: #8e2de2;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 10px;
+    margin: 5px;
+}
+.contact-form-btn-submit {
     width: 100%;
     border:none;
     outline: none;
@@ -87,6 +100,7 @@ body {
     padding: 10px 0;
     cursor: pointer;
     font-size: 10px;
+    margin: 5px;
 }
 input[type="file"] {
     display: none;
@@ -108,7 +122,7 @@ function CreateJournalEntry() {
     // console.log('ENTRY:',entryId)
 
     const [title, setTitle] = useState("");
-    const [profPic, setProfPic] = useState(null);
+    const [profPic, setProfPic] = useState({'name': null});
     const [entry, setEntry] = useState("");
     const [imgPreview, setImagePreview] = useState(null);
     const [lat, setLat] = useState(null);
@@ -124,15 +138,18 @@ function CreateJournalEntry() {
             setLat(addedLat);
             setLon(addedLon);
         }
-    }, [dispatch, user]);
+    }, [dispatch, user, lat, lon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(setPic( profPic ));
-        dispatch(addEntry({title, profPic, entry, lat, lon }));
+        dispatch(setPic( profPic ))
+            .then(file => {
+                dispatch(addEntry({title, tripId: 1, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
+            }).catch(error => {
+                console.log('😱 Error: ', error)
+            });
 
         setProfPic(null);
-        // history.pushState()
     };
 
     const updateProfPic = (e) => {
@@ -157,7 +174,7 @@ function CreateJournalEntry() {
             <div className='contact-us'>
                 <div className='contact-map'>
                     <JournalEntryMap setLat={setLat} setLon={setLon}/>
-                    {console.log('createJournalEntry:', lat, lon)}
+                    {console.log('createJournalEntry:', addedLat, addedLon)}
                 <div className='contact-form'>
                     <h3>New entry</h3>
                     <form onSubmit={handleSubmit}>
@@ -181,7 +198,8 @@ function CreateJournalEntry() {
                             <input onChange={updateProfPic} type="file" name="user_file" />
                         </label>
                         <br></br>
-                        <button  className='contact-form-btn' type="submit" >Upload</button>
+                        <button  className='contact-form-btn-upload' type="submit" >Upload</button>
+                        <button  className='contact-form-btn-submit' type="submit" onClick={() => history.push("/dash")} >Submit Your Entry</button>
                     </form>
                 </div>
                 </div>

@@ -15,7 +15,7 @@ const removeUser = () => ({
 });
 
 const setProfilePic = (file) => ({
-  type: SET_PROFILE_PIC, 
+  type: SET_PROFILE_PIC,
   payload: file
 });
 
@@ -65,9 +65,10 @@ export const setPic = (file) => async (dispatch) => {
   });
 
   if (res.ok) {
-  const data = await res.json()
+    const data = await res.json();
 
-  dispatch(setProfilePic(data.file));
+    dispatch(setProfilePic(data.file));
+    return data;
   } else {
     console.log('error')
   }
