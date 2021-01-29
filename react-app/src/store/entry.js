@@ -9,7 +9,7 @@ export const setNewEntry = (entryData) => {
 
 export const addEntry = (entryData) => {
     return async (dispatch) => {
-        await fetch("****API ROUTE****", {
+        await fetch('/api/entries/<int:entry_id>', {
             method: 'POST',
             body: JSON.stingify(entryData),
         });

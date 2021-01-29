@@ -44,7 +44,6 @@ export const Link = styled.a`
   }
 `;
 
-
 const NavBar = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
   const [showModal, setShowModal] = useState(false);
