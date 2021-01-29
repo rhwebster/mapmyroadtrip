@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal'
 import SignUpForm from '../auth/SignUpForm'
+import { Link } from '../NavBar';
 
 
 function SignUpFormModal() {
@@ -8,15 +9,15 @@ function SignUpFormModal() {
 
     return (
       <>
-        <button id="signUpButton" onClick={() => {
-            setShowModal(true)
-            }}>SignUp
-            </button>
-            {showModal && (
-            <Modal onClose={() => setShowModal(false)} name="signUp">
-                <SignUpForm />
-            </Modal>
-        )}
+        <Link id="signUpButton" onClick={() => {
+                setShowModal(true)
+                }}>SignUp
+        </Link>
+        {showModal && (
+        <Modal onClose={() => setShowModal(false)} name="signUp">
+            <SignUpForm />
+        </Modal>
+    )}
      </>
     );
 }
