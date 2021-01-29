@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from "react-redux";
+import { setPic } from "../../store/session";
 import styled from 'styled-components';
-import RoadTripMap from '../Map/RoadTripMap'
+import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
 
 const JournalEntry = styled.div`
 * {
@@ -44,7 +46,7 @@ body {
 }
 .contact-form h1 {
     margin-bottom: 10px;
-    text-align: center;  
+    text-align: center;
 }
 .contact-form-txt {
     width: 100%;
@@ -84,27 +86,84 @@ body {
     cursor: pointer;
     font-size: 10px;
 }
+input[type="file"] {
+    display: none;
+}
+.imgPreview {
+    width: auto;
+    height:100px;
+    border-radius: 50%;
+}
+label.custom-file-upload:hover {
+    color: #8E2DE2;
+}
 `
 
-export default function CreateJournalEntry() {
+function CreateJournalEntry() {
+    const dispatch = useDispatch();
+
+    const [title, setTitle] = useState("");
+    const [profPic, setProfPic] = useState(null);
+    const [entry, setEntry] = useState("");
+    const [imgPreview, setImagePreview] = useState(null);
+    const [lat, setLat] = useState(null);
+    const [lon, setLon] = useState(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(setPic( profPic ))
+
+        setProfPic(null);
+      };
+
+    const updateProfPic = (e) => {
+        const file = e.target.files[0];
+        if (file) setProfPic(file);
+
+        const fileReader = new FileReader();
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
+        fileReader.onloadend = () => {
+            setImagePreview(fileReader.result);
+        }
+    };
+
     return (
         <JournalEntry>
-        <div>
             <div className='contact-us'>
                 <div className='contact-map'>
-                    <RoadTripMap className='map'/>
+                    {/* <JournalEntryMap /> */}
                 <div className='contact-form'>
                     <h3>New entry</h3>
-                    <form>
-                        <input type='text' placeholder='Title' className='contact-form-txt'/>
-                        <input type='text' placeholder='Photos?' className='contact-form-txt'/>
-                        <textarea placeholder='Dear Journal' className='contact-form-txtarea'></textarea>
-                        <input type='submit' name='Submit' className='contact-form-btn'/>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type='title'
+                            placeholder='Title'
+                            className='contact-form-txt'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                        <textarea
+                            placeholder='Dear Journal'
+                            className='contact-form-txtarea'
+                            value={entry}
+                            onChange={(e) => setEntry(e.target.value)}
+                            required>
+                        </textarea>
+                        <img className="imgPreview" src={imgPreview} alt=''></img>
+                        <label  className="custom-file-upload">CLICK HERE TO UPLOAD A PHOTO
+                            <input onChange={updateProfPic} type="file" name="user_file" />
+                        </label>
+                        <br></br>
+                        <button  className='contact-form-btn' type="submit">Upload</button>
                     </form>
-               </div>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
         </JournalEntry>
     )
 }
+
+export default CreateJournalEntry;

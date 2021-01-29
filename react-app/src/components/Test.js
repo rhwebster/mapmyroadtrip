@@ -49,8 +49,7 @@ export default function Test() {
         // method="POST"
         encType="multipart/form-data"
       >
-        <label htmlFor="user_file">Upload Your File</label>
-        <br></br>
+        
         <img className="imgPreview" src={imgPreview} alt=''></img>
         <label  className="custom-file-upload">CLICK HERE TO UPLOAD A PHOTO
           <input onChange={updateProfPic} type="file" name="user_file" />
