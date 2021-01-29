@@ -1,11 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
+import tripsReducer from './getTrips';
+import newTripReducer from './addTrip';
 import mapReducer from './map';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   map: mapReducer,
+  trips: tripsReducer,
+  newTrip: newTripReducer,
 });
 
 let enhancer;

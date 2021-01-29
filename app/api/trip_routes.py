@@ -5,14 +5,16 @@ from app.models import Trip, User
 trip_routes = Blueprint('trip', __name__)
 
 
-@trip_routes.route('/users/<int:user_id>/trips')
+@trip_routes.route('/trips')
 @login_required
-def get_trips(user_id):
-    trips = Trip.query.filter(Trip.user_id == user_id).all()
+def get_trips():
+    trips = Trip.query.all()
+    console.log(trips)
     if not trips:
         return {}, 404
-    trip_list = [trips.to_dict() for trip in trips]
-    return {'trips': trip_list}
+
+    # trip_list = [trips.to_dict() for trip in trips]
+    return jsonify([trip.to_dict() for trip in trips])
 
 
 @trip_routes.route('/trips/<int:trip_id>')
@@ -25,7 +27,7 @@ def get_a_trip(trip_id):
     trip_json = jsonify({'trip': trip.to_dict()})
     return trip_json
 
-@trip_routes.route('/trips/<int:trip_id>', methods=['POST'])
+@trip_routes.route('/', methods=['POST'])
 @login_required
 def post_trip():
     data = request.json
