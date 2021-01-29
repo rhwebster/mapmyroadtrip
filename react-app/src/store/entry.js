@@ -38,15 +38,6 @@ export const addEntry = (formObj ) => async (dispatch) => {
 //         dispatch(setNewEntry(entryData))
 //     };
 // };
-export const addEntry = (entryData) => {
-    return async (dispatch) => {
-        await fetch('/api/entries/<int:entry_id>', {
-            method: 'POST',
-            body: JSON.stingify(entryData),
-        });
-        dispatch(setNewEntry(entryData))
-    };
-};
 
 const initialState = {};
 
