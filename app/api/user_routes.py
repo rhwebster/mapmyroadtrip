@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
 from app.helpers import *
 from werkzeug.utils import secure_filename
 
@@ -22,32 +22,19 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/dash', methods=['POST'])
+@user_routes.route('/dash/<int:id>', methods=['PATCH'])
 @login_required
-def new_pic():
+def new_pic(id):
 
-    data = request.json
+    user = User.query.get(id)
 
-    if "image" not in request.files:
-        print("No image key in request.files")
-        return {'errors': 'no user file'}, 401
+    data = request.get_json(force=True)
+    print('ROUTE DATA------>', data)
 
-    file = request.files["image"]
+    user.profile_pic = data['profPic']
 
-    if file.filename == "":
-        print("Please select a file")
-        return {'errors': 'no filename'}, 401
-
-    # if file and allowed_file(file.filename):
-    file.filename = secure_filename(file.filename)
-    profile_pic = upload_file_to_s3(file)
-    # Add and commit to database
-    picture = User(
-        profile_pic=data['profile_pic']
-    )
-    db.session.add(picture)
     db.session.commit()
-    return {'output': str(profile_pic)}
+    return {'added_profile_pic': str(data['profPic'])}
 
 
 
