@@ -108,7 +108,7 @@ function CreateJournalEntry() {
     // console.log('ENTRY:',entryId)
 
     const [title, setTitle] = useState("");
-    const [profPic, setProfPic] = useState(null);
+    const [profPic, setProfPic] = useState({'name': null});
     const [entry, setEntry] = useState("");
     const [imgPreview, setImagePreview] = useState(null);
     const [lat, setLat] = useState(null);
@@ -124,12 +124,17 @@ function CreateJournalEntry() {
             setLat(addedLat);
             setLon(addedLon);
         }
-    }, [dispatch, user]);
+    }, [dispatch, user, lat, lon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(setPic( profPic ));
-        dispatch(addEntry({title, profPic, entry, lat, lon }));
+        dispatch(setPic( profPic ))
+            .then(file => {
+                dispatch(addEntry({title, tripId: 2, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
+                // console.log('FILE',file.output));
+            }).catch(error => {
+                console.log('😱 Error: ', error)
+            });
 
         setProfPic(null);
         // history.pushState()
@@ -157,7 +162,7 @@ function CreateJournalEntry() {
             <div className='contact-us'>
                 <div className='contact-map'>
                     <JournalEntryMap setLat={setLat} setLon={setLon}/>
-                    {console.log('createJournalEntry:', lat, lon)}
+                    {console.log('createJournalEntry:', addedLat, addedLon)}
                 <div className='contact-form'>
                     <h3>New entry</h3>
                     <form onSubmit={handleSubmit}>

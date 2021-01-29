@@ -64,7 +64,7 @@ const JournalEntryMap = ({setLat, setLon}) => {
             {journalEntryCoordinates &&
             journalEntryCoordinates.map(feature => {
                 return (
-                <Marker key={feature[0]}
+                <Marker
                 lat={feature[0]}
                 lng={feature[1]}
                 name="My Marker"
