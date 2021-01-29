@@ -1,5 +1,6 @@
 
 const SET_DATA = 'session/setData';
+const ADD_DATA = 'session/addData';
 const REMOVE_POINT = 'session/removePoint';
 
 const setData = (journal_entry) => {
@@ -13,7 +14,7 @@ const removePoint = () => ({
   type: REMOVE_POINT
 });
 
-export const getJournalEntryPoints = (userId) => async dispatch => {
+export const getAllJournalEntryPoints = (userId) => async dispatch => {
     const response = await fetch(`/api/map/${userId}`);
     if (response.ok) {
       let data = await response.json()
@@ -21,7 +22,7 @@ export const getJournalEntryPoints = (userId) => async dispatch => {
     }
 };
 
-export const getTripStartEndPoints= (userId) => async dispatch => {
+export const addJournalEntryPoints= (lat, lon) => async dispatch => {
     const res = await fetch('/api/auth');
     if (res.ok) {
       let data = await res.json()

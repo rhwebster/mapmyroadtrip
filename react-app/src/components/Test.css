@@ -1,0 +1,9 @@
+input[type="file"] {
+    display: none;
+}
+
+.imgPreview {
+    width: auto;
+    height:100px;
+    border-radius: 50%;
+}

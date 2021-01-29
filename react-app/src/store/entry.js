@@ -9,7 +9,7 @@ export const setNewEntry = (entryData) => {
 
 export const addEntry = (entryData) => {
     return async (dispatch) => {
-        await fetch("****API ROUTE****", {
+        await fetch(`entries/<int:entry_id>`, {
             method: 'POST',
             body: JSON.stingify(entryData),
         });
@@ -28,4 +28,4 @@ function reducer (state = initialState, action) {
     };
 };
 
-export default reducer 
+export default reducer

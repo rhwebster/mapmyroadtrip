@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import Marker from '../Marker/Marker';
 
 const MapAutoComplete = ({setAddedMarkers}) => {
+  const { GOOGLE_MAP_API_KEY } = process.env;
+  const dispatch = useDispatch();
 
   const {
     ready,
@@ -16,7 +19,6 @@ const MapAutoComplete = ({setAddedMarkers}) => {
     debounce: 300
   });
 
-  const { GOOGLE_MAP_API_KEY } = process.env;
 
   const registerRef = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss

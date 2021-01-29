@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 // import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
-import Journal from '../Journal/Journal';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 
 const RoadTripMap = () => {
@@ -18,7 +16,7 @@ const RoadTripMap = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(mapActions.getJournalEntryPoints(user.id))
+      dispatch(mapActions.getAllJournalEntryPoints(user.id))
     }
   }, [dispatch, user]);
 
@@ -83,13 +81,6 @@ const RoadTripMap = () => {
               />
               )
             })}
-            {
-              document.addEventListener("click", (e)=> {
-                console.log(e)
-                // onMapClick()
-                // <Marker></Marker>
-              })
-            }
           <Marker
             lat={39.737}
             lng={-104.989}
