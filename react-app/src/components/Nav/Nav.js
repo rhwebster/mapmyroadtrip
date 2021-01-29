@@ -126,7 +126,7 @@ export default function Nav() {
         <ul class="nav__list" role="menubar">
           <li class="nav__item">
             <Link to="/dash">
-            <FontAwesomeIcon icon={faHouseUser} size="2x" className="nav__link" href="/dash"/>
+            <FontAwesomeIcon icon={faHouseUser} size="2x"  className="nav__link"  href="/dash"/>
             </Link>
           </li>
           <li class="nav__item">
