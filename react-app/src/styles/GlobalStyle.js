@@ -330,7 +330,7 @@ button {
 
   .search,
   .search__button {
-    height: 3.125rem;
+    height: 3.4rem;
   }
 
   .search {
