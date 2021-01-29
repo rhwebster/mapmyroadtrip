@@ -12,12 +12,12 @@ function SignUpFormModal() {
         <Link id="signUpButton" onClick={() => {
                 setShowModal(true)
                 }}>SignUp
-              </Link>
-              {showModal && (
-                <Modal onClose={() => setShowModal(false)} name="signUp">
-                    <SignUpForm />
-                </Modal>
-            )}
+        </Link>
+        {showModal && (
+        <Modal onClose={() => setShowModal(false)} name="signUp">
+            <SignUpForm />
+        </Modal>
+    )}
      </>
     );
 }

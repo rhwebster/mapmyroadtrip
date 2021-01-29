@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 // import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
-import Journal from '../Journal/Journal';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 
 const RoadTripMap = () => {
@@ -13,12 +11,12 @@ const RoadTripMap = () => {
   const [markerShown, setMarkerShown] = useState(false)
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
   const [addedMarkers, setAddedMarkers] = useState([{lat: 0, lng: 0 }]);
-  const [zoom, setZoom] = useState(20);
+  const [zoom, setZoom] = useState(4);
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     if (user) {
-      dispatch(mapActions.getJournalEntryPoints(user.id))
+      dispatch(mapActions.getAllJournalEntryPoints(user.id))
     }
   }, [dispatch, user]);
 
@@ -56,7 +54,8 @@ const RoadTripMap = () => {
   return (
     <>
     {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
-    <MapAutoComplete addedMarkers={addedMarkers}/>
+    <MapAutoComplete setAddedMarkers={setAddedMarkers}/>
+    {console.log('Marker',addedMarkers.lat, addedMarkers.lng)}
      <div style={{ height: '500px', width: '100%' }}>
         <GoogleMapReact id="map"
           bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
@@ -65,6 +64,12 @@ const RoadTripMap = () => {
           onClick={() => setMarkerShown(true)}
           options={getMapOptions}
           >
+          <Marker
+            lat={addedMarkers.lat}
+            lng={addedMarkers.lng}
+            name="My Marker"
+            color="pink"
+            />
           {journalEntryCoordinates &&
           journalEntryCoordinates.map(feature => {
             return (
@@ -74,16 +79,8 @@ const RoadTripMap = () => {
               name="My Marker"
               color="blue"
               />
-
               )
             })}
-            {
-              document.addEventListener("click", (e)=> {
-                console.log(e)
-                // onMapClick()
-                // <Marker></Marker>
-              })
-            }
           <Marker
             lat={39.737}
             lng={-104.989}

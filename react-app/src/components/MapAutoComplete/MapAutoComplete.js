@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from "react-redux";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
-import Marker from '../Marker/Marker';
+import { addJournalEntryPoints } from '../../store/map';
 
-const MapAutoComplete = (addedMarkers) => {
-  const [center, setCenter] = useState({lat: 0, lng: 0 });
+const MapAutoComplete = ({...props}) => {
+  const { GOOGLE_MAP_API_KEY } = process.env;
+  const dispatch = useDispatch();
 
   const {
     ready,
@@ -17,7 +19,6 @@ const MapAutoComplete = (addedMarkers) => {
     debounce: 300
   });
 
-  const { GOOGLE_MAP_API_KEY } = process.env;
 
   const registerRef = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss
@@ -43,16 +44,9 @@ const MapAutoComplete = (addedMarkers) => {
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
           console.log('📍 Coordinates: ', { lat, lng });
-          setCenter({ lat, lng })
-          console.log('center',center)
-          return (
-            <Marker
-                lat={lat}
-                lng={lng}
-                name="My Marker"
-                color="red"
-              />
-          )
+          dispatch(addJournalEntryPoints(lat, lng))
+          // props.setLat(lat);
+          // props.setLon(lng);
       }).catch(error => {
         console.log('😱 Error: ', error)
       });

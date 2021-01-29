@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const EntriesStyle = styled.div`
 .entries__item:not(:last-child) {
@@ -191,6 +192,7 @@ export default function Entries() {
         <header class="section__header">
           <h2 class="section__title">Entries</h2>
           <div class="section__control">
+          <NavLink exact to="/entry">
             <button
               class="section__button section__button--painted focus--box-shadow"
               type="button"
@@ -204,6 +206,7 @@ export default function Entries() {
                 <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
               </svg>
             </button>
+            </NavLink>
           </div>
         </header>
         <ul class="entries">

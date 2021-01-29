@@ -52,11 +52,11 @@ const NavBar = () => {
     <>
     <Nav>
       <Logo>TripKeeper</Logo>
-      <Menu > 
+      <Menu >
         <Item>
           <Link href="/" exact={true}>
             Home
-          </Link>  
+          </Link>
         </Item>
         <>
         {!authenticate && (
@@ -69,10 +69,10 @@ const NavBar = () => {
           <LogoutButton />
         )}
         </>
-      </Menu>      
+      </Menu>
     </Nav>
     </>
-      
+
   );
 }
 

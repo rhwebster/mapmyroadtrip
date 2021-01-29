@@ -4,7 +4,6 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { setPic } from "../../store/session";
 import { TextField, TextAreaField, SelectField } from "../FormFields";
-// import css
 
 const CreateJournalEntryForm = () => {
   const dispatch = useDispatch();

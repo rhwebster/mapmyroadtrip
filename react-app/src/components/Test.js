@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setPic } from "../store/session";
+import './Test.css'
 
 export default function Test() {
   const dispatch = useDispatch();
   const [profPic, setProfPic] = useState("");
+  const [imgPreview, setImagePreview] = useState(null);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +31,14 @@ export default function Test() {
   const updateProfPic = (e) => {
     const file = e.target.files[0];
     setProfPic(file);
-    console.log('file', file);
+
+    const fileReader = new FileReader();
+    if (file) {
+        fileReader.readAsDataURL(file);
+    }
+    fileReader.onloadend = () => {
+        setImagePreview(fileReader.result);
+    }
   };
 
   return (
@@ -40,13 +49,13 @@ export default function Test() {
         // method="POST"
         encType="multipart/form-data"
       >
-        <label htmlFor="user_file">Upload Your File</label>
+        
+        <img className="imgPreview" src={imgPreview} alt=''></img>
+        <label  className="custom-file-upload">CLICK HERE TO UPLOAD A PHOTO
+          <input onChange={updateProfPic} type="file" name="user_file" />
+        </label>
         <br></br>
-        <input onChange={updateProfPic} type="file" name="user_file" />
-        <br></br>
-        <button  type="submit">
-          Upload
-        </button>
+        <button  type="submit">Upload</button>
       </form>
     </div>
   );
