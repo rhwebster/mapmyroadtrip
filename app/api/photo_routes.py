@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import JournalEntry, Photo, Trip, User
+from app.models import db, JournalEntry, Photo, Trip, User
 
-photo_routes = Blueprint('trip', __name__)
+photo_routes = Blueprint('photos', __name__)
 
-@photo_routes.route('/photos/all/')
+@photo_routes.route('/all')
 #@login_required
 def get_all_photos():
     #photos = Photo.query.join(JournalEntry).join(Trip).join(User).filter(User.id == userId).all()

@@ -9,10 +9,10 @@ export const setPhotoGallery = (payload) => {
 
 export const allPhotos = () => {
     return async (dispatch) => {
-        const res = await fetch(`/api/trip/photos/all/`);
+        const res = await fetch(`/api/photos/all`);
         if (res.ok) {
         const data = await res.json()
-        dispatch(setPhotoGallery(data.photos));
+        dispatch(setPhotoGallery(data.trips));
         console.log(data)
         }
     };
