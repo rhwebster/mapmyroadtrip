@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-import { GoogleMap, DirectionsRenderer, withScriptsjs } from 'react-google-maps'
+import { GoogleMap, DirectionsRenderer, withScriptsjs } from 'react-google-maps';
 // import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";

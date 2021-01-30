@@ -68,7 +68,7 @@ export default function Trips() {
               </div>
               <NavLink exact to={`/trip/1`}>
               <div className='map'>
-                <TripMap />
+                <TripMap setZoom={1} />
               </div>
                 <div class="trips__inform">
                   <div>

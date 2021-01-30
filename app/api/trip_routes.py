@@ -17,7 +17,7 @@ def get_trips():
     return jsonify([trip.to_dict() for trip in trips])
 
 
-@trip_routes.route('/<int:trip_id>')
+@trip_routes.route('/<int:trip_id>/')
 @login_required
 def get_a_trip(trip_id):
     trip = Trip.query.get(trip_id)
@@ -52,7 +52,7 @@ def post_trip():
         print(error)
         return {'errors': ['An error occured while retrieving the data']}, 500
 
-@trip_routes.route('/<int:trip_id>', methods=['DELETE'])
+@trip_routes.route('/<int:trip_id>/', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
     trip = Trip.query.get(trip_id)
