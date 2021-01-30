@@ -12,7 +12,7 @@ export const allPhotos = () => {
         const res = await fetch(`/api/photos/all`);
         if (res.ok) {
         const data = await res.json()
-        dispatch(setPhotoGallery(data.trips));
+        dispatch(setPhotoGallery(data.photo_list));
         console.log(data)
         }
     };
