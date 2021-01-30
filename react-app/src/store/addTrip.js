@@ -12,7 +12,7 @@ export const addTrip = (formObj) => async (dispatch) => {
     const { title, startDate, endDate, startLat, startLon, endLat, endLon, route } = formObj;
     const formData = { title, startDate, endDate, startLat, startLon, endLat, endLon, route };
 
-    const res = await fetch(`/api/trips/`, {
+    const res = await fetch(`/api/trip/`, {
         method: "POST",
         body: JSON.stringify(formData),
     });

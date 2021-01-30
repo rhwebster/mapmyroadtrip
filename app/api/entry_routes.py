@@ -1,25 +1,15 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Trip, JournalEntry
+from app.models import db, User, Trip, JournalEntry, Photo
 from app.helpers import *
 
 
 
 entry_routes = Blueprint('entry', __name__)
 
-# GET all journal entries from a specific trip
-@entry_routes.route('trips/<int:trip_id>/entries')
-@login_required
-def entries(trip_id):
-    entries = JournalEntry.query.filter(JournalEntry.trip_id == trip_id).all()
-
-    if not entries:
-        return {}, 404
-    entry_list = [entries.to_dict() for entry in entries]
-    return {'journal_entries': entry_list}
 
 # GET a specific journal entry from a specific trip
-@entry_routes.route('entries/<int:entry_id>')
+@entry_routes.route('/<int:entry_id>', methods=['GET'])
 @login_required
 def entry(entry_id):
     entry = JournalEntry.query.get(entry_id)
@@ -30,7 +20,20 @@ def entry(entry_id):
     return entry_json
 
 
-@entry_routes.route('/entries', methods=['GET','POST'])
+# GET all the photos for an entry
+@entry_routes.route('/<int:entry_id>/photos')
+@login_required
+def get_entry_photos():
+    photos = Photo.query.filter(Photo.entry_id == entry_id).all()
+
+    if not photos:
+        return {}, 404
+    photo_list = [photos.to_dict() for photo in photos]
+    return {'photos': photo_list}
+
+
+#Create new journal entries
+@entry_routes.route('/', methods=['GET','POST'])
 @login_required
 def new_entry():
     data = request.get_json(force=True)
@@ -39,16 +42,23 @@ def new_entry():
     entry = JournalEntry(
         title=data['title'],
         trip_id=data['tripId'],
+        user_id=data['userId'],
         image=data['profPic'],
         entry=data['entry'],
         lat=data['lat'],
         lon=data['lon']
     )
-    db.session.add(entry)
-    db.session.commit()
-    return {'added_journal_entry': str(entry)}
 
-@entry_routes.route('/entries/<int:entry_id>', methods=['DELETE'])
+    try:
+        db.session.add(entry)
+        db.session.commit()
+        return {'added_journal_entry': str(entry)}
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        print(error)
+        return {'errors': ['An error occured while creating the journal entry']}, 500
+
+@entry_routes.route('/<int:entry_id>', methods=['DELETE'])
 @login_required
 def delete_entry(entry_id):
     entry = JournalEntry.query.get(entry_id)

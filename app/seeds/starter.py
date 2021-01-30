@@ -37,13 +37,15 @@ def seed_journal_entries():
     yellowstone = Trip.query.filter(Trip.title == 'Yellowstone and Back Again').first()
     grand_canyon = Trip.query.filter(Trip.title == 'Grand Canyon Birthday').first()
     route66 = Trip.query.filter(Trip.title == 'Haunted Route 66').first()
+    simon = User.query.filter(User.username == 'simon').first()
+    daphne = User.query.filter(User.username == 'daphne').first()
 
-    rainbow = JournalEntry(title="Rainbow's Ending", trip=yellowstone, entry="80 days around the world, we’ll find a pot of gold just sitting where the rainbow’s ending. Time — we’ll fight against the time, and we’ll fly on the white wings of the wind. 80 days around the world, no we won’t say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.", lat=44.5551034, lon=-110.3979364)
-    road = JournalEntry(title='Down the Road', trip=route66, entry="There’s a voice that keeps on calling me. Down the road, that’s where I’ll always be. Every stop I make, I make a new friend. Can’t stay for long, just turn around and I’m gone again. Maybe tomorrow, I’ll want to settle down, Until tomorrow, I’ll just keep moving on.", lat=35.1872366, lon=-101.9892373)
-    bear = JournalEntry(title='A Bear in the Woods', trip=yellowstone, entry="Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.", lat=44.5551046, lon=-110.389364)
-    flight = JournalEntry(title='Shadowy Flight', trip=route66, entry="Knight Rider, a shadowy flight into the dangerous world of a man who does not exist. Michael Knight, a young loner on a crusade to champion the cause of the innocent, the helpless in a world of criminals who operate above the law.", lat=35.0619463254142, lon=-106.75723965626862)
-    telescope = JournalEntry(title='Radio Telescope Detour', trip=grand_canyon, entry="Ulysses, Ulysses — Soaring through all the galaxies. In search of Earth, flying in to the night. Ulysses, Ulysses — Fighting evil and tyranny, with all his power, and with all of his might. Ulysses — no-one else can do the things you do. Ulysses — like a bolt of thunder from the blue. Ulysses — always fighting all the evil forces bringing peace and justice to all.", lat=34.0727173, lon=-107.8232042)
-    dreams = JournalEntry(title='New Dreams & Better Scenes', trip=grand_canyon, entry="Hey there where ya goin’, not exactly knowin’, who says you have to call just one place home. He’s goin’ everywhere, B.J. McKay and his best friend Bear. He just keeps on movin’, ladies keep improvin’, every day is better than the last. New dreams and better scenes, and best of all I don’t pay property tax. Rollin’ down to Dallas, who’s providin’ my palace, off to New Orleans or who knows where. Places new and ladies, too, I’m B.J. McKay and this is my best friend Bear.", lat=38.4902857001479, lon=-105.33556666613165)
+    rainbow = JournalEntry(title="Rainbow's Ending", user=simon, trip=yellowstone, entry="80 days around the world, we’ll find a pot of gold just sitting where the rainbow’s ending. Time — we’ll fight against the time, and we’ll fly on the white wings of the wind. 80 days around the world, no we won’t say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.", lat=44.5551034, lon=-110.3979364)
+    road = JournalEntry(title='Down the Road', user=simon, trip=route66, entry="There’s a voice that keeps on calling me. Down the road, that’s where I’ll always be. Every stop I make, I make a new friend. Can’t stay for long, just turn around and I’m gone again. Maybe tomorrow, I’ll want to settle down, Until tomorrow, I’ll just keep moving on.", lat=35.1872366, lon=-101.9892373)
+    bear = JournalEntry(title='A Bear in the Woods', user=simon, trip=yellowstone, entry="Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.", lat=44.5551046, lon=-110.389364)
+    flight = JournalEntry(title='Shadowy Flight', user=simon, trip=route66, entry="Knight Rider, a shadowy flight into the dangerous world of a man who does not exist. Michael Knight, a young loner on a crusade to champion the cause of the innocent, the helpless in a world of criminals who operate above the law.", lat=35.0619463254142, lon=-106.75723965626862)
+    telescope = JournalEntry(title='Radio Telescope Detour', user=daphne, trip=grand_canyon, entry="Ulysses, Ulysses — Soaring through all the galaxies. In search of Earth, flying in to the night. Ulysses, Ulysses — Fighting evil and tyranny, with all his power, and with all of his might. Ulysses — no-one else can do the things you do. Ulysses — like a bolt of thunder from the blue. Ulysses — always fighting all the evil forces bringing peace and justice to all.", lat=34.0727173, lon=-107.8232042)
+    dreams = JournalEntry(title='New Dreams & Better Scenes', user=daphne, trip=grand_canyon, entry="Hey there where ya goin’, not exactly knowin’, who says you have to call just one place home. He’s goin’ everywhere, B.J. McKay and his best friend Bear. He just keeps on movin’, ladies keep improvin’, every day is better than the last. New dreams and better scenes, and best of all I don’t pay property tax. Rollin’ down to Dallas, who’s providin’ my palace, off to New Orleans or who knows where. Places new and ladies, too, I’m B.J. McKay and this is my best friend Bear.", lat=38.4902857001479, lon=-105.33556666613165)
 
 
     db.session.add(rainbow)
@@ -62,13 +64,15 @@ def seed_photos():
     flight = JournalEntry.query.filter(JournalEntry.title == 'Shadowy Flight').first()
     telescope = JournalEntry.query.filter(JournalEntry.title == 'Radio Telescope Detour').first()
     dreams = JournalEntry.query.filter(JournalEntry.title == 'New Dreams & Better Scenes').first()
+    simon = User.query.filter(User.username == 'simon').first()
+    daphne = User.query.filter(User.username == 'daphne').first()
 
-    rainbow = Photo(journal_entry=rainbow, photos_url='../../public/images/rainbow.jpg')
-    road = Photo(journal_entry=road, photos_url='../../public/images/road.jpg')
-    bear = Photo(journal_entry=bear, photos_url='../../public/images/bear.jpg')
-    flight = Photo(journal_entry=flight, photos_url='../../public/images/shadow.jpg')
-    telescope = Photo(journal_entry=telescope, photos_url='../../public/images/telescope.jpg')
-    dreams = Photo(journal_entry=dreams, photos_url='../../public/images/dream.jpg')
+    rainbow = Photo(journal_entry=rainbow, user=simon, photos_url='rainbow.jpg')
+    road = Photo(journal_entry=road, user=simon, photos_url='road.jpg')
+    bear = Photo(journal_entry=bear, user=simon, photos_url='bear.jpg')
+    flight = Photo(journal_entry=flight, user=simon, photos_url='shadow.jpg')
+    telescope = Photo(journal_entry=telescope, user=daphne, photos_url='telescope.jpg')
+    dreams = Photo(journal_entry=dreams, user=daphne, photos_url='dream.jpg')
 
 
     db.session.add(rainbow)
