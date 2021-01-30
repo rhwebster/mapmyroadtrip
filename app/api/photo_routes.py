@@ -11,11 +11,9 @@ def get_all_photos():
     photos = Photo.query.all()
 
     if not photos:
-        return {}, 404    
-    photo_list = [photos.to_dict() for photo in photos]
-    print("PHOTOS---->", photos)
-    print("PHOTOLIST---->", photo_list)
-    return { 'photos': photo_list }
+        return {}, 404   
+    photo_list = jsonify({'photo': photos})
+    return photo_list
 
 
 @photo_routes.route('entries/<int:entry_id>/photos/')
