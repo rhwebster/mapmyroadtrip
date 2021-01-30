@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
 import { addTrip } from '../../store/addTrip';
+import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
+import DestinationAutoComplete from '../MapAutoComplete/DestinationAutoComplete';
 
 const NewTrip = styled.div`
 * {
@@ -163,7 +165,7 @@ function CreateNewTrip () {
                 <div className='contact-map'>
                     <JournalEntryMap setLat={setStartLat} setLon={setStartLon} />
                     <div className='contact-form'>
-                        <h3>New entry</h3>
+                        <h3>New Trip</h3>
                         <form onSubmit={handleSubmit}>
                             <input id='title'
                                 type='title'
@@ -173,11 +175,12 @@ function CreateNewTrip () {
                                 onChange={(e) => setTitle(e.target.value)}
                                 required
                             />
-                            <input id='start-city'
+                            {/* <input id='start-city'
                                 type='start-city'
                                 placeholder='Starting City'
                                 className='contact-form-txt'
-                            />
+                            /> */}
+                            <MapAutoComplete />
                             <input id='start-date'
                                 type='start-date'
                                 placeholder='Start Date'
@@ -186,11 +189,12 @@ function CreateNewTrip () {
                                 onChange={(e) => setStartDate(e.target.value)}
                                 required
                             />
-                            <input id='end-city'
+                            {/* <input id='end-city'
                                 type='end-city'
                                 placeholder='Final Destination'
                                 className='contact-form-txt'
-                            />
+                            /> */}
+                            <DestinationAutoComplete />
                             <input id='end-date'
                                 type='end-date'
                                 placeholder='End Date (optional)'

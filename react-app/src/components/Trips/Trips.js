@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
+// import './Trips.css';
 import { getTrips } from '../../store/getTrips';
 
 export default function Trips() {
@@ -64,12 +66,20 @@ export default function Trips() {
                   </svg>
                 </button>
               </div>
-              <div class="trips__inform">
-                <p class="trips__name">Vegas</p>
-                <time class="date" datetime="2020-05-05T10:00:00">
-                  05 May, 2020
-                </time>
-              </div>
+              <NavLink exact to={`/trip/1`}>
+              {/* <div className='map'>
+                <TripMap setLat={setStartLat} setLon={setStartLon} />
+              </div> */}
+                <div class="trips__inform">
+                  <div>
+
+                  </div>
+                  <p class="trips__name">Vegas</p>
+                  <time class="date" datetime="2020-05-05T10:00:00">
+                    05 May, 2020
+                  </time>
+                </div>
+              </NavLink>
             </a>
           </li>
           <li class="trips__item">
@@ -89,12 +99,17 @@ export default function Trips() {
                   </svg>
                 </button>
               </div>
+            <NavLink exact to={`trip/2`}>
+              {/* <div className='map'>
+                <TripMap setLat={setStartLat} setLon={setStartLon} />
+              </div> */}
               <div class="trips__inform">
                 <p class="trips__name">Cali</p>
                 <time class="date" datetime="2020-05-05T10:00:00">
                   05 May, 2020
                 </time>
               </div>
+            </NavLink>
             </a>
           </li>
         </ul>
