@@ -122,34 +122,34 @@ export default function Nav() {
   return (
     <NavStyled>
     <div>
-      <nav class="nav">
-        <ul class="nav__list" role="menubar">
-          <li class="nav__item">
+      <nav className="nav">
+        <ul className="nav__list" role="menubar">
+          <li className="nav__item">
             <Link to="/dash">
             <FontAwesomeIcon icon={faHouseUser} size="2x" className="nav__link" href="/dash"/>
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/entryform">
-            <FontAwesomeIcon icon={faPencilAlt} size="2x" className="nav__link" />  
+            <FontAwesomeIcon icon={faPencilAlt} size="2x" className="nav__link" />
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/tripform">
             <FontAwesomeIcon icon={faRoad} size="2x" className="nav__link" />
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/map">
             <FontAwesomeIcon icon={faMapMarkedAlt} size="2x" className="nav__link" />
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/photos">
-            <FontAwesomeIcon icon={faCameraRetro} size="2x" className="nav__link" /> 
+            <FontAwesomeIcon icon={faCameraRetro} size="2x" className="nav__link" />
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/settings">
             <FontAwesomeIcon icon={faUserCog} size="2x" className="nav__link" />
             </Link>
