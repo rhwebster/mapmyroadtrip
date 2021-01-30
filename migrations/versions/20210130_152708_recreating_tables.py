@@ -1,8 +1,8 @@
-"""creating all tables (again)
+"""recreating tables
 
-Revision ID: 0b8fff429d42
+Revision ID: 600aed4cf5bd
 Revises: 
-Create Date: 2021-01-26 11:11:26.226080
+Create Date: 2021-01-30 15:27:08.355558
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0b8fff429d42'
+revision = '600aed4cf5bd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,18 +50,22 @@ def upgrade():
     sa.Column('id', sa.INTEGER(), nullable=False),
     sa.Column('title', sa.VARCHAR(), nullable=False),
     sa.Column('trip_id', sa.INTEGER(), nullable=False),
+    sa.Column('user_id', sa.INTEGER(), nullable=False),
     sa.Column('image', sa.VARCHAR(), nullable=True),
     sa.Column('entry', sa.TEXT(), nullable=False),
     sa.Column('lat', sa.FLOAT(), nullable=False),
     sa.Column('lon', sa.FLOAT(), nullable=False),
     sa.ForeignKeyConstraint(['trip_id'], ['trips.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('photos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('entry_id', sa.INTEGER(), nullable=False),
+    sa.Column('user_id', sa.INTEGER(), nullable=False),
     sa.Column('photos_url', sa.VARCHAR(), nullable=False),
     sa.ForeignKeyConstraint(['entry_id'], ['journal_entries.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

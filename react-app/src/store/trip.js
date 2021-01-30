@@ -29,8 +29,7 @@ function reducer (state = initialState, action) {
     };
 };
 
-export default reducer 
-=======
+export default reducer
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';

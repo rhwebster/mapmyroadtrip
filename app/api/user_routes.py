@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, Trip, Photo, JournalEntry, db
 from app.helpers import *
 from werkzeug.utils import secure_filename
 
@@ -36,6 +36,41 @@ def new_pic(id):
     db.session.commit()
     return {'added_profile_pic': str(data['profPic'])}
 
+# GET all trips associated with the user
+@user_routes.route('/<int:user_id>/trips', methods=['GET'])
+@login_required
+def get_trips(user_id):
+    trips = Trip.query.filter(Trip.user_id == user_id).all()
+
+    if not trips:
+        return {}, 404
+
+    trip_list = [trip.to_dict() for trip in trips]
+    # print(jsonify({'payload': {'trips': trip_list}}))
+    return jsonify({'payload': {'trips': trip_list}})
+
+
+#GET all entries associated with the user
+@user_routes.route('/<int:user_id>/entries', methods=['GET'])
+@login_required
+def all_entries(user_id):
+    entries = JournalEntry.query.filter(JournalEntry.user_id == user_id).all()
+
+    if not entries:
+        return {}, 404
+    entry_list = [entry.to_dict() for entry in entries]
+    return jsonify({'payload': {'entries': entry_list}})
+
+#GET all photos associated with the user
+@user_routes.route('/<int:user_id>/photos', methods=['GET'])
+@login_required
+def get_all_photos(user_id):
+    photos = Photo.query.filter(Photo.user_id == user_id).all()
+
+    if not photos:
+        return {}, 404
+    photo_list = [photos.to_dict() for photo in photos]
+    return {'photos': photo_list}
 
 
 def render_picture(data):

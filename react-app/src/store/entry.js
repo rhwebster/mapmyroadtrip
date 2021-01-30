@@ -12,7 +12,7 @@ export const addEntry = (formObj ) => async (dispatch) => {
     const { title ,tripId, profPic, entry, lat, lon } = formObj;
     const formData = { title , tripId, profPic,entry, lat, lon };
 
-    const res = await fetch(`/api/entry/entries`, {
+    const res = await fetch(`/api/entry/`, {
       method: "POST",
       body: JSON.stringify(formData),
     });
