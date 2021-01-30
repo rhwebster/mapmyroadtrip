@@ -60,7 +60,6 @@ const initialState = { coordinates: null, addedLat: null, addedLon: null, addedE
 
 const mapReducer = (state = initialState, action) => {
   let newState;
-  debugger
   switch (action.type) {
     case SET_DATA:
       newState = Object.assign({}, state);

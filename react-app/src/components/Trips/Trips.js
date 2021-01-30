@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
-// import './Trips.css';
+import TripMap from '../CreateTripForm/TripMap';
+import './Trips.css';
 import { getTrips } from '../../store/getTrips';
 
 export default function Trips() {
@@ -67,9 +68,9 @@ export default function Trips() {
                 </button>
               </div>
               <NavLink exact to={`/trip/1`}>
-              {/* <div className='map'>
-                <TripMap setLat={setStartLat} setLon={setStartLon} />
-              </div> */}
+              <div className='map'>
+                <TripMap />
+              </div>
                 <div class="trips__inform">
                   <div>
 
@@ -100,9 +101,9 @@ export default function Trips() {
                 </button>
               </div>
             <NavLink exact to={`trip/2`}>
-              {/* <div className='map'>
-                <TripMap setLat={setStartLat} setLon={setStartLon} />
-              </div> */}
+              <div className='map'>
+                <TripMap />
+              </div>
               <div class="trips__inform">
                 <p class="trips__name">Cali</p>
                 <time class="date" datetime="2020-05-05T10:00:00">

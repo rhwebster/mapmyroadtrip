@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
+import { GoogleMap, DirectionsRenderer, withScriptsjs } from 'react-google-maps'
 // import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
-import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 
 const TripMap = () => {
     const dispatch = useDispatch();
     const [center, setCenter] = useState({ lat: 39.73750267736547, lng: -104.98928358002577 });
-    const [zoom, setZoom] = useState(4);
+    const [zoom, setZoom] = useState(3.7);
+    const [markerShown, setMarkerShown] = useState(false)
     const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
@@ -17,6 +18,10 @@ const TripMap = () => {
             dispatch(mapActions.getAllJournalEntryPoints(user.id))
         }
     }, [dispatch, user]);
+
+    // useEffect(() => {
+    //     setCenter({ lat: ((startLat + endLat) / 2), lon: ((startLon + endLon) / 2) })
+    // }, [endLon !== null]);
 
     const authenticate = useSelector((state) => state.session.authenticate);
     const startLat = useSelector((state) => state.map.addedLat)
@@ -40,7 +45,7 @@ const TripMap = () => {
 
     return (
         <>
-            <div style={{ height: '500px', width: '100%' }}>
+            <div style={{ height: '300px', width: '100%' }}>
                 <GoogleMapReact id="map"
                     bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
                     defaultCenter={center}
@@ -52,13 +57,13 @@ const TripMap = () => {
                         lat={startLat}
                         lng={startLon}
                         name="My Marker"
-                        color="pink"
+                        color="red"
                     />
                     <Marker
                         lat={endLat}
                         lng={endLon}
                         name="My Marker"
-                        color="pink"
+                        color="green"
                     />
                 </GoogleMapReact >
             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
-import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
+import TripMap from './TripMap'
 import { addTrip } from '../../store/addTrip';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import DestinationAutoComplete from '../MapAutoComplete/DestinationAutoComplete';
@@ -134,8 +134,9 @@ function CreateNewTrip () {
     const addedStartLon = useSelector((state) => state.map.addedLon);
     const addedEndLat = useSelector((state) => state.map.addedLat);
     const addedEndLon = useSelector((state) => state.map.addedLon);
-
-
+    // onClick = {() => }
+    const [center, setCenter] = useState({ lat: 39.73750267736547, lon: -104.98928358002577 })
+    
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
 
@@ -163,7 +164,7 @@ function CreateNewTrip () {
         <NewTrip>
             <div className='contact-us'>
                 <div className='contact-map'>
-                    <JournalEntryMap setLat={setStartLat} setLon={setStartLon} />
+                    <TripMap />
                     <div className='contact-form'>
                         <h3>New Trip</h3>
                         <form onSubmit={handleSubmit}>
