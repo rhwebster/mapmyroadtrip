@@ -63,12 +63,12 @@ def seed_photos():
     telescope = JournalEntry.query.filter(JournalEntry.title == 'Radio Telescope Detour').first()
     dreams = JournalEntry.query.filter(JournalEntry.title == 'New Dreams & Better Scenes').first()
 
-    rainbow = Photo(journal_entry=rainbow, photos_url='../../public/images/rainbow.jpg')
-    road = Photo(journal_entry=road, photos_url='../../public/images/road.jpg')
-    bear = Photo(journal_entry=bear, photos_url='../../public/images/bear.jpg')
-    flight = Photo(journal_entry=flight, photos_url='../../public/images/shadow.jpg')
-    telescope = Photo(journal_entry=telescope, photos_url='../../public/images/telescope.jpg')
-    dreams = Photo(journal_entry=dreams, photos_url='../../public/images/dream.jpg')
+    rainbow = Photo(journal_entry=rainbow, photos_url='rainbow.jpg')
+    road = Photo(journal_entry=road, photos_url='road.jpg')
+    bear = Photo(journal_entry=bear, photos_url='bear.jpg')
+    flight = Photo(journal_entry=flight, photos_url='shadow.jpg')
+    telescope = Photo(journal_entry=telescope, photos_url='telescope.jpg')
+    dreams = Photo(journal_entry=dreams, photos_url='dream.jpg')
 
 
     db.session.add(rainbow)

@@ -24,7 +24,7 @@ const Photos = () => {
     Photo Route being hit
     {photos.map(url => {
         return (
-            <img src={url}/>
+            <img src={`./images/${url}`}/>
         )
     })}
     </>
