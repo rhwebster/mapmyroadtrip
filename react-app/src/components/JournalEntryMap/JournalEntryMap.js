@@ -65,10 +65,10 @@ const JournalEntryMap = ({setLat, setLon}) => {
             journalEntryCoordinates.map(feature => {
                 return (
                 <Marker
-                lat={feature[0]}
-                lng={feature[1]}
-                name="My Marker"
-                color="blue"
+                    lat={feature[0]}
+                    lng={feature[1]}
+                    name="My Marker"
+                    color="blue"
                 />
                 )
                 })}

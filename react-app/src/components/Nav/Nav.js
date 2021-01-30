@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseUser, faPencilAlt, faRoad, faMapMarkedAlt, faCameraRetro, faUserCog } from '@fortawesome/free-solid-svg-icons'
+import Photos from '../Photos/Photos';
 
 const NavStyled = styled.div`
 .nav {

@@ -51,10 +51,14 @@ const NavBar = () => {
   return (
     <>
     <Nav>
-      <Logo>TripKeeper</Logo>
+      <Logo>
+        <Link href="/dash" exact={true}>
+          TripKeeper
+        </Link>
+      </Logo>
       <Menu >
         <Item>
-          <Link href="/" exact={true}>
+          <Link href="/dash" exact={true}>
             Home
           </Link>
         </Item>

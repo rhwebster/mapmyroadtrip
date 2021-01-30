@@ -12,6 +12,7 @@ import RoadTripMap from "./components/Map/RoadTripMap";
 import Dash from "./components/Dash/Dash";
 import MapAutoComplete from "./components/MapAutoComplete/MapAutoComplete";
 import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJournalEntry'
+import Photos from "./components/Photos/Photos";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path="/photos" exact={true}>
+          <Photos />
+        </Route>
         <Route path="/dash" exact={true}>
           <Dash />
         </Route>
