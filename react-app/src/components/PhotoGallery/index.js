@@ -7,22 +7,20 @@ const PhotoGallery = ({photo_list}) => {
 
 
     const dispatch = useDispatch()
-    const user = useSelector((state) => {
-            if (state.session.user) {
-              return state.session.user
-            }
-          });
+    // const user = useSelector((state) => {
+    //         if (state.session.user) {
+    //           return state.session.user
+    //         }
+    //       });
     const photos = useSelector((state) => state.photos)
 
-    console.log(user)
+    //console.log(user)
     console.log(photos)
 
 
-    useEffect((user) => {
-        if (user) {
-        dispatch(allPhotos(user.id));
-        }
-    }, [dispatch, user]);
+    useEffect(() => {
+        dispatch(allPhotos());
+    }, [dispatch]);
 
     return(
         <>

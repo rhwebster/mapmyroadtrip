@@ -1,4 +1,4 @@
-const SET_PHOTO_GALLERY ="user/SET_PHOTO_GALLERY";
+const SET_PHOTO_GALLERY ="SET_PHOTO_GALLERY";
 
 export const setPhotoGallery = (payload) => {
     return {
@@ -7,9 +7,9 @@ export const setPhotoGallery = (payload) => {
     };
 };
 
-export const allPhotos = (userId) => {
+export const allPhotos = () => {
     return async (dispatch) => {
-        const res = await fetch(`/api/trip/photos/${userId}`);
+        const res = await fetch(`/api/trip/photos/all/`);
         if (res.ok) {
         const data = await res.json()
         dispatch(setPhotoGallery(data.photos));

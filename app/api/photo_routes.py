@@ -4,17 +4,16 @@ from app.models import JournalEntry, Photo, Trip, User
 
 photo_routes = Blueprint('trip', __name__)
 
-@photo_routes.route('/photos/<int:userId>')
-@login_required
-def get_all_user_photos(userId):
+@photo_routes.route('/photos/all/')
+#@login_required
+def get_all_photos():
     #photos = Photo.query.join(JournalEntry).join(Trip).join(User).filter(User.id == userId).all()
-    
-    photos = Photo.query.order_by(Photo.id).all()
+    photos = Photo.query.all()
 
     if not photos:
-        return {}, 404
+        return {}, 404    
     photo_list = [photos.to_dict() for photo in photos]
-    print("PHOTOS", photos)
+    print("PHOTOS---->", photos)
     print("PHOTOLIST---->", photo_list)
     return { 'photos': photo_list }
 
