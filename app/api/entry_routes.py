@@ -7,6 +7,7 @@ from app.helpers import *
 
 entry_routes = Blueprint('entry', __name__)
 
+# GET all journal entries from a specific trip
 @entry_routes.route('trips/<int:trip_id>/entries')
 @login_required
 def entries(trip_id):
@@ -17,6 +18,7 @@ def entries(trip_id):
     entry_list = [entries.to_dict() for entry in entries]
     return {'journal_entries': entry_list}
 
+# GET a specific journal entry from a specific trip
 @entry_routes.route('entries/<int:entry_id>')
 @login_required
 def entry(entry_id):

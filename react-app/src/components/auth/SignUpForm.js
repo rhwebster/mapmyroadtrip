@@ -95,6 +95,7 @@ const SignUpForm = ({authenticated}) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {

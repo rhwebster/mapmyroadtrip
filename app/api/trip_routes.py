@@ -1,23 +1,22 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Trip, User
+from app.models import db, Trip, User
 
 trip_routes = Blueprint('trips', __name__)
 
-
-@trip_routes.route('/')
+# GET all trips associated with the user
+@trip_routes.route('users/<int:user_id>/trips')
 @login_required
-def get_trips():
-    trips = Trip.query.all()
-    console.log(trips)
+def get_trips(user_id):
+    trips = Trip.query.filter(Trip.user_id == user_id).all()
+    trip_list = [trip.to_dict() for trip in trips]
     if not trips:
         return {}, 404
+    print(jsonify({'payload': {'trips': trip_list}}))
+    return jsonify({'payload': {'trips': trip_list}})
 
-    # trip_list = [trips.to_dict() for trip in trips]
-    return jsonify([trip.to_dict() for trip in trips])
-
-
-@trip_routes.route('/<int:trip_id>/')
+#GET single trip associated with the user
+@trip_routes.route('/<int:trip_id>')
 @login_required
 def get_a_trip(trip_id):
     trip = Trip.query.get(trip_id)
@@ -27,7 +26,8 @@ def get_a_trip(trip_id):
     trip_json = jsonify({'trip': trip.to_dict()})
     return trip_json
 
-@trip_routes.route('/', methods=['POST'])
+#POST a trip associated with the user
+@trip_routes.route('/users/<int:user_id/trips', methods=['POST'])
 @login_required
 def post_trip():
     data = request.json
@@ -52,7 +52,17 @@ def post_trip():
         print(error)
         return {'errors': ['An error occured while retrieving the data']}, 500
 
-@trip_routes.route('/<int:trip_id>/', methods=['DELETE'])
+#Edit a specific trip
+# @trip_routes.route('/trips/<int:trip_id>', methods=['PUT'])
+# @login_required
+# def edit_trip(trip_id):
+#     data = request.json
+
+#     trip = Trip.query.get(trip_id)
+#     for 
+
+#DELETE a specific trip associated with the user
+@trip_routes.route('/trips/<int:trip_id>', methods=['DELETE'])
 @login_required
 def delete_trip(trip_id):
     trip = Trip.query.get(trip_id)
