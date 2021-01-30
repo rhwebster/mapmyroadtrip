@@ -12,6 +12,7 @@ import RoadTripMap from "./components/Map/RoadTripMap";
 import Dash from "./components/Dash/Dash";
 import MapAutoComplete from "./components/MapAutoComplete/MapAutoComplete";
 import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJournalEntry'
+import PhotoGallery from './components/PhotoGallery';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route path="/entry">
           <CreateJournalEntry />
+        </Route>
+        <Route path="/photos">
+          <PhotoGallery />
         </Route>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>

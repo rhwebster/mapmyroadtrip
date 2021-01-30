@@ -51,13 +51,10 @@ const NavBar = () => {
   return (
     <>
     <Nav>
+    <Link href="/" exact={true}>
       <Logo>TripKeeper</Logo>
-      <Menu >
-        <Item>
-          <Link href="/" exact={true}>
-            Home
-          </Link>
-        </Item>
+    </Link>
+      <Menu>
         <>
         {!authenticate && (
           <LoginFormModal />
