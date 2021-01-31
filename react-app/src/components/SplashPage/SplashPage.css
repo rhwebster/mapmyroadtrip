@@ -1,4 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi&family=Work+Sans:wght@200;300;500;800&display=swap" rel="stylesheet");
+
 #background-image {
+    background-size: cover;
+    
+}
+
+#logo {
+    width: 600px;
+    height: 163px;
+    margin-top: 50px;
+}
+
+#container {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#center-content {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: baseline;
+}
+
+#tagline {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.options {
+    
+    width: 800px;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 35px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
 }

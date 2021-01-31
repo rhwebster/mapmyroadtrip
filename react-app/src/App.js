@@ -31,11 +31,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+        <Route path="/login" exact={true}>
+            <SplashPage />
+        </Route>
+      {/* <NavBar /> */}
       <Switch>
-      <Route path="/login" exact={true}>
-          <SplashPage />
-      </Route>
       <Route path="/photos" exact={true}>
           <Photos />
         </Route>
