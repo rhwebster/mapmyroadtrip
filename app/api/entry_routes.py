@@ -61,9 +61,9 @@ def new_entry():
     )
     # entry.photos.append(user_id=data['userId'],
     #                     photos_url=['profPic'])
-    entry.photos = [Photo(user_id=data['userId'],
-                          photos_url=['profPic'])]
 
+    entry.photos.append(Photo(user_id=data['userId'],
+                          photos_url=data['profPic']))
 
     db.session.add(entry)
     db.session.commit()
