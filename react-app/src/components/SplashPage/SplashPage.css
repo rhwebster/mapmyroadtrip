@@ -29,7 +29,8 @@
 #tagline {
     font-family: 'Work Sans', sans-serif;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 33.5px;
+    color: #242221;
 }
 
 .options {
@@ -37,7 +38,29 @@
     width: 800px;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 35px;
+    padding-top: 30px;
     display: flex;
     align-content: center;
     justify-content: space-around;
+    filter: drop-shadow(5px 5px 5px #0E233F);
+}
+
+.links {
+
+    padding: 0px 0px 0px 0px;
+    display: grid;
+    grid-template-columns: max-content;
+    justify-items: center;
+}
+
+.icons {
+    color: white;
+}
+
+.link-text {
+    padding-left: 15px; 
+}
+
+a {
+    color: white;
 }

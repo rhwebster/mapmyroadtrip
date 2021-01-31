@@ -26,24 +26,30 @@ const SplashPage = () => {
             <img id="logo" src={Logo}></img>
             <span id="tagline">It's the journal, not the destination</span>
               <div className="options">
-                <div>  
-                  <Link to="/">
-                  <FontAwesomeIcon icon={faSignInAlt} size="2x"/>
-                  </Link><br/>
-                  {!authenticate && (
-                  <LoginFormModal />
+                <div className="links">  
+                  <FontAwesomeIcon icon={faSignInAlt} color="white" size="2x"/>
+                    <span className="link-text">
+                    {!authenticate && (
+                    <LoginFormModal />
+                    )}
+                    </span>
+                </div>
+                <div className="links">
+                  <FontAwesomeIcon style={{textShadow: '0 3px 0 rgb(14, 35, 63, .30)'
+                    }} color="white" icon={faCarAlt} size="2x"/>
+                    <span className="link-text">
+                    {!authenticate && (
+                    <SignUpFormModal />
                   )}
+                  </span>
                 </div>
-                <div>
-                  <FontAwesomeIcon icon={faCarAlt} size="2x"/><br/> 
-                  {!authenticate && (
-                  <SignUpFormModal />
-                )}
-                </div>
-                <div>
-                <FontAwesomeIcon icon={faStreetView} size="2x"/><br/>
-                <a href="">Demo User</a>  
-                </div>
+                  <div className="links">
+                  <FontAwesomeIcon style={{textShadow: '0 3px 0 rgb(14, 35, 63, .30)'
+                    }} color="white" icon={faStreetView} size="2x"/>
+                    <span className="demo-text">
+                    <a href="">Demo User</a>  
+                    </span>
+                  </div>
                 </div>
           </div>  
       </div>

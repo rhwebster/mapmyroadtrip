@@ -37,7 +37,7 @@ html {
 	body {
 		font-size: 1rem;
 		font-family: ${(props) => props.theme.font}, sans-serif;
-		color: var(--dune);
+		// color: var(--dune);
 		background-color: --athens-gray;
 		line-height: 1.8;
 	}
@@ -72,7 +72,6 @@ img {
 }
 
 svg path {
-  fill: var(--dune);
   transition: fill 0.3s ease;
 }
 
