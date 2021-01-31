@@ -10,7 +10,7 @@ export const setNewEntry = (entryData) => {
 export const addEntry = (formObj ) => async (dispatch) => {
 
     const { userId, title ,tripId, profPic, entry, lat, lon } = formObj;
-    const formData = { userId, title , tripId, profPic,entry, lat, lon };
+    const formData = { userId, title , tripId, profPic, entry, lat, lon };
 
     const res = await fetch(`/api/entry/`, {
       method: "POST",

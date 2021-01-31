@@ -150,6 +150,7 @@ function CreateJournalEntry() {
             });
 
         setProfPic(null);
+        history.push("/dash");
     };
 
     const updateProfPic = (e) => {
@@ -198,7 +199,7 @@ function CreateJournalEntry() {
                             <input onChange={updateProfPic} type="file" name="user_file" />
                         </label>
                         <br></br>
-                        <button  className='contact-form-btn-upload' type="submit" onClick={() => history.push('/dash')}>Upload</button>
+                        <button  className='contact-form-btn-upload' type="submit">Upload</button>
                     </form>
                 </div>
                 </div>

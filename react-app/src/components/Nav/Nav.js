@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseUser, faPencilAlt, faRoad, faMapMarkedAlt, faCameraRetro, faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { faRoad, faMapMarkedAlt, faCameraRetro, faUserCog, faNewspaper} from '@fortawesome/free-solid-svg-icons'
 import Photos from '../Photos/Photos';
 
 const NavStyled = styled.div`
@@ -126,17 +126,12 @@ export default function Nav() {
       <nav className="nav">
         <ul className="nav__list" role="menubar">
           <li className="nav__item">
-            <Link to="/dash">
-            <FontAwesomeIcon icon={faHouseUser} size="2x"  className="nav__link"  href="/dash"/>
+            <Link to="/entries">
+            <FontAwesomeIcon icon={faNewspaper} size="2x" className="nav__link" />
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/entryform">
-            <FontAwesomeIcon icon={faPencilAlt} size="2x" className="nav__link" />
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link to="/tripform">
+            <Link to="/trips">
             <FontAwesomeIcon icon={faRoad} size="2x" className="nav__link" />
             </Link>
           </li>
