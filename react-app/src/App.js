@@ -13,6 +13,7 @@ import Dash from "./components/Dash/Dash";
 import MapAutoComplete from "./components/MapAutoComplete/MapAutoComplete";
 import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJournalEntry'
 import Photos from "./components/Photos/Photos";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path="/login" exact={true}>
+          <SplashPage />
+      </Route>
       <Route path="/photos" exact={true}>
           <Photos />
         </Route>

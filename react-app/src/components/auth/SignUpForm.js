@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import styled from 'styled-components';
 import Avatar from '../../styles/Avatar';
+import './SignUpForm.css'
 
 export const StyledAuth = styled.div`
   /* width: 385px;
@@ -123,7 +124,8 @@ const SignUpForm = ({authenticated}) => {
   }
 
   return (
-    <StyledAuth>
+    <StyledAuth className="form">
+      <div id="header" >Sign up! Track your adventures now!</div>
     <form onSubmit={onSignUp}>
           <div className="input-group change-avatar">
           <div>
@@ -141,8 +143,7 @@ const SignUpForm = ({authenticated}) => {
             />
           </div>
           <div className="change-avatar-meta">
-            <label htmlFor="change-avatar-link">
-              <span>Change Profile Photo</span>
+            <label htmlFor="change-avatar-link" className="upload-photo">Upload Your Profile Photo Here
             </label>
             <input
               id="change-avatar-link"
@@ -153,7 +154,7 @@ const SignUpForm = ({authenticated}) => {
           </div>
         </div>
       <div>
-        <label>User Name</label>
+        <label className="fields">User Name</label>
         <input
           type="text"
           name="username"
@@ -162,7 +163,7 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label className="fields">Email</label>
         <input
           type="text"
           name="email"
@@ -171,7 +172,7 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label className="fields">Password</label>
         <input
           type="password"
           name="password"
@@ -180,7 +181,7 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label className="fields">Repeat Password</label>
         <input
           type="password"
           name="repeat_password"
@@ -189,7 +190,7 @@ const SignUpForm = ({authenticated}) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button id="submit-button" type="submit">Sign Up</button>
     </form>
     </StyledAuth>
   );
