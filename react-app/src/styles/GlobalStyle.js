@@ -36,7 +36,7 @@ html {
 
 	body {
 		font-size: 1rem;
-		font-family: ${(props) => props.theme.font}, sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		// color: var(--dune);
 		background-color: --athens-gray;
 		line-height: 1.8;
