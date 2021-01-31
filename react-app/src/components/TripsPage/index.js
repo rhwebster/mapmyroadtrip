@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllTrips } from '../../store/getTrips';
+import Nav from '../Nav/Nav'
+import Profile from '../Trips/Profile'
 
 
 function Trips() {
@@ -30,6 +32,9 @@ function Trips() {
     }
 
     return (
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">  
         <div>
             {trips &&
             trips.map(trip => {
@@ -39,6 +44,9 @@ function Trips() {
                 )
             })}
         </div>
+        </main>
+        <Profile  />
+    </div>
     )
 }
 
