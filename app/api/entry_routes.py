@@ -12,7 +12,7 @@ entry_routes = Blueprint('entry', __name__)
 @login_required
 def getAllJournalEntries(id):
     entries = JournalEntry.query.join(User).filter(User.id == id).all()
-    entry_list = [entry.get_all_data() for entry in entries]
+    entry_list = [entry.to_dict() for entry in entries]
 
     print('JOURNAL ENTRIES------>', entry_list)
 
@@ -59,16 +59,15 @@ def new_entry():
         lat=data['lat'],
         lon=data['lon']
     )
+    # entry.photos.append(user_id=data['userId'],
+    #                     photos_url=['profPic'])
+    entry.photos = [Photo(user_id=data['userId'],
+                          photos_url=['profPic'])]
 
 
     db.session.add(entry)
-    photo = Photo(
-        entry_id=1,
-        user_id=data['userId'],
-        photos_url=['profPic'])
-    db.session.add(photo)
     db.session.commit()
-    return {'added_journal_entry': str(entry)}
+    return {'added_journal_entry': entry.to_dict()}
     # except SQLAlchemyError as e:
     #     error = str(e.__dict__['orig'])
     #     print(error)
