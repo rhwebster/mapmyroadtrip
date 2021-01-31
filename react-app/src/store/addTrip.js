@@ -9,10 +9,10 @@ export const setNewTrip = (tripData) => {
 
 export const addTrip = (formObj) => async (dispatch) => {
 
-    const { title, startDate, endDate, startLat, startLon, endLat, endLon, route } = formObj;
-    const formData = { title, startDate, endDate, startLat, startLon, endLat, endLon, route };
+    const { title, startDate, endDate, startLat, startLon, endLat, endLon, route, shared, userId } = formObj;
+    const formData = { title, startDate, endDate, startLat, startLon, endLat, endLon, route, shared, userId };
 
-    const res = await fetch(`/api/trip/`, {
+    const res = await fetch(`/api/trips/`, {
         method: "POST",
         body: JSON.stringify(formData),
     });

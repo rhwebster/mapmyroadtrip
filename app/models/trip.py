@@ -18,3 +18,17 @@ class Trip(db.Model):
 
     user = db.relationship("User", back_populates="trips")
     journal_entries = db.relationship("JournalEntry", back_populates="trip")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'start_date': self.start_date,
+            'end_data': self.end_date,
+            'start_lat': self.start_lat,
+            'start_lon': self.start_lon,
+            'end_lat': self.end_lat,
+            'end_lon': self.end_lon,
+            'route': self.route,
+            'private': self.private
+            }

@@ -15,7 +15,7 @@ function Trips() {
     })
 
     const authenticate = useSelector((state) => state.session.authenticate);
-    const trips = useSelector((state) => state.trips);
+    const trips = useSelector((state) => state.trips.trips);
     console.log(trips)
     console.log(userId)
 
