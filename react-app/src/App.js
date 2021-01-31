@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -14,6 +13,7 @@ import MapAutoComplete from "./components/MapAutoComplete/MapAutoComplete";
 import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJournalEntry'
 import Photos from "./components/Photos/Photos";
 import SplashPage from "./components/SplashPage/SplashPage";
+import CreateNewTrip from './components/CreateTripForm/CreateTrip'
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +53,10 @@ function App() {
         <Route path="/entry">
           <CreateJournalEntry />
         </Route>
+        <Route path="/trip">
+          <CreateNewTrip />
+        </Route>
+
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
         </ProtectedRoute>

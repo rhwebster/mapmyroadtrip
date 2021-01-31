@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
   about_me = db.Column(db.TEXT, nullable=True)
 
   trips = db.relationship("Trip", back_populates='user')
+  journal_entries = db.relationship("JournalEntry", back_populates='user')
+  photos = db.relationship("Photo", back_populates='user')
 
   @property
   def password(self):

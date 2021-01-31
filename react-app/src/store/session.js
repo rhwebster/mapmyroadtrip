@@ -74,6 +74,22 @@ export const setPic = (file) => async (dispatch) => {
   }
 };
 
+export const addProfPic = (formObj ) => async (dispatch) => {
+
+    const { id, profPic } = formObj;
+    const formData = { id, profPic };
+
+    const res = await fetch(`/api/users/dash/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(formData),
+    });
+
+    console.log('STORE DATA---------->', formData)
+    console.log(res)
+    dispatch(setProfilePic(res));
+    return res
+  };
+
 const initialState = { user: null, authenticate: false };
 
 const sessionReducer = (state = initialState, action) => {
