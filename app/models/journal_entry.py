@@ -22,7 +22,7 @@ class JournalEntry(db.Model):
             'id': self.id,
             'title': self.title,
             'tripId': self.trip_id,
-            'imageURL': self.image,
+            'image': self.image,
             'entry': self.entry,
             'lat': self.lat,
             'lon': self.lon}
