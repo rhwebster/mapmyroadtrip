@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Trip, User, JournalEntry
 
@@ -16,6 +16,17 @@ def get_a_trip(trip_id):
     trip_json = jsonify({'payload': {'trip': trip.to_dict()}})
     return trip_json
 
+# Get all trips
+@trip_routes.route('/<int:id>/trips', methods=['GET'])
+@login_required
+def trips(id):
+    trips = Trip.query.join(User).filter(User.id == id).all()
+    trip_list = [trip.to_dict() for trip in trips]
+
+    print('JOURNAL ENTRIES------>', trip_list)
+
+    return {'trips': trip_list}
+
 # GET all journal entries from a specific trip
 @trip_routes.route('/<int:trip_id>/entries', methods=['GET'])
 @login_required
@@ -32,30 +43,25 @@ def trip_entries(trip_id):
 @trip_routes.route('/', methods=['POST'])
 @login_required
 def post_trip():
-    data = request.json
+    data = request.get_json(force=True)
     
     trip = Trip(
         user_id=data['userId'],
         title=data['title'],
-        start_date=data['start_date'],
-        end_date=data['end_date'],
-        start_lat=data['start_lat'],
-        start_lon=data['start_lon'],
-        end_lat=data['end_lat'],
-        end_lon=data['end_lon'],
+        start_date=data['startDate'],
+        end_date=data['endDate'],
+        start_lat=data['startLat'],
+        start_lon=data['startLon'],
+        end_lat=data['endLat'],
+        end_lon=data['endLon'],
         route=data['route'],
-        private=data['private'])
+        private=data['shared'])
 
-    try:
-        db.session.add(trip)
-        db.session.commit()
-        trip_json = jsonify({'payload': {'trip': trip.to_dict()}})
-        return trip_json
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occured while creating the trip']}, 500
-
+    db.session.add(trip)
+    db.session.commit()
+    trip_json = jsonify({'payload': {'trip': trip.to_dict()}})
+    return trip_json
+    
 
 #Edit a specific trip
 @trip_routes.route('/<int:trip_id>', methods=['PUT'])

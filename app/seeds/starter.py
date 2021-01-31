@@ -67,12 +67,12 @@ def seed_photos():
     simon = User.query.filter(User.username == 'simon').first()
     daphne = User.query.filter(User.username == 'daphne').first()
 
-    rainbow = Photo(journal_entry=rainbow, user=simon, photos_url='rainbow.jpg')
-    road = Photo(journal_entry=road, user=simon, photos_url='road.jpg')
-    bear = Photo(journal_entry=bear, user=simon, photos_url='bear.jpg')
-    flight = Photo(journal_entry=flight, user=simon, photos_url='shadow.jpg')
-    telescope = Photo(journal_entry=telescope, user=daphne, photos_url='telescope.jpg')
-    dreams = Photo(journal_entry=dreams, user=daphne, photos_url='dream.jpg')
+    rainbow = Photo(journal_entry=rainbow, user=simon, photos_url='https://images.unsplash.com/photo-1463743981180-c90485a4f274?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1953&q=80')
+    road = Photo(journal_entry=road, user=simon, photos_url='https://images.unsplash.com/photo-1543428825-f895e6601a16?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
+    bear = Photo(journal_entry=bear, user=simon, photos_url='https://images.unsplash.com/photo-1559899551-4037d17859c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
+    flight = Photo(journal_entry=flight, user=simon, photos_url='https://images.unsplash.com/photo-1586114660116-60f888e9dc68?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
+    telescope = Photo(journal_entry=telescope, user=daphne, photos_url='https://images.unsplash.com/photo-1610648853814-653cbea2a949?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
+    dreams = Photo(journal_entry=dreams, user=daphne, photos_url='https://images.unsplash.com/photo-1559595500-e15296bdbb48?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1789&q=80')
 
 
     db.session.add(rainbow)

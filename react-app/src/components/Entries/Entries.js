@@ -8,6 +8,8 @@ import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAllJournalEntries } from '../../store/entry';
 import SingleEntry from '../SingleEntry/SingleEntry'
+import Nav from '../Nav/Nav'
+import Profile from '../Trips/Profile'
 
 
 function Entries() {
@@ -27,6 +29,9 @@ function Entries() {
     }
 
     return (
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">
         <div>
             {journalEntries &&
             journalEntries.map(entry => {
@@ -37,6 +42,9 @@ function Entries() {
                 )
             })}
         </div>
+        </main>
+        <Profile  />
+    </div>
     )
 }
 

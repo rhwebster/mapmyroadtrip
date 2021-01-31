@@ -15,6 +15,7 @@ import Photos from "./components/Photos/Photos";
 import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
 import Entries from './components/Entries/Entries'
+import Trips from './components/TripsPage/index'
 import UserSettings from './components/UserSettings'
 
 function App() {
@@ -32,39 +33,52 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+        <Route path="/login" exact={true}>
+            <SplashPage />
+        </Route>
+      {/* */}
       <Switch>
-      <Route path="/login" exact={true}>
-          <SplashPage />
-      </Route>
       <Route path="/photos" exact={true}>
+          <NavBar /> 
           <Photos />
         </Route>
         <Route path="/dash" exact={true}>
+          <NavBar /> 
           <Dash />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar /> 
           <SignUpForm  />
         </Route>
         <Route path="/map">
+          <NavBar /> 
           <RoadTripMap />
         </Route>
         <Route path="/auto">
+          <NavBar /> 
           <MapAutoComplete />
         </Route>
         <Route path="/entry">
+          <NavBar /> 
           <CreateJournalEntry />
         </Route>
         <Route path="/trip">
+          <NavBar /> 
           <CreateNewTrip />
         </Route>
         <Route path="/entries">
+          <NavBar /> 
           <Entries />
+        </Route>
+        <Route path="/trips">
+          <NavBar /> 
+          <Trips />
         </Route>
         {/* <Route>
           <Trips />
         </Route> */}
         <Route path="/settings">
+          <NavBar /> 
           <UserSettings />
         </Route>
 

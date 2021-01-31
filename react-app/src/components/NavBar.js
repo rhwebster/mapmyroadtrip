@@ -18,6 +18,7 @@ const Nav = styled.nav`
 
 const Logo = styled.h1`
   font-size: 25px;
+  font-family: 'Reem Kufi', sans-serif;
   color: white;
 `;
 
