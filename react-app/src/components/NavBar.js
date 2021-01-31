@@ -58,11 +58,6 @@ const NavBar = () => {
         </Link>
       </Logo>
       <Menu >
-        <Item>
-          <Link href="/dash" exact={true}>
-            Home
-          </Link>
-        </Item>
         <>
         {!authenticate && (
           <LoginFormModal />

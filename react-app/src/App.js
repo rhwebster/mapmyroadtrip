@@ -56,6 +56,12 @@ function App() {
         <Route path="/trip">
           <CreateNewTrip />
         </Route>
+        {/* <Route>
+          <Entries />
+        </Route> */}
+        {/* <Route>
+          <Trips />
+        </Route> */}
 
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
