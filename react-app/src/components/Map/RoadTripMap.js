@@ -5,6 +5,8 @@ import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
+import Nav from '../Nav/Nav'
+import Profile from '../Trips/Profile'
 
 const RoadTripMap = () => {
   const dispatch = useDispatch();
@@ -53,6 +55,9 @@ const RoadTripMap = () => {
 
   return (
     <>
+    <div className='wrapper'>
+        <Nav  />
+        <main className="main">
     {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
     <MapAutoComplete setAddedMarkers={setAddedMarkers}/>
     {console.log('Marker',addedMarkers.lat, addedMarkers.lng)}
@@ -89,6 +94,9 @@ const RoadTripMap = () => {
           />
         </GoogleMapReact >
       </div>
+      </main>
+        <Profile  />
+    </div>
     </>
   );
 }

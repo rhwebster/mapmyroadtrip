@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPhotos } from "../../store/photos";
+import Nav from '../Nav/Nav'
+import Profile from '../Trips/Profile'
 
 const Photos = () => {
   const dispatch = useDispatch();
@@ -21,12 +23,18 @@ const Photos = () => {
 
   return (
     <>
-    Photo Route being hit
-    {photos.map(url => {
-        return (
-            <img src={`./images/${url}`}/>
-        )
+    <div className='wrapper'>
+        <Nav  />
+        <main className="main">
+      Photo Route being hit
+      {photos.map(url => {
+          return (
+              <img src={`./images/${url}`}/>
+          )
     })}
+    </main>
+        <Profile  />
+    </div>
     </>
   );
 }
