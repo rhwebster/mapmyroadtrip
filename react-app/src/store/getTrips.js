@@ -7,12 +7,12 @@ export const setTrips = (trips) => {
     };
 };
 
-export const getTrips = () => async (dispatch) => {
-    const res = await fetch("api/trip/trips");
-    console.log('this is the data ======>', res)
-    dispatch(
-        setTrips(res.data.trips)
-    );
+export const getTrips = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/${userId}trip`);
+
+  if (res.ok) {
+    dispatch(setTrips(res.data.trips));
+  }
 };
 
 const initialState = [];

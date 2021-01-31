@@ -8,6 +8,7 @@ export const setNewTrip = (tripData) => {
     };
 };
 
+
 export const addTrip = (tripData) => {
     return async (dispatch) => {
         await fetch("****API ROUTE****", {
@@ -77,7 +78,7 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-const initialState = { user: null, authenticate: false };
+// const initialState = { user: null, authenticate: false };
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -88,8 +89,6 @@ const sessionReducer = (state = initialState, action) => {
       newState.authenticate = true;
       return newState;
     case REMOVE_USER:
-      newState = Object.assign({}, state, { user: null, authenticate: false });
-      return newState;
     default:
       return state;
   }
