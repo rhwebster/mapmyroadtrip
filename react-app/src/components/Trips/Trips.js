@@ -5,6 +5,7 @@ import TripMap from '../CreateTripForm/TripMap';
 import './Trips.css';
 import { getTrips } from '../../store/getTrips';
 
+
 export default function Trips() {
 
   // const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export default function Trips() {
   // }, []);
 
   return (
+    
       <section className="section">
         <header className="section__header">
           <h2 className="section__title">Trips</h2>

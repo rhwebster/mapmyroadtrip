@@ -67,9 +67,11 @@ function App() {
           <CreateNewTrip />
         </Route>
         <Route path="/entries">
+          <NavBar /> 
           <Entries />
         </Route>
         <Route path="/trips">
+          <NavBar /> 
           <Trips />
         </Route>
         {/* <Route>
