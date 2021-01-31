@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Nav from '../Nav/Nav'
 import SearchBar from '../SearchBar/index'
 import Trips from '../Trips/Trips'
-import Entry from '../Trips/Entries'
+import Entries from '../Trips/Entries'
 import Profile from '../Trips/Profile'
 
 const Dash = () => {
@@ -19,7 +19,7 @@ const Dash = () => {
         <main className="main">
             <SearchBar  />
             <Trips  />
-            <Entry  />
+            <Entries  />
         </main>
         <Profile  />
     </div>

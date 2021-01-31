@@ -26,10 +26,9 @@ const Photos = () => {
     <div className='wrapper'>
         <Nav  />
         <main className="main">
-      Photo Route being hit
       {photos.map(url => {
           return (
-              <img src={`./images/${url}`}/>
+              <img src={`${url}`}/>
           )
     })}
     </main>
