@@ -39,24 +39,30 @@ def new_entry():
     data = request.get_json(force=True)
     print('ROUTE DATA------>',data)
 
+
     entry = JournalEntry(
         title=data['title'],
         trip_id=data['tripId'],
-        user_id=data['userId'],
         image=data['profPic'],
+        user_id=data['userId'],
         entry=data['entry'],
         lat=data['lat'],
         lon=data['lon']
     )
 
-    try:
-        db.session.add(entry)
-        db.session.commit()
-        return {'added_journal_entry': str(entry)}
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        return {'errors': ['An error occured while creating the journal entry']}, 500
+    
+    db.session.add(entry)
+    photo = Photo(
+        entry_id=1,
+        user_id=data['userId'],
+        photos_url=['profPic'])
+    db.session.add(photo)
+    db.session.commit()
+    return {'added_journal_entry': str(entry)}
+    # except SQLAlchemyError as e:
+    #     error = str(e.__dict__['orig'])
+    #     print(error)
+    #     return {'errors': ['An error occured while creating the journal entry']}, 500
 
 @entry_routes.route('/<int:entry_id>', methods=['DELETE'])
 @login_required

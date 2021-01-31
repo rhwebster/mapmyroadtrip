@@ -9,8 +9,8 @@ export const setNewEntry = (entryData) => {
 
 export const addEntry = (formObj ) => async (dispatch) => {
 
-    const { title ,tripId, profPic, entry, lat, lon } = formObj;
-    const formData = { title , tripId, profPic,entry, lat, lon };
+    const { userId, title ,tripId, profPic, entry, lat, lon } = formObj;
+    const formData = { userId, title , tripId, profPic, entry, lat, lon };
 
     const res = await fetch(`/api/entry/`, {
       method: "POST",
@@ -18,7 +18,7 @@ export const addEntry = (formObj ) => async (dispatch) => {
     });
 
     console.log('STORE DATA---------->', formData)
-   
+
     dispatch(setNewEntry(res));
     return res
   };
