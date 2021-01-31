@@ -17,17 +17,15 @@ def get_a_trip(trip_id):
     return trip_json
 
 # Get all trips
-
-
-@trip_routes.route('/<int:user_id>/trips', methods=['GET'])
+@trip_routes.route('/<int:id>/trips', methods=['GET'])
 @login_required
-def trips(user_id):
-    trips = Trip.query.filter(Trip.user_id == user_id).all()
+def trips(id):
+    trips = Trip.query.join(User).filter(User.id == id).all()
+    trip_list = [entry.get_all_data() for trip in trips]
 
-    if not trips:
-        return {}, 404
-    trip_list = [trips.to_dict() for trip in trips]
-    return jsonify({'payload': {'trips': trip_list}})
+    print('JOURNAL ENTRIES------>', trip_list)
+
+    return {'trips': trip_list}
 
 # GET all journal entries from a specific trip
 @trip_routes.route('/<int:trip_id>/entries', methods=['GET'])
