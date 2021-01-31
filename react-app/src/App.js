@@ -34,27 +34,34 @@ function App() {
         <Route path="/login" exact={true}>
             <SplashPage />
         </Route>
-      {/* <NavBar /> */}
+      {/* */}
       <Switch>
       <Route path="/photos" exact={true}>
+          <NavBar /> 
           <Photos />
         </Route>
         <Route path="/dash" exact={true}>
+          <NavBar /> 
           <Dash />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar /> 
           <SignUpForm  />
         </Route>
         <Route path="/map">
+          <NavBar /> 
           <RoadTripMap />
         </Route>
         <Route path="/auto">
+          <NavBar /> 
           <MapAutoComplete />
         </Route>
         <Route path="/entry">
+          <NavBar /> 
           <CreateJournalEntry />
         </Route>
         <Route path="/trip">
+          <NavBar /> 
           <CreateNewTrip />
         </Route>
         {/* <Route>
@@ -64,6 +71,7 @@ function App() {
           <Trips />
         </Route> */}
         <Route path="/settings">
+          <NavBar /> 
           <UserSettings />
         </Route>
 
