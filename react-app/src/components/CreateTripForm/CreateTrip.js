@@ -6,6 +6,10 @@ import TripMap from './TripMap'
 import { addTrip } from '../../store/addTrip';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import DestinationAutoComplete from '../MapAutoComplete/DestinationAutoComplete';
+import Nav from '../Nav/Nav'
+import SearchBar from '../SearchBar/index'
+import Profile from '../Trips/Profile'
+
 
 const NewTrip = styled.div`
 * {
@@ -161,6 +165,10 @@ function CreateNewTrip () {
     }
 
     return (
+
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">
         <NewTrip>
             <div className='contact-us'>
                 <div className='contact-map'>
@@ -211,6 +219,9 @@ function CreateNewTrip () {
                 </div>
             </div>
         </NewTrip>
+        </main>
+        <Profile  />
+    </div>
     )
 }
 

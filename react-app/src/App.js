@@ -14,7 +14,8 @@ import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJourna
 import Photos from "./components/Photos/Photos";
 import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
-import TripsPage from './components/EntriesPage/index'
+import Entries from './components/Entries/Entries'
+import UserSettings from './components/UserSettings'
 
 function App() {
   const dispatch = useDispatch();
@@ -57,8 +58,14 @@ function App() {
         <Route path="/trip">
           <CreateNewTrip />
         </Route>
-        <Route path="/test">
-          <TripsPage />
+        <Route path="/entries">
+          <Entries />
+        </Route>
+        {/* <Route>
+          <Trips />
+        </Route> */}
+        <Route path="/settings">
+          <UserSettings />
         </Route>
 
         {/* <ProtectedRoute path="/users" exact={true}>

@@ -17,5 +17,15 @@ class JournalEntry(db.Model):
     trip = db.relationship("Trip", back_populates="journal_entries")
     photos = db.relationship("Photo", back_populates="journal_entry")
 
+    def get_all_data(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'tripId': self.trip_id,
+            'imageURL': self.image,
+            'entry': self.entry,
+            'lat': self.lat,
+            'lon': self.lon}
+
     def get_coordinates(self):
         return (self.lat, self.lon)

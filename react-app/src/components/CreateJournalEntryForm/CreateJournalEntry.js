@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
 import { useParams, useHistory } from 'react-router-dom';
 import { addEntry } from '../../store/entry'
+import Nav from '../Nav/Nav'
+import SearchBar from '../SearchBar/index'
+import Profile from '../Trips/Profile'
 
 const JournalEntry = styled.div`
 * {
@@ -144,12 +147,13 @@ function CreateJournalEntry() {
         e.preventDefault();
         dispatch(setPic( profPic ))
             .then(file => {
-                dispatch(addEntry({title, tripId: 1, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
+                dispatch(addEntry({userId: user.id, title, tripId: 1, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
             }).catch(error => {
                 console.log('😱 Error: ', error)
             });
 
         setProfPic(null);
+        history.push("/dash");
     };
 
     const updateProfPic = (e) => {
@@ -170,6 +174,9 @@ function CreateJournalEntry() {
     }
 
     return (
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">
         <JournalEntry>
             <div className='contact-us'>
                 <div className='contact-map'>
@@ -198,13 +205,15 @@ function CreateJournalEntry() {
                             <input onChange={updateProfPic} type="file" name="user_file" />
                         </label>
                         <br></br>
-                        <button  className='contact-form-btn-upload' type="submit" >Upload</button>
-                        <button  className='contact-form-btn-submit' type="submit" onClick={() => history.push("/dash")} >Submit Your Entry</button>
+                        <button  className='contact-form-btn-upload' type="submit">Upload</button>
                     </form>
                 </div>
                 </div>
             </div>
         </JournalEntry>
+        </main>
+        <Profile  />
+    </div>
     )
 }
 
