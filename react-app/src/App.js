@@ -15,6 +15,7 @@ import Photos from "./components/Photos/Photos";
 import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
 import Entries from './components/Entries/Entries'
+import Trips from './components/TripsPage/index'
 import UserSettings from './components/UserSettings'
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route path="/entries">
           <Entries />
+        </Route>
+        <Route path="/trips">
+          <Trips />
         </Route>
         {/* <Route>
           <Trips />

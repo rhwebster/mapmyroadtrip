@@ -16,6 +16,17 @@ def get_a_trip(trip_id):
     trip_json = jsonify({'payload': {'trip': trip.to_dict()}})
     return trip_json
 
+# Get all trips
+@trip_routes.route('/<int:id>/trips', methods=['GET'])
+@login_required
+def trips(id):
+    trips = Trip.query.join(User).filter(User.id == id).all()
+    trip_list = [entry.get_all_data() for trip in trips]
+
+    print('JOURNAL ENTRIES------>', trip_list)
+
+    return {'trips': trip_list}
+
 # GET all journal entries from a specific trip
 @trip_routes.route('/<int:trip_id>/entries', methods=['GET'])
 @login_required
