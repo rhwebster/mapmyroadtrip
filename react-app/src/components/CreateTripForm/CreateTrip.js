@@ -122,6 +122,7 @@ function CreateNewTrip () {
     const history = useHistory();
 
     const [title, setTitle] = useState('');
+    const [userId, setUserId] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [errors, setErrors] = useState([]);
@@ -129,16 +130,16 @@ function CreateNewTrip () {
     const [startLon, setStartLon] = useState(null);
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
-    const [route, setRoute] = useState('')
-    const addedStartLat = useSelector((state) => state.map.addedLat);
-    const addedStartLon = useSelector((state) => state.map.addedLon);
-    const addedEndLat = useSelector((state) => state.map.addedLat);
-    const addedEndLon = useSelector((state) => state.map.addedLon);
-    // onClick = {() => }
+    const [route, setRoute] = useState('');
+    const [shared, setShared] = useState(false)
     const [center, setCenter] = useState({ lat: 39.73750267736547, lon: -104.98928358002577 })
     
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
+    const addedStartLat = useSelector((state) => state.map.addedLat);
+    const addedStartLon = useSelector((state) => state.map.addedLon);
+    const addedEndLat = useSelector((state) => state.map.addedLat);
+    const addedEndLon = useSelector((state) => state.map.addedLon);
 
     useEffect(() => {
         if (user) {
@@ -149,11 +150,13 @@ function CreateNewTrip () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route}))
-            .catch (res => {
-                if (res.data && res.data.errors) setErrors(res.data.errors);
+        dispatch(addTrip({ userId: user.id, title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route: 'map_pic_here', shared }))
+            .catch(error => {
+                console.log('😱 Error: ', error)
             });
+        
+        setShared(true)
+        history.push("/dash");
     };
 
     if (!authenticate) {
@@ -204,8 +207,10 @@ function CreateNewTrip () {
                                 onChange={(e) => setEndDate(e.target.value)}
                                 required
                             />
+                            {/* <br></br>
+                            <button className='contact-form-btn' type="button" onClick={(e) => setShared(true)}>Share Trip?</button> */}
                             <br></br>
-                            <button className='contact-form-btn-submit' type="submit" onClick={() => history.push("/dash")} >Start Your Trip!</button>
+                            <button className='contact-form-btn-submit' type="submit">Start Your Trip!</button>
                         </form>
                     </div>
                 </div>

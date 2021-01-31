@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import TripMap from '../CreateTripForm/TripMap';
 import './Trips.css';
-import { getTrips } from '../../store/getTrips';
+import { addTrips } from '../../store/addTrip';
 
 export default function Trips() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const allTrips = useSelector(fullReduxState => {
-  //   return fullReduxState.trips;
-  // })
+  const allTrips = useSelector(fullReduxState => {
+    return fullReduxState.trips;
+  })
 
   // const lastTrip = allTrips[allTrips.length-1];
   // const secondLastTrip = allTrips[allTrips.length-2];
@@ -22,7 +22,7 @@ export default function Trips() {
 
   // useEffect(async () => {
   //   dispatch(
-  //     getTrips()
+  //     addTrips()
   //   );
   // }, []);
 

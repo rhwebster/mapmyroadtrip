@@ -1,27 +1,26 @@
-const SET_TRIPS = "trips/Trips";
+const SET_TRIPS = "user/SET_TRIPS";
 
-export const setTrips = (trips) => {
+export const setTrips = (tripsData) => {
     return {
         type: SET_TRIPS,
-        trips: trips,
+        tripsData: tripsData,
     };
 };
 
-export const getTrips = () => async (dispatch) => {
-    const res = await fetch("api/trip/trips");
-    console.log('this is the data ======>', res)
+export const getTrips = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/user/${userId}/trips`);
     dispatch(
         setTrips(res.data.trips)
     );
 };
 
-const initialState = [];
+const initialState = {};
 
 const TripsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_TRIPS:
-            newState = action.trips;
+            newState = { ...state, [action.tripsData]: action.tripsData };
             return newState;
         default:
             return state;

@@ -10,7 +10,7 @@ export const setNewTrip = (tripData) => {
 
 export const addTrip = (tripData) => {
     return async (dispatch) => {
-        await fetch("****API ROUTE****", {
+        await fetch("/api", {
             method: 'POST',
             body: JSON.stingify(tripData),
         });

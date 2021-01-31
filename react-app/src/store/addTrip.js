@@ -9,8 +9,8 @@ export const setNewTrip = (tripData) => {
 
 export const addTrip = (formObj) => async (dispatch) => {
 
-    const { title, startDate, endDate, startLat, startLon, endLat, endLon, route } = formObj;
-    const formData = { title, startDate, endDate, startLat, startLon, endLat, endLon, route };
+    const { userId, title, startDate, endDate, startLat, startLon, endLat, endLon, route, shared } = formObj;
+    const formData = { userId, title, startDate, endDate, startLat, startLon, endLat, endLon, route, shared };
 
     const res = await fetch(`/api/trip/`, {
         method: "POST",
@@ -23,7 +23,7 @@ export const addTrip = (formObj) => async (dispatch) => {
 
 const initialState = {};
 
-function newTripReducer (state = initialState, action) {
+function TripReducer(state = initialState, action) {
     switch (action.type) {
         case SET_NEW_TRIP:
             return { ...state, [action.tripData]: action.tripData };
@@ -32,4 +32,4 @@ function newTripReducer (state = initialState, action) {
     };
 };
 
-export default newTripReducer
+export default TripReducer

@@ -37,14 +37,14 @@ def post_trip():
     trip = Trip(
         user_id=data['userId'],
         title=data['title'],
-        start_date=data['start_date'],
-        end_date=data['end_date'],
-        start_lat=data['start_lat'],
-        start_lon=data['start_lon'],
-        end_lat=data['end_lat'],
-        end_lon=data['end_lon'],
+        start_date=data['startDate'],
+        end_date=data['endDate'],
+        start_lat=data['startLat'],
+        start_lon=data['startLon'],
+        end_lat=data['endLat'],
+        end_lon=data['endLon'],
         route=data['route'],
-        private=data['private'])
+        private=data['shared'])
 
     try:
         db.session.add(trip)
