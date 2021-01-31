@@ -51,7 +51,7 @@ const EntriesStyle = styled.div`
 }
 
 .entries__photo {
-  width: 18%;
+  width: 0%;
 }
 
 .entries__status {
