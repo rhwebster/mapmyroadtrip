@@ -185,7 +185,7 @@ const EntriesStyle = styled.div`
 }
 `
 
-export default function Entries() {
+export default function Entry({...props}) {
   return (
     <EntriesStyle>
       <section className="section">
