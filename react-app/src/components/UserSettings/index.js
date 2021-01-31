@@ -4,7 +4,7 @@ import Nav from '../Nav/Nav'
 import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
-const Dash = () => {
+const UserSettings = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
 
   if (!authenticate) {
@@ -16,11 +16,11 @@ const Dash = () => {
         <Nav  />
         <main className="main">
             <SearchBar  />
-            <Photos />
+            <h1>User Settings</h1>
         </main>
         <Profile  />
     </div>
   );
 }
 
-export default Dash;
+export default UserSettings;

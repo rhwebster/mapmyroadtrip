@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPhotos } from "../../store/photos";
 import Nav from '../Nav/Nav'
-import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
 const Photos = () => {

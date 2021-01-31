@@ -6,7 +6,6 @@ import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import Nav from '../Nav/Nav'
-import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
 const RoadTripMap = () => {
