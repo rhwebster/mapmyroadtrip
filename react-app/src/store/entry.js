@@ -17,7 +17,7 @@ export const getEntries = (journalEntries) => {
 
 export const getAllJournalEntries = (userId) => async (dispatch) => {
 
-    const res = await fetch(`api/entry/${userId}/entries`);
+    const res = await fetch(`api/user/${userId}/entries`);
     console.log('this is the data ======>', res)
     let data = await res.json();
     dispatch(getEntries(data.journalEntries));

@@ -134,30 +134,34 @@ function CreateNewTrip () {
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
     const [route, setRoute] = useState('')
-    const addedStartLat = useSelector((state) => state.map.addedLat);
-    const addedStartLon = useSelector((state) => state.map.addedLon);
-    const addedEndLat = useSelector((state) => state.map.addedLat);
-    const addedEndLon = useSelector((state) => state.map.addedLon);
+   
     // onClick = {() => }
     const [center, setCenter] = useState({ lat: 39.73750267736547, lon: -104.98928358002577 })
     
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
+    const addedStartLat = useSelector((state) => state.map.addedLat);
+    const addedStartLon = useSelector((state) => state.map.addedLon);
+    const addedEndLat = useSelector((state) => state.map.addedLat);
+    const addedEndLon = useSelector((state) => state.map.addedLon);
 
     useEffect(() => {
         if (user) {
             setStartLat(addedStartLat);
             setStartLon(addedStartLon);
+            setEndLat(addedEndLat);
+            setEndLon(addedEndLon);
         }
-    }, [dispatch, user, startLat,startLon]);
+    }, [dispatch, user, startLat,startLon, endLat, endLon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route}))
-            .catch (res => {
-                if (res.data && res.data.errors) setErrors(res.data.errors);
+        dispatch(addTrip({ userId: user.id, title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route: 'map_goes_here', shared: true }))
+            .catch (error => {
+                console.log('😱 Error: ', error)
             });
+
+        history.push("/dash");
     };
 
     if (!authenticate) {
@@ -195,7 +199,7 @@ function CreateNewTrip () {
                                 placeholder='Start Date'
                                 className='contact-form-txt'
                                 value={startDate}
-                                onChange={(e) => setStartDate(e.target.value)}
+                                onChange={(e) => setStartDate('2020-02-01')}
                                 required
                             />
                             {/* <input id='end-city'
@@ -209,7 +213,7 @@ function CreateNewTrip () {
                                 placeholder='End Date (optional)'
                                 className='contact-form-txt'
                                 value={endDate}
-                                onChange={(e) => setEndDate(e.target.value)}
+                                onChange={(e) => setEndDate('2020-02-02')}
                                 required
                             />
                             <br></br>
