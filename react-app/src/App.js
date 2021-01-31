@@ -14,6 +14,7 @@ import CreateJournalEntry from './components/CreateJournalEntryForm/CreateJourna
 import Photos from "./components/Photos/Photos";
 import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
+import Entries from './components/Entries/Entries'
 import UserSettings from './components/UserSettings'
 
 function App() {
@@ -57,9 +58,9 @@ function App() {
         <Route path="/trip">
           <CreateNewTrip />
         </Route>
-        {/* <Route>
+        <Route path="/entries">
           <Entries />
-        </Route> */}
+        </Route>
         {/* <Route>
           <Trips />
         </Route> */}

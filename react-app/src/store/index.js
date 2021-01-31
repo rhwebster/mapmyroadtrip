@@ -5,6 +5,7 @@ import tripsReducer from './getTrips';
 import newTripReducer from './addTrip';
 import mapReducer from './map';
 import photoReducer from './photos';
+import entryReducer from './entry';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   photos: photoReducer,
   trips: tripsReducer,
   newTrip: newTripReducer,
+  journalEntries: entryReducer,
 });
 
 let enhancer;

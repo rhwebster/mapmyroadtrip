@@ -7,6 +7,16 @@ from app.helpers import *
 
 entry_routes = Blueprint('entry', __name__)
 
+# GET all journal entries
+@entry_routes.route('/<int:id>/entries', methods=['GET'])
+@login_required
+def getAllJournalEntries(id):
+    entries = JournalEntry.query.join(User).filter(User.id == id).all()
+    entry_list = [entry.get_all_data() for entry in entries]
+
+    print('JOURNAL ENTRIES------>', entry_list)
+
+    return {'journalEntries': entry_list}
 
 # GET a specific journal entry from a specific trip
 @entry_routes.route('/<int:entry_id>', methods=['GET'])
@@ -50,7 +60,7 @@ def new_entry():
         lon=data['lon']
     )
 
-    
+
     db.session.add(entry)
     photo = Photo(
         entry_id=1,
