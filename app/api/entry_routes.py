@@ -39,11 +39,12 @@ def new_entry():
     data = request.get_json(force=True)
     print('ROUTE DATA------>',data)
 
+
     entry = JournalEntry(
         title=data['title'],
         trip_id=data['tripId'],
-        user_id=data['userId'],
         image=data['profPic'],
+        user_id=data['userId'],
         entry=data['entry'],
         lat=data['lat'],
         lon=data['lon']
