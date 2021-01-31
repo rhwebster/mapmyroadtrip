@@ -33,30 +33,37 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+        <Route path="/login" exact={true}>
+            <SplashPage />
+        </Route>
+      {/* */}
       <Switch>
-      <Route path="/login" exact={true}>
-          <SplashPage />
-      </Route>
       <Route path="/photos" exact={true}>
+          <NavBar /> 
           <Photos />
         </Route>
         <Route path="/dash" exact={true}>
+          <NavBar /> 
           <Dash />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar /> 
           <SignUpForm  />
         </Route>
         <Route path="/map">
+          <NavBar /> 
           <RoadTripMap />
         </Route>
         <Route path="/auto">
+          <NavBar /> 
           <MapAutoComplete />
         </Route>
         <Route path="/entry">
+          <NavBar /> 
           <CreateJournalEntry />
         </Route>
         <Route path="/trip">
+          <NavBar /> 
           <CreateNewTrip />
         </Route>
         <Route path="/entries">
@@ -69,6 +76,7 @@ function App() {
           <Trips />
         </Route> */}
         <Route path="/settings">
+          <NavBar /> 
           <UserSettings />
         </Route>
 
