@@ -134,6 +134,7 @@ function CreateNewTrip () {
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
     const [route, setRoute] = useState('')
+    const [shared, setShared] = useState(true)
     const addedStartLat = useSelector((state) => state.map.addedLat);
     const addedStartLon = useSelector((state) => state.map.addedLon);
     const addedEndLat = useSelector((state) => state.map.addedLat);
@@ -148,13 +149,15 @@ function CreateNewTrip () {
         if (user) {
             setStartLat(addedStartLat);
             setStartLon(addedStartLon);
+            setEndLat(addedEndLat);
+            setEndLon(addedEndLon);
         }
     }, [dispatch, user, startLat,startLon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route}))
+        return dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route, shared, userId: user.id}))
             .catch (res => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             });
@@ -213,7 +216,7 @@ function CreateNewTrip () {
                                 required
                             />
                             <br></br>
-                            <button className='contact-form-btn-submit' type="submit" onClick={() => history.push("/dash")} >Start Your Trip!</button>
+                            <button className='contact-form-btn-submit' type="submit" >Start Your Trip!</button>
                         </form>
                     </div>
                 </div>
