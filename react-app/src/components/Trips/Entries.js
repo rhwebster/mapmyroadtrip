@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllJournalEntries } from '../../store/entry';
+import SingleEntry from "../SingleEntry/SingleEntry";
 
 const EntriesStyle = styled.div`
 .entries__item:not(:last-child) {
@@ -41,15 +44,15 @@ const EntriesStyle = styled.div`
 }
 
 .entries__inform {
-  width: 28%;
+  width: 10%;
 }
 
 .entries__date {
-  width: 20%;
+  width: 80%;
 }
 
 .entries__photo {
-  width: 18%;
+  width: 0%;
 }
 
 .entries__status {
@@ -186,8 +189,21 @@ const EntriesStyle = styled.div`
 `
 
 export default function Entry({...props}) {
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.session.user);
+  const journalEntries = useSelector((state) => state.journalEntries.journalEntries);
+    useEffect(() => {
+        if (user) {
+            dispatch(getAllJournalEntries(user.id))
+        }
+    }, [dispatch, user]);
+
+  let mostRecentJournalEntry = {};
+
   return (
     <EntriesStyle>
+      {console.log(mostRecentJournalEntry)}
       <section className="section">
         <header className="section__header">
           <h2 className="section__title">Entries</h2>
@@ -209,35 +225,14 @@ export default function Entry({...props}) {
             </NavLink>
           </div>
         </header>
-        <ul className="entries">
-          <li className="entries__item">
-            <a href="#" className="entries__link focus--box-shadow">
-              <div className="entries__wrapper">
-                <div className="entries__element entries__icon">
-                  <div
-                    className="icon icon--viking"
-                    aria-label="Icon of the 'Showcase Design' project"
-                    >
-                   <img src={props.img}></img>
-                  </div>
-                </div>
-                <div className="entries__element entries__inform">
-                  <span className="entries__inform-name">{props.title}</span>
-                </div>
-                <div className="entries__element entries__photo"></div>
-                <div className="entries__element entries__date">
-                  <time className="date" dateTime="2020-05-05T10:00:00">
-                    05 May, 2020
-                  </time>
-                </div>
-                <div className="entries__element entries__status">
-                  <span className="status status--published">Published</span>
-                </div>
-                <div className="entries__element entries__setting"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
+        {journalEntries &&
+            journalEntries.map((entry, i) => {
+              return (
+                    <>
+                        <SingleEntry title={(entry.title)} img={entry.image} entry={entry.entry}/>
+                    </>
+                    )
+            })}
       </section>
   </EntriesStyle>
   );
