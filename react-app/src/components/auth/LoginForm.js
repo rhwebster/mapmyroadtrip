@@ -4,7 +4,7 @@ import { login } from "../../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import styled from 'styled-components';
-// import './LoginFormModal.css'
+import './LoginFormModal.css'
 
 
 
@@ -38,36 +38,37 @@ const LoginForm = () => {
   };
 
   return (
-    
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit" onClick={() => history.push("/dash")}>Login</button>
-      </div>
-    </form>
-   
+    <>
+    <div id="header">Login To Your Account</div>
+      <form className="form" onSubmit={onLogin}>
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={updatePassword}
+          />
+          <button id="submit-button" type="submit" onClick={() => history.push("/dash")}>Login</button>
+        </div>
+      </form>
+    </>
   );
 };
 

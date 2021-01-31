@@ -19,13 +19,13 @@ const SearchStyled = styled.div`
 export default function SearchBar() {
   return (
     <SearchStyled>
-      <header class="header">
-        <div class="header__wrapper">
-          <form action="" class="search">
-          <span class="search_box">
+      <header className="header">
+        <div className="header__wrapper">
+          <form action="" className="search">
+          <span className="search_box">
             <div>
               <input
-                class="search__input focus--box-shadow"
+                className="search__input focus--box-shadow"
                 type="text"
                 placeholder="Entry search"
               />
@@ -37,12 +37,12 @@ export default function SearchBar() {
             </div>
           </span>
           </form>
-          
-          {/* <div class="profile">
-            <button class="profile__button">
-              <span class="profile__name">Jessica</span>
+
+          {/* <div className="profile">
+            <button className="profile__button">
+              <span className="profile__name">Jessica</span>
               <img
-                class="profile__img"
+                className="profile__img"
                 // src="./img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                 alt="Profile picture"
                 loading="lazy"

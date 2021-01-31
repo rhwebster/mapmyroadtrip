@@ -45,22 +45,22 @@ export default function Profile() {
   };
 
   return (
-    <aside class="aside">
-      <section class="section">
-        <div class="aside__control"></div>
-        <div class="profile-main">
-          <button class="profile-main__setting focus--box-shadow" type="button">
-            
+    <aside className="aside">
+      <section className="section">
+        <div className="aside__control"></div>
+        <div className="profile-main">
+          <button className="profile-main__setting focus--box-shadow" type="button">
+
             <img
-              class="profile-main__photo"
+              className="profile-main__photo"
               src={imgPreview}
               alt="Profile photo"
             />
-            
+
           </button>
           <form onSubmit={handleSubmit}>
           <label className="custom-file-upload">
-            
+
           </label>
           <br></br>
           <input onChange={updateProfPic} type="file" name="user_file" />
@@ -74,21 +74,21 @@ export default function Profile() {
           >
           </button>
           </form>
-          <h1 class="profile-main__name">User</h1>
+          <h1 className="profile-main__name">User</h1>
         </div>
-        <ul class="statistics">
-          <li class="statistics__entry">
-            <NavLink class="statistics__entry-description" exact to="/map">
+        <ul className="statistics">
+          <li className="statistics__entry">
+            <NavLink className="statistics__entry-description" exact to="/map">
               Trips
               <i className="fas fa-home"></i>
             </NavLink>
-            <span class="statistics__entry-quantity">2</span>
+            <span className="statistics__entry-quantity">2</span>
           </li>
-          <li class="statistics__entry">
-            <a class="statistics__entry-description" href="#">
+          <li className="statistics__entry">
+            <a className="statistics__entry-description" href="#">
               Entries
             </a>
-            <span class="statistics__entry-quantity">3</span>
+            <span className="statistics__entry-quantity">3</span>
           </li>
         </ul>
       </section>

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, JournalEntry, Trip
+from app.models import User, JournalEntry, Trip, Photo
 
 map_routes = Blueprint('map', __name__)
 
@@ -9,10 +9,14 @@ map_routes = Blueprint('map', __name__)
 # @login_required
 def getJournalPoints(id):
     entries = JournalEntry.query.join(Trip).join(User).filter(User.id == id).all()
+    photos = Photo.query.join(JournalEntry).join(Trip).join(User).filter(User.id == id).all()
+
     print('ENTRIES------>', entries)
+    print('PHOTOS------>', photos)
     entry_list = [entry.get_coordinates() for entry in entries]
+    photo_list = [entry.get_photos() for entry in photos]
     print('USERS BACKEND STUFF------->', entry_list)
-    return {'coordinates': entry_list}
+    return {'coordinates': entry_list, 'photos': photo_list}
 
 # def getTripPoints(id):
 #     entries = Trip.query.join(User).join(User).filter(User.id == id).all()

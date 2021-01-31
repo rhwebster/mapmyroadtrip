@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import LoginFormModal from './LoginFormModal/LoginFormModal';
 import SignUpFormModal from './SignUpFormModal/SignUpFormModal'
 import styled from "styled-components";
+import ProtectedRoute from './auth/ProtectedRoute';
 
 const Nav = styled.nav`
   padding: 0 20px;
@@ -51,10 +52,14 @@ const NavBar = () => {
   return (
     <>
     <Nav>
-      <Logo>TripKeeper</Logo>
+      <Logo>
+        <Link href="/dash" exact={true}>
+          TripKeeper
+        </Link>
+      </Logo>
       <Menu >
         <Item>
-          <Link href="/" exact={true}>
+          <Link href="/dash" exact={true}>
             Home
           </Link>
         </Item>
@@ -66,7 +71,9 @@ const NavBar = () => {
           <SignUpFormModal />
         )}
         {authenticate && (
-          <LogoutButton />
+          <ProtectedRoute>
+            <LogoutButton />
+          </ProtectedRoute>
         )}
         </>
       </Menu>

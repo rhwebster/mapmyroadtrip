@@ -188,13 +188,13 @@ const EntriesStyle = styled.div`
 export default function Entries() {
   return (
     <EntriesStyle>
-      <section class="section">
-        <header class="section__header">
-          <h2 class="section__title">Entries</h2>
-          <div class="section__control">
+      <section className="section">
+        <header className="section__header">
+          <h2 className="section__title">Entries</h2>
+          <div className="section__control">
           <NavLink exact to="/entry">
             <button
-              class="section__button section__button--painted focus--box-shadow"
+              className="section__button section__button--painted focus--box-shadow"
               type="button"
               aria-label="Add New project"
             >
@@ -209,13 +209,13 @@ export default function Entries() {
             </NavLink>
           </div>
         </header>
-        <ul class="entries">
-          <li class="entries__item">
-            <a href="#" class="entries__link focus--box-shadow">
-              <div class="entries__wrapper">
-                <div class="entries__element entries__icon">
+        <ul className="entries">
+          <li className="entries__item">
+            <a href="#" className="entries__link focus--box-shadow">
+              <div className="entries__wrapper">
+                <div className="entries__element entries__icon">
                   <div
-                    class="icon icon--viking"
+                    className="icon icon--viking"
                     aria-label="Icon of the 'Showcase Design' project"
                   >
                     <svg
@@ -227,19 +227,19 @@ export default function Entries() {
                     </svg>
                   </div>
                 </div>
-                <div class="entries__element entries__inform">
-                  <span class="entries__inform-name">Rest Stop</span>
+                <div className="entries__element entries__inform">
+                  <span className="entries__inform-name">Rest Stop</span>
                 </div>
-                <div class="entries__element entries__photo"></div>
-                <div class="entries__element entries__date">
-                  <time class="date" datetime="2020-05-05T10:00:00">
+                <div className="entries__element entries__photo"></div>
+                <div className="entries__element entries__date">
+                  <time className="date" dateTime="2020-05-05T10:00:00">
                     05 May, 2020
                   </time>
                 </div>
-                <div class="entries__element entries__status">
-                  <span class="status status--published">Published</span>
+                <div className="entries__element entries__status">
+                  <span className="status status--published">Published</span>
                 </div>
-                <div class="entries__element entries__setting"></div>
+                <div className="entries__element entries__setting"></div>
               </div>
             </a>
           </li>
