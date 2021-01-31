@@ -41,11 +41,13 @@ const EntriesStyle = styled.div`
 }
 
 .entries__inform {
-  width: 28%;
+  width: 10%;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .entries__date {
-  width: 20%;
+  width: 80%;
 }
 
 .entries__photo {
@@ -82,7 +84,8 @@ const EntriesStyle = styled.div`
   }
 
   .entries__inform-name {
-    font-size: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
   }
 }
 
@@ -182,31 +185,18 @@ const EntriesStyle = styled.div`
   .entries__inform {
     width: calc(100% - 55px);
   }
+  .entries__element entries__inform {
+      maleft:30px
+  }
 }
 `
 
-export default function Entry({...props}) {
+export default function SingleEntry({...props}) {
   return (
     <EntriesStyle>
       <section className="section">
         <header className="section__header">
-          <h2 className="section__title">Entries</h2>
           <div className="section__control">
-          <NavLink exact to="/entry">
-            <button
-              className="section__button section__button--painted focus--box-shadow"
-              type="button"
-              aria-label="Add New project"
-            >
-              <svg
-                xmlns={props.img}
-                viewBox="0 0 24 24"
-                role="presentation"
-              >
-                <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-              </svg>
-            </button>
-            </NavLink>
           </div>
         </header>
         <ul className="entries">
@@ -227,7 +217,7 @@ export default function Entry({...props}) {
                 <div className="entries__element entries__photo"></div>
                 <div className="entries__element entries__date">
                   <time className="date" dateTime="2020-05-05T10:00:00">
-                    05 May, 2020
+                    {props.entry}
                   </time>
                 </div>
                 <div className="entries__element entries__status">
