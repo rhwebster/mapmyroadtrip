@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
 import { useParams, useHistory } from 'react-router-dom';
 import { addEntry } from '../../store/entry'
+import Nav from '../Nav/Nav'
+import SearchBar from '../SearchBar/index'
+import Profile from '../Trips/Profile'
 
 const JournalEntry = styled.div`
 * {
@@ -170,6 +173,9 @@ function CreateJournalEntry() {
     }
 
     return (
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">
         <JournalEntry>
             <div className='contact-us'>
                 <div className='contact-map'>
@@ -205,6 +211,9 @@ function CreateJournalEntry() {
                 </div>
             </div>
         </JournalEntry>
+        </main>
+        <Profile  />
+    </div>
     )
 }
 
