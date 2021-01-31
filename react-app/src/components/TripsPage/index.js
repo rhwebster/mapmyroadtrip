@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getAllTrips } from '../../store/getTrips';
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
+import SingleTrip from '../TripList/index'
 
 
 function Trips() {
@@ -40,7 +41,7 @@ function Trips() {
             trips.map(trip => {
                 console.log(trip)
                 return (
-                    <div>{trip.title}</div>
+                    <SingleTrip title={trip.title}/ >
                 )
             })}
         </div>
