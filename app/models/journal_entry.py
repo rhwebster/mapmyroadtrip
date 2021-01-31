@@ -19,6 +19,7 @@ class JournalEntry(db.Model):
 
     def get_all_data(self):
         return {
+            'id': self.id,
             'title': self.title,
             'tripId': self.trip_id,
             'imageURL': self.image,

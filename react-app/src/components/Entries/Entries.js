@@ -14,8 +14,7 @@ function Entries() {
 
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
-    const journalEntries = useSelector((state) => state.session.journalEntries);
-
+    const journalEntries = useSelector((state) => state.journalEntries.journalEntries);
     useEffect(() => {
         if (user) {
             dispatch(getAllJournalEntries(user.id))
