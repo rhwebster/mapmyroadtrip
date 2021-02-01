@@ -32,11 +32,9 @@ def trips(id):
 @login_required
 def trip_entries(trip_id):
     entries = JournalEntry.query.filter(JournalEntry.trip_id == trip_id).all()
-
-    if not entries:
-        return {}, 404
-    entry_list = [entries.to_dict() for entry in entries]
-    return jsonify({'payload': {'journal_entries': entry_list}})
+    entry_list = [entry.to_dict() for entry in entries]
+    print(entries)
+    return {'tripEntries': entry_list}
 
 
 #POST a trip
