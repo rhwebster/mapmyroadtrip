@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getAllTrips } from '../../store/getTrips';
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
-import SingleTrip from '../TripList/index'
+import SingleTrip from '../TripList'
 
 
 function Trips() {
