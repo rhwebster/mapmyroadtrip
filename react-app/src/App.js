@@ -76,6 +76,7 @@ function App() {
           <Trips />
         </Route>
         <Route exact path="/trip/:id">
+          <NavBar />
           <Trip />
         </Route>
         <Route path="/settings">
