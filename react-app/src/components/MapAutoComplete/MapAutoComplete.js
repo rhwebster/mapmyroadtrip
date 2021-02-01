@@ -73,10 +73,11 @@ const MapAutoComplete = ({...props}) => {
       <>
         <div ref={registerRef}>
         <input
-            value={value}
-            onChange={handleInput}
-            disabled={!ready}
-            placeholder="Where on your journey did this happen?"
+          style={{borderRadius:30, textAlign:'center', fontFamily:'Reem Kufi,sans-serif', fontSize:'25px', margin:'15px'}}
+          value={value}
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder="Where on your journey did this happen?"
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === 'OK' && <ul>{renderSuggestions()}</ul>}
