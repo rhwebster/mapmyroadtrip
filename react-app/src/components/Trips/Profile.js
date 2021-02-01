@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { setPic } from "../../store/session";
 import { addProfPic } from "../../store/session";
+import { faRoad, faPencil } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -81,7 +82,6 @@ export default function Profile() {
           <li className="statistics__entry">
             <NavLink className="statistics__entry-description" exact to="/map">
               Trips
-              <i className="fas fa-home"></i>
             </NavLink>
             <span className="statistics__entry-quantity">2</span>
           </li>
@@ -89,7 +89,7 @@ export default function Profile() {
             <a className="statistics__entry-description" href="#">
               Entries
             </a>
-            <span className="statistics__entry-quantity">3</span>
+            <span className="statistics__entry-quantity">4</span>
           </li>
         </ul>
       </section>

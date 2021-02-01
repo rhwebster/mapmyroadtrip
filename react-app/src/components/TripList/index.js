@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import TripMap from '../CreateTripForm/TripMap';
 
 export default function SingleTrip({...props}) {
+
   return (
     // <ul className='trips'>
       <li className="trips__item">
@@ -22,7 +23,7 @@ export default function SingleTrip({...props}) {
                   </svg>
                 </button>
               </div>
-            <NavLink exact to={`trip/2`}>
+            <NavLink exact to={`trip/${props.id}`}>
               <div className='map'>
                 <TripMap />
               </div>

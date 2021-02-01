@@ -134,7 +134,7 @@ function CreateNewTrip () {
     const [endLat, setEndLat] = useState(null);
     const [endLon, setEndLon] = useState(null);
     const [route, setRoute] = useState('')
-    const [shared, setShared] = useState(true)
+    const [shared, setShared] = useState(false)
     const addedStartLat = useSelector((state) => state.map.addedLat);
     const addedStartLon = useSelector((state) => state.map.addedLon);
     const addedEndLat = useSelector((state) => state.map.addedLat);
@@ -195,7 +195,7 @@ function CreateNewTrip () {
                             <MapAutoComplete />
                             <input id='start-date'
                                 type='start-date'
-                                placeholder='Start Date'
+                                placeholder='Start Date (YYYY-MM-DD)'
                                 className='contact-form-txt'
                                 value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
@@ -209,12 +209,15 @@ function CreateNewTrip () {
                             <DestinationAutoComplete />
                             <input id='end-date'
                                 type='end-date'
-                                placeholder='End Date (optional)'
+                                placeholder='End Date (YYYY-MM-DD)           (optional)'
                                 className='contact-form-txt'
                                 value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}
                                 required
                             />
+                            <br></br>
+                            <input className='trip-private-button' type='checkbox'
+                                onClick={() => setShared(true)} />Share Your Trip?
                             <br></br>
                             <button className='contact-form-btn-submit' type="submit" >Start Your Trip!</button>
                         </form>
