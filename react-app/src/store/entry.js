@@ -1,5 +1,6 @@
 const SET_NEW_ENTRY = "user/SET_NEW_ENTRY";
 const GET_ENTRIES = "journalEntry/GET_ENTREES";
+const SET_ENTRIES = "journalEntry/SET_ENTRIES";
 
 export const setNewEntry = (entryData) => {
     return {
@@ -15,6 +16,13 @@ export const getEntries = (journalEntries) => {
     };
 };
 
+export const getTripEntries = (tripEntries) => {
+    return {
+        type: SET_ENTRIES,
+        tripEntries
+    }
+}
+
 export const getAllJournalEntries = (userId) => async (dispatch) => {
 
     const res = await fetch(`api/entry/${userId}/entries`);
@@ -22,6 +30,13 @@ export const getAllJournalEntries = (userId) => async (dispatch) => {
     let data = await res.json();
     dispatch(getEntries(data.journalEntries));
 };
+
+export const setTripEntries = (tripId) => async (dispatch) => {
+    const res = await fetch(`/api/trips/${tripId}/entries`);
+    console.log('res~~~~~>', res)
+    let data = await res.json();
+    dispatch(getTripEntries(data.tripEntries));
+}
 
 export const addEntry = (formObj ) => async (dispatch) => {
 
@@ -49,7 +64,7 @@ export const addEntry = (formObj ) => async (dispatch) => {
 //     };
 // };
 
-const initialState = {journalEntries: []};
+const initialState = {journalEntries: [], tripEntries: []};
 
 const entryReducer = (state = initialState, action) => {
     let newState;
@@ -59,6 +74,10 @@ const entryReducer = (state = initialState, action) => {
         case GET_ENTRIES:
             newState = Object.assign({}, state);
             newState.journalEntries = action.journalEntries;
+            return newState;
+        case SET_ENTRIES:
+            newState = Object.assign({}, state);
+            newState.tripEntries = action.tripEntries;
             return newState;
         default:
             return state;

@@ -45,7 +45,7 @@ const TripsReducer = (state = initialState, action) => {
         case SET_TRIPS:
             newState = action.trips;
             return newState;
-            case GET_TRIPS:
+        case GET_TRIPS:
             newState = Object.assign({}, state);
             newState.trips = action.trips;
             return newState;

@@ -16,17 +16,17 @@ export default function Trips() {
 
   const authenticate = useSelector((state) => state.session.authenticate);
   const trips = useSelector((state) => state.trips.trips);
-  const lastTrip = useSelector((state) => {if (state.trips.trips) {
-    return state.trips.trips[trips.length-1]
-  }});
+  const lastTrip = useSelector((state) => {
+    if (state.trips.trips) {
+      return state.trips.trips[trips.length-1]
+    }
+  });
+  
   const secondLastTrip = useSelector((state) => {
     if (state.trips.trips) {
       return state.trips.trips[trips.length - 2]
     }
   });
-  console.log('trips ~~~~~~>', trips);
-  console.log('lastTrip ~~~~~~>', lastTrip);
-  console.log('secondLastTrip ~~~~~~>', secondLastTrip);
 
 
   // console.log('lastTrip ====>', trips[0])
