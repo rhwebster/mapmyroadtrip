@@ -1,5 +1,6 @@
 const SET_TRIPS = "trips/Trips";
 const GET_TRIPS = "journalEntry/GET_TRIPS";
+const GET_TRIP = "trip/GET_TRIP";
 
 export const setTrips = (trips) => {
     return {
@@ -8,12 +9,25 @@ export const setTrips = (trips) => {
     };
 };
 
+// export const setTrip = (trip) => {
+//     return {
+//         type: GET_TRIP,
+//         trip: trip,
+//     };
+// }
+
 export const getTrips = (trips) => {
     return {
         type: GET_TRIPS,
         trips
     };
 };
+
+// export const getTrip = (id) => async (dispatch) => {
+//     const res = await fetch(``);
+//     let data = await res.json();
+//     dispatch(setTrip(data.trip));
+// };
 
 export const getAllTrips = (userId) => async (dispatch) => {
 
