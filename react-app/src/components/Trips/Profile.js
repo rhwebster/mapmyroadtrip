@@ -12,6 +12,7 @@ export default function Profile() {
   const [profPic, setProfPic] = useState({ name: null });
 
   const user = useSelector(state => state.session.user);
+  const profilePic = useSelector(state => state.session.user.profile_pic);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ export default function Profile() {
 
             <img
               className="profile-main__photo"
-              src={imgPreview}
+              src={profilePic}
               alt="Profile photo"
             />
 
