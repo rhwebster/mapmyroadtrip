@@ -16,6 +16,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
 import Entries from './components/Entries/Entries'
 import Trips from './components/TripsPage/index'
+// import Trip from './components/TripPage/index';
 import UserSettings from './components/UserSettings'
 
 function App() {
@@ -74,8 +75,8 @@ function App() {
           <NavBar /> 
           <Trips />
         </Route>
-        {/* <Route>
-          <Trips />
+        {/* <Route exact path="/trip/:id">
+          <Trip />
         </Route> */}
         <Route path="/settings">
           <NavBar /> 
