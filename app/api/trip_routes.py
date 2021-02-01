@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from sqlalchemy import desc
 from flask_login import login_required
 from app.models import db, Trip, User, JournalEntry
 
