@@ -16,6 +16,8 @@ const SearchStyled = styled.div`
 }
 `
 
+
+
 export default function SearchBar() {
   return (
     <SearchStyled>

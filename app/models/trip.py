@@ -24,7 +24,7 @@ class Trip(db.Model):
             'id': self.id,
             'title': self.title,
             'start_date': self.start_date,
-            'end_data': self.end_date,
+            'end_date': self.end_date,
             'start_lat': self.start_lat,
             'start_lon': self.start_lon,
             'end_lat': self.end_lat,
