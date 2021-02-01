@@ -41,6 +41,9 @@ function Trip() {
 
     return (
         <>
+        <div className='wrapper'>
+        <Nav  />
+        <main className="main">
             <div className="trip-page-header"
                 id="trip-page-header">
                 <h2>{trip.title}</h2>
@@ -56,6 +59,9 @@ function Trip() {
                         )
                     })}
             </div>
+        </main>
+        <Profile  />
+    </div>
         </>
     )
 };
