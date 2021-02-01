@@ -30,7 +30,6 @@ function Trip() {
 
     
     const authenticate = useSelector((state) => state.session.authenticate);
-    const trips = useSelector((state) => state.trips.trips);
     const trip = useSelector((state) => state.trip);
     const tripEntries = useSelector((state) => state.tripEntries.tripEntries);
     
