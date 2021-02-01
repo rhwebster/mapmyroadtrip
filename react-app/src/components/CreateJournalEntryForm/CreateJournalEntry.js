@@ -135,6 +135,12 @@ function CreateJournalEntry() {
     const authenticate = useSelector((state) => state.session.authenticate);
     const addedLat = useSelector((state) => state.map.addedLat);
     const addedLon = useSelector((state) => state.map.addedLon);
+    const trips = useSelector((state) => state.trips.trips);
+    const lastTrip = useSelector((state) => {
+        if (state.trips.trips) {
+            return state.trips.trips[trips.length - 1]
+        }
+    });
 
     useEffect(() => {
         if (user) {
@@ -147,7 +153,7 @@ function CreateJournalEntry() {
         e.preventDefault();
         dispatch(setPic( profPic ))
             .then(file => {
-                dispatch(addEntry({userId: user.id, title, tripId: 1, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
+                dispatch(addEntry({userId: user.id, title, tripId: lastTrip.id, profPic: file.output, entry, lat: addedLat, lon: addedLon }))
             }).catch(error => {
                 console.log('😱 Error: ', error)
             });

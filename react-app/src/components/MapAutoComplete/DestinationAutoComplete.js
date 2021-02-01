@@ -77,6 +77,7 @@ const DestinationAutoComplete = ({ ...props }) => {
                     onChange={handleInput}
                     disabled={!ready}
                     placeholder="Where are you going?"
+                    style={{ borderRadius: 30, textAlign: 'center', fontFamily: 'Reem Kufi,sans-serif', fontSize: '25px', margin: '15px' }}
                 />
                 {/* We can use the "status" to decide whether we should display the dropdown or not */}
                 {status === 'OK' && <ul>{renderSuggestions()}</ul>}
