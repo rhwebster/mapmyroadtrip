@@ -3,29 +3,37 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import TripMap from '../CreateTripForm/TripMap';
 import './Trips.css';
-import { getTrips } from '../../store/getTrips';
+import { getAllTrips } from '../../store/getTrips';
 
 
 export default function Trips() {
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => {
+    if (state.session.user) {
+      return state.session.user.id
+    }
+  });
 
-  // const dispatch = useDispatch();
+  const authenticate = useSelector((state) => state.session.authenticate);
+  const trips = useSelector((state) => state.trips.trips);
+  const lastTrip = useSelector((state) => {if (state.trips.trips) {
+    return state.trips.trips[trips.length-1]
+  }});
+  const secondLastTrip = useSelector((state) => {
+    if (state.trips.trips) {
+      return state.trips.trips[trips.length - 2]
+    }
+  });
+  console.log('trips ~~~~~~>', trips);
+  console.log('lastTrip ~~~~~~>', lastTrip);
+  console.log('secondLastTrip ~~~~~~>', secondLastTrip);
 
-  // const allTrips = useSelector(fullReduxState => {
-  //   return fullReduxState.trips;
-  // })
 
-  // const lastTrip = allTrips[allTrips.length-1];
-  // const secondLastTrip = allTrips[allTrips.length-2];
+  // console.log('lastTrip ====>', trips[0])
 
-  // console.log('here are the trips ====>', allTrips);
-
-  // const [trips, setTrips] = useState([]);
-
-  // useEffect(async () => {
-  //   dispatch(
-  //     getTrips()
-  //   );
-  // }, []);
+  // if (!authenticate) {
+  //   return null;
+  // }
 
   return (
     
@@ -66,20 +74,21 @@ export default function Trips() {
                   </svg>
                 </button>
               </div>
-              <NavLink exact to={`/trip/1`}>
+            {lastTrip && (
+              <>
+              <NavLink exact to={`trip/${lastTrip.id}`}>
               <div className='map'>
-                <TripMap setZoom={1} />
+                <TripMap />
               </div>
-                <div className="trips__inform">
-                  <div>
-
-                  </div>
-                  <p className="trips__name">Vegas</p>
-                  <time className="date" dateTime="2020-05-05T10:00:00">
-                    05 May, 2020
-                  </time>
-                </div>
-              </NavLink>
+              <div className="trips__inform">
+                <p className="trips__name">{lastTrip && lastTrip.title}</p>
+                <time className="date" dateTime="2020-05-05T10:00:00">
+                  {lastTrip && lastTrip.start_date}
+                </time>
+              </div>
+            </NavLink>
+            </>
+            )}
             </a>
           </li>
           <li className="trips__item">
@@ -99,17 +108,19 @@ export default function Trips() {
                   </svg>
                 </button>
               </div>
-            <NavLink exact to={`trip/2`}>
+            {secondLastTrip && (
+              <NavLink exact to={`trip/${secondLastTrip.id}`}>
               <div className='map'>
                 <TripMap />
               </div>
               <div className="trips__inform">
-                <p className="trips__name">Cali</p>
+                <p className="trips__name">{secondLastTrip && secondLastTrip.title}</p>
                 <time className="date" dateTime="2020-05-05T10:00:00">
-                  05 May, 2020
+                  {secondLastTrip && secondLastTrip.start_date}
                 </time>
               </div>
             </NavLink>
+            )}
             </a>
           </li>
         </ul>
