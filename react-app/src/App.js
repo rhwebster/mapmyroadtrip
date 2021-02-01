@@ -16,7 +16,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import CreateNewTrip from './components/CreateTripForm/CreateTrip'
 import Entries from './components/Entries/Entries'
 import Trips from './components/TripsPage/index'
-// import Trip from './components/TripPage/index';
+import Trip from './components/TripPage/index';
 import UserSettings from './components/UserSettings'
 
 function App() {
@@ -63,10 +63,10 @@ function App() {
           <NavBar /> 
           <CreateJournalEntry />
         </Route>
-        <Route path="/trip">
+        {/* <Route path="/trip">
           <NavBar /> 
           <CreateNewTrip />
-        </Route>
+        </Route> */}
         <Route path="/entries">
           <NavBar /> 
           <Entries />
@@ -75,9 +75,9 @@ function App() {
           <NavBar /> 
           <Trips />
         </Route>
-        {/* <Route exact path="/trip/:id">
+        <Route exact path="/trip/:id">
           <Trip />
-        </Route> */}
+        </Route>
         <Route path="/settings">
           <NavBar /> 
           <UserSettings />
