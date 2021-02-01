@@ -34,7 +34,7 @@ function Entries() {
         <main className="main">
         <div>
             {journalEntries &&
-            journalEntries.map(entry => {
+            journalEntries.reverse().map(entry => {
                 return (
                     <>
                         <SingleEntry title={entry.title} img={entry.image} entry={entry.entry}/>

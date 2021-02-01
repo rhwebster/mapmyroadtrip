@@ -41,7 +41,7 @@ function Trips() {
             trips.map(trip => {
                 console.log(trip)
                 return (
-                    <SingleTrip title={trip.title}/ >
+                    <SingleTrip title={trip.title} id={trip.id} / >
                 )
             })}
         </div>

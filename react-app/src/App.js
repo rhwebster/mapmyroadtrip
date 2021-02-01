@@ -63,10 +63,10 @@ function App() {
           <NavBar /> 
           <CreateJournalEntry />
         </Route>
-        {/* <Route path="/trip">
+        <Route exact path="/trip">
           <NavBar /> 
           <CreateNewTrip />
-        </Route> */}
+        </Route>
         <Route path="/entries">
           <NavBar /> 
           <Entries />
