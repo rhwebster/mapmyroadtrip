@@ -128,32 +128,7 @@ const SignUpForm = ({authenticated}) => {
     <StyledAuth className="form">
       <div id="header" >Sign up! Track your adventures now!</div>
     <form onSubmit={onSignUp}>
-          <div className="input-group change-avatar">
-          <div>
-            <label htmlFor="change-avatar">
-              <Avatar
-                lg
-                alt="avatar"
-              />
-            </label>
-            <input
-              id="change-avatar"
-              accept="tripkeeper/*"
-              type="file"
-              // onChange={handleImageUpload}
-            />
-          </div>
-          <div className="change-avatar-meta">
-            <label htmlFor="change-avatar-link" className="upload-photo">Upload Your Profile Photo Here
-            </label>
-            <input
-              id="change-avatar-link"
-              accept="tripkeeper/*"
-              type="file"
-              // onChange={handleImageUpload}
-            />
-          </div>
-        </div>
+       
       <div>
         <label className="fields">User Name</label>
         <input
