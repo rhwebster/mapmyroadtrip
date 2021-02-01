@@ -22,7 +22,7 @@ const LoginForm = () => {
     e.preventDefault();
     setErrors([]);
     dispatch(sessionActions.login({email, password}))
-
+    history.push("/dash")
   };
 
   const updateEmail = (e) => {
@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   if (authenticate) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dash" />;
   }
 
   const updatePassword = (e) => {
@@ -65,7 +65,7 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           />
-          <button id="submit-button" type="submit" onClick={() => history.push("/dash")}>Login</button>
+          <button id="submit-button" type="submit" >Login</button>
         </div>
       </form>
     </>

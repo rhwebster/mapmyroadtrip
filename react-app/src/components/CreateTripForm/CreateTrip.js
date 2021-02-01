@@ -157,10 +157,11 @@ function CreateNewTrip () {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route, shared, userId: user.id}))
+        dispatch(addTrip({ title, startDate, endDate, startLat: addedStartLat, startLon: addedStartLon, endLat: addedEndLat, endLon: addedEndLon, route, shared, userId: user.id}))
             .catch (res => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             });
+        history.push('/dash');
     };
 
     if (!authenticate) {
@@ -209,7 +210,7 @@ function CreateNewTrip () {
                             <DestinationAutoComplete />
                             <input id='end-date'
                                 type='end-date'
-                                placeholder='End Date (YYYY-MM-DD)           (optional)'
+                                placeholder='End Date (YYYY-MM-DD)    (optional)'
                                 className='contact-form-txt'
                                 value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}

@@ -44,21 +44,23 @@ function Trip() {
         <div className='wrapper'>
         <Nav />
         <main className="main">
-            <div className="trip-page-header"
-                id="trip-page-header">
-                <h2>{trip.title}</h2>
-                <h3>Started On: {trip.start_date}</h3>
-                <br></br>
-                <br></br>
-                {tripEntries &&
-                    tripEntries.map(entry => {
-                        return (
-                            <>
-                                <SingleEntry title={entry.title} img={entry.image} entry={entry.entry} />
-                            </>
-                        )
-                    })}
-            </div>
+            <>
+                <div className="trip-page-header"
+                    id="trip-page-header">
+                    <h2>{trip.title}</h2>
+                    <h3>Started On: {trip.start_date}</h3>
+                    <br></br>
+                    <br></br>
+                    {tripEntries &&
+                        tripEntries.map(entry => {
+                            return (
+                                <>
+                                    <SingleEntry title={entry.title} img={entry.image} entry={entry.entry} />
+                                </>
+                            )
+                        })}
+                </div>
+            </>
         </main>
         <Profile />
     </div>
