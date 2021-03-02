@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import styled from 'styled-components';
 import Avatar from '../../styles/Avatar';
@@ -90,6 +90,8 @@ export const StyledAuth = styled.div`
 `;
 
 const SignUpForm = ({authenticated}) => {
+
+  const history = useHistory();
   const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -102,6 +104,7 @@ const SignUpForm = ({authenticated}) => {
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
     }
+    history.push("/dash");
   };
 
   const updateUsername = (e) => {
@@ -121,7 +124,7 @@ const SignUpForm = ({authenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dash" />;
   }
 
   return (

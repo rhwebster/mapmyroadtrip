@@ -14,6 +14,17 @@ export default function Profile() {
 
   const user = useSelector(state => state.session.user);
   const profilePic = useSelector(state => state.session.user.profile_pic);
+  const tripCount = useSelector((state) => {
+    if (state.trips.trips) {
+      return state.trips.trips.length
+    }
+  });
+  const entryCount = useSelector((state) => {
+    if (state.trips.trips) {
+      return state.journalEntries.journalEntries.length
+    }
+  });
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,13 +94,13 @@ export default function Profile() {
             <NavLink className="statistics__entry-description" exact to="/map">
               Trips
             </NavLink>
-            <span className="statistics__entry-quantity">2</span>
+            <span className="statistics__entry-quantity">{tripCount}</span>
           </li>
           <li className="statistics__entry">
             <a className="statistics__entry-description" href="#">
               Entries
             </a>
-            <span className="statistics__entry-quantity">4</span>
+            <span className="statistics__entry-quantity">{entryCount}</span>
           </li>
         </ul>
       </section>

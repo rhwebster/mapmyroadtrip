@@ -40,7 +40,7 @@ function Entries() {
                         <SingleEntry title={entry.title} img={entry.image} entry={entry.entry}/>
                     </>
                 )
-            })}
+            }).reverse()}
         </div>
         </main>
         <Profile  />

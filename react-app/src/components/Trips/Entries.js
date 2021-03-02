@@ -232,7 +232,7 @@ export default function Entry({...props}) {
                         <SingleEntry title={(entry.title)} img={entry.image} entry={entry.entry}/>
                     </>
                     )
-            })}
+            }).reverse()}
       </section>
   </EntriesStyle>
   );
