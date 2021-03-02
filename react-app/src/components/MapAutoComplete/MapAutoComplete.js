@@ -44,9 +44,7 @@ const MapAutoComplete = ({...props}) => {
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
           console.log('📍 Coordinates1: ', { lat, lng });
-          dispatch(addJournalEntryPoints(lat, lng))
-          // props.setLat(lat);
-          // props.setLon(lng);
+          dispatch(addJournalEntryPoints(lat, lng));
       }).catch(error => {
         console.log('😱 Error: ', error)
       });
