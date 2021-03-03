@@ -24,6 +24,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+      dispatch(sessionActions.authenticate())
       setLoaded(true);
   }, [dispatch]);
 
