@@ -2,7 +2,7 @@
 
 #background-image {
     background-size: cover;
-    
+
 }
 
 #logo {
@@ -23,7 +23,16 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-content: baseline;
+    align-content: center;
+}
+#demo-text {
+    color:white;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 35px;
+}
+
+#demo-text:hover {
+        color: var(--blue-violet);
 }
 
 #tagline {
@@ -34,7 +43,7 @@
 }
 
 .options {
-    
+
     width: 800px;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 35px;
@@ -58,7 +67,7 @@
 }
 
 .link-text {
-    padding-left: 15px; 
+    padding-left: 15px;
 }
 
 a {
