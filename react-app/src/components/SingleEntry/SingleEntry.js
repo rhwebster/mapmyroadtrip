@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const EntriesStyle = styled.div`
+.status {
+  display: flex;
+  align-content: flex-end;
+}
+
 .entries__item:not(:last-child) {
   margin-bottom: 1.2rem;
 }
@@ -25,7 +30,8 @@ const EntriesStyle = styled.div`
 
 .entries__wrapper {
   display: flex;
-  align-items: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
   justify-content: space-between;
   width: 100%;
 }
@@ -35,9 +41,9 @@ const EntriesStyle = styled.div`
 }
 
 .entries__icon {
-  width: 8%;
+  /* width: 8%;
   max-width: 90px;
-  min-width: 80px;
+  min-width: 80px; */
 }
 
 .entries__inform {
@@ -67,6 +73,8 @@ const EntriesStyle = styled.div`
   font-size: 1.2rem;
   line-height: 1.5;
   color: var(--dune);
+  font-size: 2rem;
+    font-weight: bold;
 }
 
 @media (max-width: 1800px) {
@@ -203,25 +211,19 @@ export default function SingleEntry({...props}) {
           <li className="entries__item">
             <a href="#" className="entries__link focus--box-shadow">
               <div className="entries__wrapper">
-                <div className="entries__element entries__icon">
-                  <div
-                    className="icon icon--viking"
-                    aria-label="Icon of the 'Showcase Design' project"
-                    >
-                   <img src={props.img}></img>
-                  </div>
+                <div className="entries__element entries__icon">          
+                   <img src={props.img}></img>                
+                  <span className="entries__inform-name">{props.title}</span>
+                  <span className="status">Published</span>
                 </div>
                 <div className="entries__element entries__inform">
-                  <span className="entries__inform-name">{props.title}</span>
                 </div>
-                <div className="entries__element entries__photo"></div>
                 <div className="entries__element entries__date">
                   <time className="date" dateTime="2020-05-05T10:00:00">
                     {props.entry}
                   </time>
                 </div>
                 <div className="entries__element entries__status">
-                  <span className="status status--published">Published</span>
                 </div>
                 <div className="entries__element entries__setting"></div>
               </div>
