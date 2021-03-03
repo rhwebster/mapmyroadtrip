@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom"
 import './SplashPage.css';
 import Background from './Splash.png'
 import Logo from './TKlogo.png'
@@ -8,10 +8,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faCarAlt, faStreetView } from '@fortawesome/free-solid-svg-icons'
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal/SignUpFormModal'
+import * as sessionActions from '../../store/session';
 
 const SplashPage = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const authenticate = useSelector((state) => state.session.authenticate);
   const [showModal, setShowModal] = useState(false);
+
+  const demoUser = () => {
+    console.log('HERE')
+    dispatch(
+      sessionActions.login({ email: "theduke@gmail.com", password: "password" })
+    );
+    history.push('/dash');
+  }
 
   return (
     <div>
@@ -46,7 +57,7 @@ const SplashPage = () => {
                   <div className="links">
                   <FontAwesomeIcon style={{textShadow: '0 3px 0 rgb(14, 35, 63, .30)'
                     }} color="white" icon={faStreetView} size="2x"/>
-                    <a className="sc-gKsewC iRjELH" id="demo-text" href="">Demo User</a>
+                    <button id="demo-text" href="" onClick={() => demoUser()}>Demo User</button>
                   </div>
                 </div>
           </div>

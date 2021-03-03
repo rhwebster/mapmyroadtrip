@@ -27,6 +27,8 @@
 }
 #demo-text {
     color:white;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 35px;
 }
 
 #demo-text:hover {
