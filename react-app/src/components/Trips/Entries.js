@@ -6,6 +6,11 @@ import { getAllJournalEntries } from '../../store/entry';
 import SingleEntry from "../SingleEntry/SingleEntry";
 
 const EntriesStyle = styled.div`
+.status {
+  display: flex;
+  align-content: flex-end;
+}
+
 .entries__item:not(:last-child) {
   margin-bottom: 1.2rem;
 }
@@ -28,7 +33,8 @@ const EntriesStyle = styled.div`
 
 .entries__wrapper {
   display: flex;
-  align-items: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
   justify-content: space-between;
   width: 100%;
 }
@@ -38,13 +44,15 @@ const EntriesStyle = styled.div`
 }
 
 .entries__icon {
-  width: 8%;
+  /* width: 8%;
   max-width: 90px;
-  min-width: 80px;
+  min-width: 80px; */
 }
 
 .entries__inform {
   width: 10%;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .entries__date {
@@ -68,6 +76,8 @@ const EntriesStyle = styled.div`
   font-size: 1.2rem;
   line-height: 1.5;
   color: var(--dune);
+  font-size: 2rem;
+    font-weight: bold;
 }
 
 @media (max-width: 1800px) {
@@ -85,7 +95,8 @@ const EntriesStyle = styled.div`
   }
 
   .entries__inform-name {
-    font-size: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
   }
 }
 
@@ -185,6 +196,9 @@ const EntriesStyle = styled.div`
   .entries__inform {
     width: calc(100% - 55px);
   }
+  .entries__element entries__inform {
+      maleft:30px
+  }
 }
 `
 
@@ -226,7 +240,7 @@ export default function Entry({...props}) {
           </div>
         </header>
         {journalEntries &&
-            journalEntries.map((entry, i) => {
+            journalEntries.slice(0,2).map((entry, i) => {
               return (
                     <>
                         <SingleEntry title={(entry.title)} img={entry.image} entry={entry.entry}/>
