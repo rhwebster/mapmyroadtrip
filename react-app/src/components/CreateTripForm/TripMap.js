@@ -35,7 +35,7 @@ const TripMap = () => {
     const getMapOptions = (maps) => {
         return {
             disableDefaultUI: true,
-            mapTypeControl: true,
+            mapTypeControl: false,
             streetViewControl: true,
             styles: [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'on' }] }],
         };
