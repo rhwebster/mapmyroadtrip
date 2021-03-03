@@ -26,7 +26,7 @@ const SplashPage = () => {
             <img id="logo" src={Logo}></img>
             <span id="tagline">It's the journal, not the destination</span>
               <div className="options">
-                <div className="links">  
+                <div className="links">
                   <FontAwesomeIcon icon={faSignInAlt} color="white" size="2x"/>
                     <span className="link-text">
                     {!authenticate && (
@@ -46,12 +46,10 @@ const SplashPage = () => {
                   <div className="links">
                   <FontAwesomeIcon style={{textShadow: '0 3px 0 rgb(14, 35, 63, .30)'
                     }} color="white" icon={faStreetView} size="2x"/>
-                    <span className="demo-text">
-                    <a href="">Demo User</a>  
-                    </span>
+                    <a className="sc-gKsewC iRjELH" id="demo-text" href="">Demo User</a>
                   </div>
                 </div>
-          </div>  
+          </div>
       </div>
     </div>
     </div>
