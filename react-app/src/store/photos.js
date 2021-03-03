@@ -11,7 +11,7 @@ const setData = (data) => {
 };
 
 export const getAllPhotos = (userId) => async dispatch => {
-    const response = await fetch(`/api/map/${userId}`);
+    const response = await fetch(`/api/users/${userId}/photos`);
     if (response.ok) {
       let data = await response.json()
       dispatch(setData(data.photos));

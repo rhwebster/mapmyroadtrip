@@ -6,7 +6,7 @@ export default function SingleTrip({...props}) {
 
   return (
     // <ul className='trips'>
-      <li className="trips__item">
+      <ul className="trips__item">
             <a className="trips__link focus--box-shadow" href="#">
               <div className="trips__header">
                 <button
@@ -35,7 +35,7 @@ export default function SingleTrip({...props}) {
               </div>
             </NavLink>
             </a>
-          </li>
+          </ul>
         //   </ul>
   );
 }

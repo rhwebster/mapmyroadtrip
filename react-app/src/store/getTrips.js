@@ -31,7 +31,7 @@ export const getTrips = (trips) => {
 
 export const getAllTrips = (userId) => async (dispatch) => {
 
-    const res = await fetch(`api/trips/${userId}/trips`);
+    const res = await fetch(`/api/trips/${userId}/trips`);
     console.log('this is the data ======>', res)
     let data = await res.json();
     dispatch(getTrips(data.trips));

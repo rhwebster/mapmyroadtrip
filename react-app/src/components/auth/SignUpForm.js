@@ -129,7 +129,7 @@ const SignUpForm = ({authenticated}) => {
 
   return (
     <StyledAuth className="form">
-      <div id="header" >Sign up! Track your adventures now!</div>
+      <div id="header">Sign up! Track your adventures now!</div>
     <form onSubmit={onSignUp}>
        
       <div>

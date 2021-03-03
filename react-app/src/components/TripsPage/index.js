@@ -36,10 +36,9 @@ function Trips() {
         <div className='wrapper'>
         <Nav  />
         <main className="main">  
-        <div>
+        <div className='trip-div'>
             {trips &&
             trips.map(trip => {
-                console.log(trip)
                 return (
                     <SingleTrip title={trip.title} id={trip.id} />
                 )
