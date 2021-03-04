@@ -6,7 +6,7 @@
   
 <h1 align="center"> Trip Keeper </h1>
 
-This application is made for embedded system Arduino lovers. Instructa-Robos allows you to keep track of your current projects through uploading each personalized project including the code you used to make it happen, and photos of your project. Need inspiration? Feel free to look at other users' projects and add varying functionalities to each project using your own creativity. With up to nine categories and counting you can expand your knowledge on all sorts of topics including analog, digital, communication, controls and much more! Feel free to check it out [here](https://map-my-road-trip.herokuapp.com/login).
+Trip Keeper is designed for adventure seekers who would love an application to keep track of their previous road trips and all it entails. With the ability to add personalized journal entries to each trip you take users will always have a way to remember their favorite places visited. In addition, the built in photo album tool gives users the capability to walk down memory lane at any time. The interactive google map feature brings all roadtrips to life and allows users to see where they've been and have yet to go. Utilizing Trip Keeper is an easy to use app which allows users to organize and relive some of their most fun adventures. Check out Trip Keeper [here](https://map-my-road-trip.herokuapp.com/login).
 
 ### Built With
 
@@ -24,10 +24,8 @@ This application is made for embedded system Arduino lovers. Instructa-Robos all
 
 ### Installation
 
-1. Clone the repo 
-`git clone https://github.com/rhwebster/mapmyroadtrip.git`
-2. Create .env file based on example .env-example file 
-`touch .env`
+1. Clone the repo `git clone https://github.com/rhwebster/mapmyroadtrip.git`
+2. Create .env file based on example .env-example file `touch .env`
 3. Create frontend .env file based on example .env-frontend-example `cd react-app/ && touch .env`
 4. Install backend dependencies `cd mapmyroadtrip/ && pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
 5. Install frontend dependencies `cd ../react-app && npm install`
@@ -51,50 +49,6 @@ This application is made for embedded system Arduino lovers. Instructa-Robos all
 #### 4
 ![Alt text]()
 
-
-
-# Flask React Project
-
-This is the backend for the Flask React project.
-
-## Getting started
-
-1. Clone this repository (only this branch)
-
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-
-2. Install dependencies
-
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
 ***
 *IMPORTANT!*
    If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
@@ -109,7 +63,7 @@ This is the backend for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-## Deploy to Heroku
+### Deploy to Heroku
 
 1. Create a new project on Heroku
 2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
@@ -150,4 +104,3 @@ This is the backend for the Flask React project.
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
-11. profit
