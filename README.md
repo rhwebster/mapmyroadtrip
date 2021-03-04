@@ -17,7 +17,7 @@ Trip Keeper is designed for adventure seekers who would love an application to k
 <a href="https://redux.js.org/"><img alt="Redux" src="https://img.shields.io/badge/-Redux-764ABC?style=flat-square&logo=Redux&logoColor=white" /></a>
 <a href="https://reactrouter.com/"><img alt="React Router" src="https://img.shields.io/badge/-React%20Router-CA4245?style=flat-square&logo=React-Router&logoColor=white" /></a>
 <a href="https://developers.google.com/maps"><img alt="Google Maps" src="https://img.shields.io/badge/-Google%20Maps-4285F4?style=flat-square&logo=Google%20Maps&logoColor=white" /></a>
-<a href="https://devdocs.io/css/"><img alt="CSS3" src="https://img.shields.io/badge/-CSS3%20-61DAFB?style=flat-square&logo=CSS&logoColor=white&color=brightgreen"/></a>
+<a href="https://devdocs.io/css/"><img alt="CSS3" src="https://img.shields.io/badge/-CSS3%20-61DAFB?style=flat-square&logo=CSS3&logoColor=white&color=brightgreen"/></a>
 <a href="https://devdocs.io/html/"><img alt="HTML5" src="https://img.shields.io/badge/-HTML5%20-61DAFB?style=flat-square&logo=HTML5&logoColor=white&color=blue"/></a>
 
 
@@ -27,7 +27,8 @@ Trip Keeper is designed for adventure seekers who would love an application to k
 <a href="https://flask.palletsprojects.com/en/1.1.x/"><img alt="Flask" src="https://img.shields.io/badge/-Flask-000000?style=flat-square&logo=Flask&logoColor=white" /></a>
 <a href="https://www.postgresql.org/"><img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=PostgreSQL&logoColor=white" /></a>
 <a href="https://aws.amazon.com/"><img alt="Amazon AWS" src="https://img.shields.io/badge/-Amazon%20AWS-232F3E?style=flat-square&logo=Amazon%20AWS&logoColor=white" /></a>
-<a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html"><img alt="boto3" src="https://img.shields.io/badge/-boto3%20-232F3E?style=flat-square&logo=boto3&logoColor=white" /></a>
+<a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html"><img alt="boto3" src="https://img.shields.io/badge/-boto3-000000?style=flat-square&logo=boto3&logoColor=yellow&color=yellow" /></a>
+
 
 #### Deployment and Package Management
 
