@@ -25,12 +25,16 @@ This application is made for embedded system Arduino lovers. Instructa-Robos all
 ### Installation
 
 1. Clone the repo `git clone https://github.com/rhwebster/mapmyroadtrip.git`
-2. Install backend dependencies `cd mapmyroadtrip/ && pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
-3. Install frontend dependencies `cd ../react-app && npm install`
-4. start virtual environment in frontend `cd .. && pipenv shell`
-5. start backend `flask run`
-6. Open new terminal and start frontend `cd ../react-app && npm start`
-7. Open browser to http://localhost:3000/
+2. create .env file based on example .env-example file `touch .env`
+3. create frontend .env file based on example .env-frontend-example `cd react-app/ && touch .env`
+4. Install backend dependencies `cd mapmyroadtrip/ && pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
+5. Install frontend dependencies `cd ../react-app && npm install`
+6. start virtual environment in frontend `cd .. && pipenv shell`
+7. Apply the migration to the database `flask db upgrade`
+8. Seed the database `flask seed all`
+9. start backend `flask run`
+10. Open new terminal and start frontend `cd ../react-app && npm start`
+11. Open browser to http://localhost:3000/
 
 ### Features
 #### 1
