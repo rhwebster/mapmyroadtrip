@@ -1,6 +1,14 @@
 const SET_TRIPS = "trips/Trips";
 const GET_TRIPS = "journalEntry/GET_TRIPS";
+const SET_TRIP = 'trip/setTrip';
 const GET_TRIP = "trip/GET_TRIP";
+
+const setTrip = ({ trip }) => {
+    return {
+        type: SET_TRIP,
+        trip,
+    };
+};
 
 export const setTrips = (trips) => {
     return {
@@ -9,25 +17,12 @@ export const setTrips = (trips) => {
     };
 };
 
-// export const setTrip = (trip) => {
-//     return {
-//         type: GET_TRIP,
-//         trip: trip,
-//     };
-// }
-
 export const getTrips = (trips) => {
     return {
         type: GET_TRIPS,
         trips
     };
 };
-
-// export const getTrip = (id) => async (dispatch) => {
-//     const res = await fetch(``);
-//     let data = await res.json();
-//     dispatch(setTrip(data.trip));
-// };
 
 export const getAllTrips = (userId) => async (dispatch) => {
 
@@ -37,11 +32,22 @@ export const getAllTrips = (userId) => async (dispatch) => {
     dispatch(getTrips(data.trips));
 };
 
+export const getTrip = (tripId) => async (dispatch) => {
+
+    const res = await fetch(`/api/trips/${tripId}`);
+    console.log('this is the data ======>', res)
+    let data = await res.json();
+    dispatch(setTrip(data.payload));
+};
+
 const initialState = [];
 
 const TripsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
+        case SET_TRIP:
+            newState = action.trip;
+            return newState;
         case SET_TRIPS:
             newState = action.trips;
             return newState;

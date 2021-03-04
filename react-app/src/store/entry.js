@@ -25,15 +25,13 @@ export const getTripEntries = (tripEntries) => {
 
 export const getAllJournalEntries = (userId) => async (dispatch) => {
 
-    const res = await fetch(`api/entry/${userId}/entries`);
-    console.log('this is the data ======>', res)
+    const res = await fetch(`api/entry/${userId}`);
     let data = await res.json();
     dispatch(getEntries(data.journalEntries));
 };
 
 export const setTripEntries = (tripId) => async (dispatch) => {
     const res = await fetch(`/api/trips/${tripId}/entries`);
-    console.log('res~~~~~>', res)
     let data = await res.json();
     dispatch(getTripEntries(data.tripEntries));
 }
@@ -47,8 +45,6 @@ export const addEntry = (formObj ) => async (dispatch) => {
       method: "POST",
       body: JSON.stringify(formData),
     });
-
-    console.log('STORE DATA---------->', formData)
 
     dispatch(setNewEntry(res));
     return res

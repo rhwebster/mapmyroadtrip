@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getAllTrips } from '../../store/getTrips';
+import { getAllTrips } from '../../store/trips';
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
 import SingleTrip from '../TripList'

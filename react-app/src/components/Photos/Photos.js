@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getAllPhotos } from "../../store/photos";
+import { getUserPhotos } from "../../store/photos";
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
 
@@ -10,7 +10,7 @@ const Photos = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(getAllPhotos(user.id))
+      dispatch(getUserPhotos(user.id))
     }
   }, [dispatch, user]);
 
