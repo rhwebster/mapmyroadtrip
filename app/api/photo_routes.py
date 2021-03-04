@@ -7,7 +7,7 @@ photo_routes = Blueprint('trip', __name__)
 
 @photo_routes.route('/photos/<int:photo_id>')
 @login_required
-def get_photo():
+def get_photo(photo_id):
     photo = Photo.query.get(photo_id)
 
     if not photo:

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getAllTrips } from '../../store/getTrips'
+import { getAllTrips } from '../../store/trips'
 import Nav from '../Nav/Nav'
 import SearchBar from '../SearchBar/index'
 import Trips from '../Trips/Trips'

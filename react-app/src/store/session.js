@@ -80,7 +80,7 @@ export const addProfPic = (formObj ) => async (dispatch) => {
     const { id, profPic } = formObj;
     const formData = { id, profPic };
 
-    const res = await fetch(`/api/users/dash/${id}`, {
+    const res = await fetch(`/api/users/${id}`, {
       method: "PATCH",
       body: JSON.stringify(formData),
     });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getTrip } from "../../store/getTrip";
+import { getTrip } from "../../store/trips";
 import SingleEntry from '../SingleEntry/SingleEntry'
 import { authenticate } from "../../store/session";
 import { setTripEntries } from '../../store/entry';
