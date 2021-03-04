@@ -1,3 +1,12 @@
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url3]
+[![LinkedIn][linkedin-shield]][linkedin-url1]
+[![LinkedIn][linkedin-shield]][linkedin-url2]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+<!--ReactSkipperStart -->
+
 <br />
 <p align="center">
   <a href="https://map-my-road-trip.herokuapp.com/login">
@@ -52,17 +61,23 @@ Trip Keeper is designed for adventure seekers who would love an application to k
 11. Open browser to http://localhost:3000/
 
 ### Features
-#### 1
-![Alt text]()
+#### Inviting splash page with the ability to see Trip Keeper's functionality in full prior to sign up with its demo login
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/home.png)
 
-#### 2  
-![Alt text](g)
+#### Easy navigation available on each page with access to a feed of all journal entries, all trips, a summary of where all journal entries took place on a google map, and a complete photo album of all previously added pictures. 
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/dashboard.png)
 
-#### 3
-![Alt text]()
+#### Google Maps feature displaying most updated list of where journal entries took place. Bonus features include the ability to zoom in and out, street view, access to entire world view, and satelite view.
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/allEntriesMap.png)
 
-#### 4
-![Alt text]()
+#### Live time map updates as you choose a start and end destination for your road trip. Auto complete drop-downs available to help prefill exact location latitude and longitudes. Want to keep this trip to yourself or share it to the World? No problem, just check or uncheck whether to share your trip! 
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/newTripEntry.png)
+
+#### Ability to add a new journal entry per trip. Can customize both the title and entry per entry as well as upload a photo for each entry.
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/newJournalEntry.png)
+
+#### Beautiful full screen display of photos taken throughout all trips taken.
+![Alt text](https://raw.githubusercontent.com/rhwebster/mapmyroadtrip/main/react-app/public/images/photoAlbum.png)
 
 ***
 *IMPORTANT!*
@@ -118,4 +133,19 @@ Trip Keeper is designed for adventure seekers who would love an application to k
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
+
+[contributors-shield]: https://img.shields.io/github/contributors/rhwebster/mapmyroadtrip.svg?style=for-the-badge
+[contributors-url]: https://github.com/rhwebster/forgetMeNot/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/rhwebster/mapmyroadtrip.svg?style=for-the-badge
+[forks-url]: https://github.com/rhwebster/forgetMeNot/network/members
+[stars-shield]: https://img.shields.io/github/stars/rhwebster/mapmyroadtrip.svg?style=for-the-badge
+[stars-url]: https://github.com/rhwebster/forgetMeNot/stargazers
+[issues-shield]: https://img.shields.io/github/issues/rhwebster/mapmyroadtrip.svg?style=for-the-badge
+[issues-url]: https://github.com/rhwebster/forgetMeNot/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url3]: https://www.linkedin.com/in/samantha-butler-410675178/
+[linkedin-url1]: https://www.linkedin.com/in/ryan-webster-a784509b/
+[linkedin-url2]: https://www.linkedin.com/in/ahdari-scott-916225117/
+[linkedin-url]: https://www.linkedin.com/in/autumnwiggins/
+
 
