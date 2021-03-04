@@ -17,7 +17,8 @@ Trip Keeper is designed for adventure seekers who would love an application to k
 <a href="https://redux.js.org/"><img alt="Redux" src="https://img.shields.io/badge/-Redux-764ABC?style=flat-square&logo=Redux&logoColor=white" /></a>
 <a href="https://reactrouter.com/"><img alt="React Router" src="https://img.shields.io/badge/-React%20Router-CA4245?style=flat-square&logo=React-Router&logoColor=white" /></a>
 <a href="https://developers.google.com/maps"><img alt="Google Maps" src="https://img.shields.io/badge/-Google%20Maps-4285F4?style=flat-square&logo=Google%20Maps&logoColor=white" /></a>
-<a href="https://devdocs.io/css/"><img height="20px" width="90px" alt="CSS3" src="https://forthebadge.com/images/badges/uses-css.svg" /></a>
+<a href="https://devdocs.io/css/"><img alt="CSS3" src="https://img.shields.io/badge/-CSS3--F7DF1E?style=flat-square&logo=CSS3&logoColor=white" /></a>
+
 
 #### Back End
 
