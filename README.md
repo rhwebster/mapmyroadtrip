@@ -135,13 +135,13 @@ Trip Keeper is designed for adventure seekers who would love an application to k
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 [contributors-shield]: https://img.shields.io/github/contributors/rhwebster/mapmyroadtrip.svg?style=for-the-badge
-[contributors-url]: https://github.com/rhwebster/forgetMeNot/graphs/contributors
+[contributors-url]: https://github.com/rhwebster/mapmyroadtrip/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/rhwebster/mapmyroadtrip.svg?style=for-the-badge
-[forks-url]: https://github.com/rhwebster/forgetMeNot/network/members
+[forks-url]: https://github.com/rhwebster/mapmyroadtrip/network/members
 [stars-shield]: https://img.shields.io/github/stars/rhwebster/mapmyroadtrip.svg?style=for-the-badge
-[stars-url]: https://github.com/rhwebster/forgetMeNot/stargazers
+[stars-url]: https://github.com/rhwebster/mapmyroadtrip/stargazers
 [issues-shield]: https://img.shields.io/github/issues/rhwebster/mapmyroadtrip.svg?style=for-the-badge
-[issues-url]: https://github.com/rhwebster/forgetMeNot/issues
+[issues-url]: https://github.com/rhwebster/mapmyroadtrip/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url3]: https://www.linkedin.com/in/samantha-butler-410675178/
 [linkedin-url1]: https://www.linkedin.com/in/ryan-webster-a784509b/
