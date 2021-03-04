@@ -59,7 +59,7 @@ export default function Trips() {
         <ul className="trips">
           <li className="trips__item">
             <a className="trips__link focus--box-shadow" href="#">
-              <div className="trips__header">
+
                 <button
                   className="setting setting--absolute focus--box-shadow"
                   type="button"
@@ -73,13 +73,13 @@ export default function Trips() {
                   >
                   </svg>
                 </button>
-              </div>
+
             {lastTrip && (
               <>
               <NavLink exact to={`trip/${lastTrip.id}`}>
               <div className='map'>
-                <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
-              &markers=color:green%7Clabel:S%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:C%7C${lastTrip.end_lat},${lastTrip.end_lon}
+                <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:A%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:B%7C${lastTrip.end_lat},${lastTrip.end_lon}
               &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
                 {/* <TripMap /> */}
               </div>
@@ -96,7 +96,6 @@ export default function Trips() {
           </li>
           <li className="trips__item">
             <a className="trips__link focus--box-shadow" href="#">
-              <div className="trips__header">
                 <button
                   className="setting setting--absolute focus--box-shadow"
                   type="button"
@@ -110,12 +109,11 @@ export default function Trips() {
                   >
                   </svg>
                 </button>
-              </div>
             {secondLastTrip && (
               <NavLink exact to={`trip/${secondLastTrip.id}`}>
               <div className='map'>
-              <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
-              &markers=color:green%7Clabel:S%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:C%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
+              <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:A%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:B%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
               &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
                 {/* <TripMap /> */}
               </div>
