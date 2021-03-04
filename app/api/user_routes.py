@@ -35,14 +35,11 @@ def user(id):
 @user_routes.route('/<int:user_id>/trips', methods=['GET'])
 @login_required
 def get_trips(user_id):
-    trips = Trip.query.filter(Trip.user_id == user_id).all()
-
-    if not trips:
-        return {}, 404
-
+    trips = Trip.query.filter(Trip.user_id == id).all()
     trip_list = [trip.to_dict() for trip in trips]
-    # print(jsonify({'payload': {'trips': trip_list}}))
-    return jsonify({'payload': {'trips': trip_list}})
+
+    return {'trips': trip_list}
+    
 
 
 #GET all entries associated with the user

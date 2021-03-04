@@ -18,13 +18,11 @@ def get_a_trip(trip_id):
     return trip_json
 
 # Get all trips
-@trip_routes.route('/<int:id>/trips', methods=['GET'])
+@trip_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def trips(id):
-    trips = Trip.query.join(User).filter(User.id == id).all()
+    trips = Trip.query.filter(Trip.user_id == id).all()
     trip_list = [trip.to_dict() for trip in trips]
-
-    print('JOURNAL ENTRIES------>', trip_list)
 
     return {'trips': trip_list}
 
