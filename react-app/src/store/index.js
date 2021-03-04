@@ -2,7 +2,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import tripsReducer from './trips';
-import newTripReducer from './addTrip';
 import mapReducer from './map';
 import photoReducer from './photos';
 import entryReducer from './entry';
@@ -12,7 +11,7 @@ const rootReducer = combineReducers({
   map: mapReducer,
   photos: photoReducer,
   trips: tripsReducer,
-  newTrip: newTripReducer,
+  trip: tripsReducer,
   journalEntries: entryReducer,
   tripEntries: entryReducer,
 });

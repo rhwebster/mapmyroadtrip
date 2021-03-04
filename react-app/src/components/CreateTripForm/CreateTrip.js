@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import TripMap from './TripMap'
-import { addTrip } from '../../store/addTrip';
+import { addTrip } from '../../store/trips';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import DestinationAutoComplete from '../MapAutoComplete/DestinationAutoComplete';
 import Nav from '../Nav/Nav'

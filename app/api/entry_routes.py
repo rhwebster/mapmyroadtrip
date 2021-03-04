@@ -6,27 +6,26 @@ from app.helpers import *
 
 entry_routes = Blueprint('entry', __name__)
 
+
 # GET all journal entries
-@entry_routes.route('/<int:id>', methods=['GET'])
+@entry_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 @login_required
 def getAllJournalEntries(id):
-    entries = JournalEntry.query.filter(JournalEntry.user_id == id).all()
-    entry_list = [entry.to_dict() for entry in entries]
+    if request.method == 'GET':
+        entries = JournalEntry.query.filter(JournalEntry.user_id == id).all()
+        entry_list = [entry.to_dict() for entry in entries]
 
-    print('JOURNAL ENTRIES------>', entry_list)
+        print('JOURNAL ENTRIES------>', entry_list)
 
-    return {'journalEntries': entry_list}
-
-# GET a specific journal entry from a specific trip
-# @entry_routes.route('/<int:entry_id>', methods=['GET'])
-# @login_required
-# def entry(entry_id):
-#     entry = JournalEntry.query.get(entry_id)
-
-#     if not entry:
-#         return {}, 404
-#     entry_json = jsonify({'entry': entry.to_dict()})
-#     return entry_json
+        return {'journalEntries': entry_list}
+    if request.method == 'DELETE':
+        entry = JournalEntry.query.get(entry_id)
+        if entry:
+            db.session.delete(entry)
+            db.session.commit()
+            return {'message': f'Entry: {entry.title} was successfully deleted'}
+        else:
+            return {'errors': [f'Entry not found']}
 
 
 # GET all the photos for an entry
@@ -69,14 +68,9 @@ def entries():
         db.session.commit()
         return {'added_journal_entry': entry.to_dict()}
 
-
-@entry_routes.route('/<int:entry_id>', methods=['DELETE'])
+@entry_routes.route('/<int:id>/coordinates')
 @login_required
-def delete_entry(entry_id):
-    entry = JournalEntry.query.get(entry_id)
-    if entry:
-        db.session.delete(entry)
-        db.session.commit()
-        return {'message': f'Entry: {entry.title} was successfully deleted'}
-    else:
-        return {'errors': [f'Entry not found']}
+def get_coordinates(id):
+    entries = JournalEntry.query.filter(JournalEntry.user_id == id).all()
+    entry_list = [entry.get_coordinates() for entry in entries]
+    return {'coordinates': entry_list}

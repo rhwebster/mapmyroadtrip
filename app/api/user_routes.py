@@ -35,12 +35,11 @@ def user(id):
 @user_routes.route('/<int:user_id>/trips', methods=['GET'])
 @login_required
 def get_trips(user_id):
-    trips = Trip.query.filter(Trip.user_id == id).all()
+    trips = Trip.query.filter(Trip.user_id == user_id).all()
     trip_list = [trip.to_dict() for trip in trips]
 
     return {'trips': trip_list}
     
-
 
 #GET all entries associated with the user
 @user_routes.route('/<int:user_id>/entries', methods=['GET'])
@@ -57,19 +56,8 @@ def all_entries(user_id):
 #GET all photos associated with the user
 @user_routes.route('/<int:user_id>/photos', methods=['GET'])
 @login_required
-def get_photos(id):
-    entries = JournalEntry.query.filter(JournalEntry.user_id == id).all()
-    photos = Photo.query.filter(Photo.user_id == id).all()
-
-    print('ENTRIES------>', entries)
-    print('PHOTOS------>', photos)
-    entry_list = [entry.get_coordinates() for entry in entries]
-    photo_list = [entry.get_photos() for entry in photos]
-    print('USERS BACKEND STUFF------->', entry_list)
-    return {'coordinates': entry_list, 'photos': photo_list}
-
-
-# def render_picture(data):
-
-#     render_pic = base64.b64encode(data).decode('ascii')
-#     return render_pic
+def get_photos(user_id):
+    photos = Photo.query.filter(Photo.user_id == user_id).all()
+    photo_list = [photo.get_photos() for photo in photos]
+    
+    return {'photos': photo_list}
