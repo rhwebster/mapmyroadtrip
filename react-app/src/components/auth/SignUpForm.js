@@ -5,90 +5,6 @@ import styled from 'styled-components';
 import Avatar from '../../styles/Avatar';
 import './SignUpForm.css'
 
-export const StyledAuth = styled.div`
-  /* width: 385px;
-  padding: 3rem 1.5rem;
-  background: ${(props) => props.theme.grey};
-  border-radius: 4px;
-  margin: 8% auto; */
-
-  padding: 1rem;
-  img {
-    cursor: pointer;
-    margin-right: 40px;
-  }
-  .input-group {
-    margin-top: 1.5rem;
-  }
-  .input-group > label {
-    display: inline-block;
-    width: 100px;
-  }
-   input {
-    overflow: hidden;
-    border-radius: 3px;
-    width: 100%;
-    padding: 0.6rem 1.2rem;
-    /* background: ${(props) => props.theme.black}; */
-    border: 1px solid ${(props) => props.theme.black};
-    margin-bottom: 1.5rem;
-    color: ${(props) => props.theme.primaryColor};
-  }
-
-  textarea {
-    overflow: hidden;
-    width: 100%;
-    padding: 0.6rem 1.2rem;
-    background: ${(props) => props.theme.black};
-    border: 1px solid ${(props) => props.theme.black};
-    margin-bottom: 1.5rem;
-    color: ${(props) => props.theme.primaryColor};
-  }
-  .textarea-group {
-    display: flex;
-  }
-  .change-avatar {
-    display: flex;
-  }
-  input[id="change-avatar"],
-  input[id="change-avatar-link"] {
-    display: none;
-  }
-  span {
-    color: ${(props) => props.theme.blue};
-    cursor: pointer;
-  }
-   button {
-    padding: 0.4rem 1rem;
-    background: ${(props) => props.theme.blue};
-    color: ${(props) => props.theme.white};
-    border: 1px solid ${(props) => props.theme.blue};
-    border-radius: 3px;
-    text-transform: uppercase;
-    letter-spacing: 1.1px;
-  }
-  @media screen and (max-width: 550px) {
-    width: 98%;
-    .input-group {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      padding-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-    button {
-      margin-left: 0;
-    }
-  }
-  @media screen and (max-width: 430px) {
-    input,
-    textarea {
-      width: 99%;
-    }
-  }
-`;
-
 const SignUpForm = ({authenticated}) => {
 
   const history = useHistory();
@@ -128,13 +44,13 @@ const SignUpForm = ({authenticated}) => {
   }
 
   return (
-    <StyledAuth className="form">
-      <div id="header">Sign up! Track your adventures now!</div>
-    <form onSubmit={onSignUp}>
-       
+    // <StyledAuth className="form">
+    <>
+      <div id="header" >Sign up! Track your adventures now!</div>
+    <form className="form" onSubmit={onSignUp}>
       <div>
-        <label className="fields">User Name</label>
         <input
+          placeholder="User Name"
           type="text"
           name="username"
           onChange={updateUsername}
@@ -142,8 +58,8 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label className="fields">Email</label>
         <input
+          placeholder="Email"
           type="text"
           name="email"
           onChange={updateEmail}
@@ -151,8 +67,8 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label className="fields">Password</label>
         <input
+          placeholder="Password"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -160,8 +76,8 @@ const SignUpForm = ({authenticated}) => {
         ></input>
       </div>
       <div>
-        <label className="fields">Repeat Password</label>
         <input
+          placeholder="Input Password Again"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
@@ -171,7 +87,8 @@ const SignUpForm = ({authenticated}) => {
       </div>
       <button id="submit-button" type="submit">Sign Up</button>
     </form>
-    </StyledAuth>
+    </>
+    // </StyledAuth>
   );
 };
 

@@ -19,6 +19,7 @@ input {
     outline: none;
     margin-bottom: 20px;
     padding: 15px;
+    text-align: center;
 }
 
 input:hover {
@@ -34,7 +35,7 @@ input:hover {
     background: #8e2de2;
     color: #fff;
     text-transform: uppercase;
-    padding: 10px 0;
+    padding: 10px 5px;
     font-size: 10px;
     margin: 5px;
 }

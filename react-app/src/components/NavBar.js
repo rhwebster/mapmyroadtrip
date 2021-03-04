@@ -42,7 +42,8 @@ export const Link = styled.a`
   text-decoration: none;
   padding: 0px 15px 0px 0px;
   :hover {
-    text-decoration: underline;
+    text-decoration: none;
+    cursor: pointer;
   }
 `;
 

@@ -40,39 +40,39 @@ function App() {
       {/* */}
       <Switch>
       <Route path="/photos" exact={true}>
-          <NavBar /> 
+          <NavBar />
           <Photos />
         </Route>
         <Route path="/dash" exact={true}>
-          <NavBar /> 
+          <NavBar />
           <Dash />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <NavBar /> 
+          <NavBar />
           <SignUpForm  />
         </Route>
         <Route path="/map">
-          <NavBar /> 
+          <NavBar />
           <RoadTripMap />
         </Route>
         <Route path="/auto">
-          <NavBar /> 
+          <NavBar />
           <MapAutoComplete />
         </Route>
         <Route path="/entry">
-          <NavBar /> 
+          <NavBar />
           <CreateJournalEntry />
         </Route>
         <Route exact path="/trip">
-          <NavBar /> 
+          <NavBar />
           <CreateNewTrip />
         </Route>
         <Route path="/entries">
-          <NavBar /> 
+          <NavBar />
           <Entries />
         </Route>
         <Route path="/trips">
-          <NavBar /> 
+          <NavBar />
           <Trips />
         </Route>
         <Route exact path="/trip/:id">
@@ -80,7 +80,7 @@ function App() {
           <Trip />
         </Route>
         <Route path="/settings">
-          <NavBar /> 
+          <NavBar />
           <UserSettings />
         </Route>
         <ProtectedRoute path="/" exact={true} >

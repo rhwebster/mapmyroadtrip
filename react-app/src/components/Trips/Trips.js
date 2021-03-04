@@ -21,7 +21,7 @@ export default function Trips() {
       return state.trips.trips[trips.length-1]
     }
   });
-  
+
   const secondLastTrip = useSelector((state) => {
     if (state.trips.trips) {
       return state.trips.trips[trips.length - 2]
@@ -32,12 +32,12 @@ export default function Trips() {
   // console.log('lastTrip ====>', trips[0])
 
   // if (!authenticate) {
-  //   return null;
+    //   return null;
   // }
 
   return (
-    
-      <section className="section">
+
+    <section className="section">
         <header className="section__header">
           <h2 className="section__title">Trips</h2>
         <NavLink exact to="/trip">
@@ -78,7 +78,10 @@ export default function Trips() {
               <>
               <NavLink exact to={`trip/${lastTrip.id}`}>
               <div className='map'>
-                <TripMap />
+                <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:S%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:C%7C${lastTrip.end_lat},${lastTrip.end_lon}
+              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
+                {/* <TripMap /> */}
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{lastTrip && lastTrip.title}</p>
@@ -111,7 +114,10 @@ export default function Trips() {
             {secondLastTrip && (
               <NavLink exact to={`trip/${secondLastTrip.id}`}>
               <div className='map'>
-                <TripMap />
+              <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:S%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:C%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
+              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
+                {/* <TripMap /> */}
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{secondLastTrip && secondLastTrip.title}</p>
