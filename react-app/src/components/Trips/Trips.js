@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import TripMap from '../CreateTripForm/TripMap';
 import './Trips.css';
-import { getAllTrips } from '../../store/getTrips';
+import { getAllTrips } from '../../store/trips';
 
 
 export default function Trips() {

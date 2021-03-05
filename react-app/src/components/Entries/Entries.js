@@ -34,13 +34,13 @@ function Entries() {
         <main className="main">
         <div>
             {journalEntries &&
-            journalEntries.reverse().map(entry => {
+            journalEntries.map(entry => {
                 return (
                     <>
                         <SingleEntry title={entry.title} img={entry.image} entry={entry.entry}/>
                     </>
                 )
-            }).reverse()}
+            })}
         </div>
         </main>
         <Profile  />

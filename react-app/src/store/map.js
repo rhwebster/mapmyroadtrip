@@ -32,7 +32,7 @@ const removePoint = () => ({
 });
 
 export const getAllJournalEntryPoints = (userId) => async dispatch => {
-    const response = await fetch(`/api/map/${userId}`);
+    const response = await fetch(`/api/entry/${userId}/coordinates`);
     if (response.ok) {
       let data = await response.json()
       dispatch(setData(data.coordinates));

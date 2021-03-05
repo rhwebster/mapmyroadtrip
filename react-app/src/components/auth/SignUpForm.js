@@ -48,7 +48,6 @@ const SignUpForm = ({authenticated}) => {
     <>
       <div id="header" >Sign up! Track your adventures now!</div>
     <form className="form" onSubmit={onSignUp}>
-
       <div>
         <input
           placeholder="User Name"

@@ -15,40 +15,31 @@ def users():
     return {"users": [user.to_dict() for user in users]}
 
 
-@user_routes.route('/<int:id>')
+@user_routes.route('/<int:id>', methods=['GET', 'PATCH'])
 @login_required
 def user(id):
-    user = User.query.get(id)
-    return user.to_dict()
+    if request.method == 'GET':
+        user = User.query.get(id)
+        return user.to_dict()
+    if request.method == 'PATCH':
+        user = User.query.get(id)
+        data = request.get_json(force=True)
+        print('ROUTE DATA------>', data)
+        
+        user.profile_pic = data['profPic']
+        db.session.commit()
+        return {'added_profile_pic': str(data['profPic'])}
 
-
-@user_routes.route('/dash/<int:id>', methods=['PATCH'])
-@login_required
-def new_pic(id):
-
-    user = User.query.get(id)
-
-    data = request.get_json(force=True)
-    print('ROUTE DATA------>', data)
-
-    user.profile_pic = data['profPic']
-
-    db.session.commit()
-    return {'added_profile_pic': str(data['profPic'])}
 
 # GET all trips associated with the user
 @user_routes.route('/<int:user_id>/trips', methods=['GET'])
 @login_required
 def get_trips(user_id):
     trips = Trip.query.filter(Trip.user_id == user_id).all()
-
-    if not trips:
-        return {}, 404
-
     trip_list = [trip.to_dict() for trip in trips]
-    # print(jsonify({'payload': {'trips': trip_list}}))
-    return jsonify({'payload': {'trips': trip_list}})
 
+    return {'trips': trip_list}
+    
 
 #GET all entries associated with the user
 @user_routes.route('/<int:user_id>/entries', methods=['GET'])
@@ -61,19 +52,12 @@ def all_entries(user_id):
     entry_list = [entry.to_dict() for entry in entries]
     return jsonify({'payload': {'entries': entry_list}})
 
+
 #GET all photos associated with the user
 @user_routes.route('/<int:user_id>/photos', methods=['GET'])
 @login_required
-def get_all_photos(user_id):
+def get_photos(user_id):
     photos = Photo.query.filter(Photo.user_id == user_id).all()
-
-    if not photos:
-        return {}, 404
-    photo_list = [photos.to_dict() for photo in photos]
+    photo_list = [photo.get_photos() for photo in photos]
+    
     return {'photos': photo_list}
-
-
-def render_picture(data):
-
-    render_pic = base64.b64encode(data).decode('ascii')
-    return render_pic
