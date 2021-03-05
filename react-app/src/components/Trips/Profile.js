@@ -115,14 +115,14 @@ export default function Profile() {
               rel="noreferrer"
               href="https://github.com/Sbutler8"
             >
-              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+              <AiOutlineGithub className="github-button" style={{ color: '#8E2DE2' }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/samantha-butler-410675178/"
             >
-              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: '#8E2DE2' }} />
             </a>
             <h4>Ahdari Scott</h4>
             <a
@@ -130,14 +130,14 @@ export default function Profile() {
               rel="noreferrer"
               href="https://github.com/koran23"
             >
-              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+              <AiOutlineGithub className="github-button" style={{ color: '#8E2DE2' }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/ahdari-scott-916225117/"
             >
-              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: '#8E2DE2' }} />
             </a>
             <h4>Ryan Webster</h4>
             <a
@@ -145,14 +145,14 @@ export default function Profile() {
               rel="noreferrer"
               href="https://github.com/rhwebster"
             >
-              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+              <AiOutlineGithub className="github-button" style={{ color: '#8E2DE2' }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/ryan-webster-a784509b/"
             >
-              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: '#8E2DE2' }} />
             </a>
             <h4>Autumn Wiggins</h4>
             <a
@@ -160,14 +160,14 @@ export default function Profile() {
               rel="noreferrer"
               href="https://github.com/fairy-scary"
             >
-              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+              <AiOutlineGithub className="github-button" style={{ color: '#8E2DE2' }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/autumnwiggins/"
             >
-              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: '#8E2DE2' }} />
             </a>
           </ul>
         </div>
