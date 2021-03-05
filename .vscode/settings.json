@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": ".venv/bin/python",
+    "python.pythonPath": "/home/sami/AppAcademy/map_my_roadtrip/mapmyroadtrip/.venv/bin/python3.8",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true

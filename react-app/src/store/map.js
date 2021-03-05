@@ -2,7 +2,6 @@
 const SET_DATA = 'session/setData';
 const ADD_DATA = 'session/addData';
 const END_DATA = 'session/addEndData'
-const REMOVE_POINT = 'session/removePoint';
 
 const setData = (journal_entry) => {
   return {
@@ -26,10 +25,6 @@ const addEndData = (endpoint_lat, endpoint_lon) => {
     endpoint_lon
   }
 }
-
-const removePoint = () => ({
-  type: REMOVE_POINT
-});
 
 export const getAllJournalEntryPoints = (userId) => async dispatch => {
     const response = await fetch(`/api/entry/${userId}/coordinates`);
@@ -75,9 +70,6 @@ const mapReducer = (state = initialState, action) => {
       newState.addedEndLat = action.endpoint_lat;
       newState.addedEndLon = action.endpoint_lon;
       return newState;
-    // case REMOVE_USER:
-    //   newState = Object.assign({}, state, { user: null, authenticate: false });
-    //   return newState;
     default:
       return state;
   }

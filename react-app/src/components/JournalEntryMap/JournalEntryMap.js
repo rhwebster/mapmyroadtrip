@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-// import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
+import { nanoid } from 'nanoid';
 import './JournalEntryMap.css'
 
 
 const JournalEntryMap = ({setLat, setLon}) => {
     const { GOOGLE_MAP_API_KEY } = process.env;
     const dispatch = useDispatch();
+    const [key] = React.useState(nanoid);
 
     const user = useSelector((state) => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
@@ -26,9 +27,11 @@ const JournalEntryMap = ({setLat, setLon}) => {
         if (user) {
             setLat(addedLat);
             setLon(addedLon);
+            setCenter(center);
+            setZoom(zoom);
             dispatch(mapActions.getAllJournalEntryPoints(user.id))
         }
-    }, [dispatch, user]);
+    }, [dispatch, addedLat, addedLon, setLat, setLon, center, zoom, user]);
 
 
     const getMapOptions = (maps) => {
@@ -47,7 +50,6 @@ const JournalEntryMap = ({setLat, setLon}) => {
         <>
         {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
         <MapAutoComplete />
-        {console.log('Marker', addedLat, addedLon)}
         <div style={{ height: '500px', width: '100%' }}>
             <GoogleMapReact id="map"
                 bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
@@ -65,6 +67,7 @@ const JournalEntryMap = ({setLat, setLon}) => {
             journalEntryCoordinates.map(feature => {
                 return (
                 <Marker
+                    key={key}
                     lat={feature[0]}
                     lng={feature[1]}
                     name="My Marker"

@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPic } from "../../store/session";
 import styled from 'styled-components';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { addEntry } from '../../store/entry'
 import Nav from '../Nav/Nav'
-import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
 const JournalEntry = styled.div`
@@ -121,8 +120,6 @@ label.custom-file-upload:hover {
 function CreateJournalEntry() {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { entryId } = useParams();
-    // console.log('ENTRY:',entryId)
 
     const [title, setTitle] = useState("");
     const [profPic, setProfPic] = useState({'name': null});
@@ -147,7 +144,7 @@ function CreateJournalEntry() {
             setLat(addedLat);
             setLon(addedLon);
         }
-    }, [dispatch, user, lat, lon]);
+    }, [dispatch, user, lat, lon, addedLat, addedLon, setLat, setLon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -187,7 +184,6 @@ function CreateJournalEntry() {
             <div className='contact-us'>
                 <div className='contact-map'>
                     <JournalEntryMap setLat={setLat} setLon={setLon}/>
-                    {console.log('createJournalEntry:', addedLat, addedLon)}
                 <div className='contact-form'>
                     <h3>New entry</h3>
                     <form onSubmit={handleSubmit}>

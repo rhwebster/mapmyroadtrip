@@ -1,19 +1,16 @@
-import './Entries.css';
-
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { setPic } from "../../store/session";
-import styled from 'styled-components';
-import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
-import { useParams, useHistory } from 'react-router-dom';
 import { getAllJournalEntries } from '../../store/entry';
-import SingleEntry from '../SingleEntry/SingleEntry'
-import Nav from '../Nav/Nav'
-import Profile from '../Trips/Profile'
+import SingleEntry from '../SingleEntry/SingleEntry';
+import Nav from '../Nav/Nav';
+import Profile from '../Trips/Profile';
+import { nanoid } from 'nanoid';
+import './Entries.css';
 
 
 function Entries() {
     const dispatch = useDispatch();
+    const [key] = React.useState(nanoid);
 
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
@@ -37,7 +34,7 @@ function Entries() {
             journalEntries.map(entry => {
                 return (
                     <>
-                        <SingleEntry title={entry.title} img={entry.image} entry={entry.entry}/>
+                        <SingleEntry key={key} title={entry.title} img={entry.image} entry={entry.entry}/>
                     </>
                 )
             })}
