@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom"
 import './SplashPage.css';
@@ -15,6 +15,10 @@ const SplashPage = () => {
   const history = useHistory();
   const authenticate = useSelector((state) => state.session.authenticate);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    dispatch(sessionActions.logout());
+  }, [])
 
   const demoUser = () => {
     console.log('HERE')

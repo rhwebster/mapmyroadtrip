@@ -34,14 +34,13 @@ function App() {
 
   return (
     <BrowserRouter>
-        <Route path="/login" exact={true}>
+      <Switch>
+        <Route path="/" exact={true}>
             <SplashPage />
         </Route>
-      {/* */}
-      <Switch>
-      <Route path="/photos" exact={true}>
-          <NavBar />
-          <Photos />
+        <Route path="/photos" exact={true}>
+            <NavBar />
+            <Photos />
         </Route>
         <Route path="/dash" exact={true}>
           <NavBar />
@@ -83,9 +82,6 @@ function App() {
           <NavBar />
           <UserSettings />
         </Route>
-        <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
