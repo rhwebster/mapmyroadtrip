@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { login } from "../../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-import styled from 'styled-components';
+import { nanoid } from 'nanoid';
 import './LoginFormModal.css'
-
-
 
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [key] = React.useState(nanoid);
   const authenticate = useSelector((state) => state.session.authenticate);
 
   const [errors, setErrors] = useState([]);
@@ -43,7 +41,7 @@ const LoginForm = () => {
       <form className="form" onSubmit={onLogin}>
         <div>
           {errors.map((error) => (
-            <div>{error}</div>
+            <div key={key}>{error}</div>
           ))}
         </div>
         <div>

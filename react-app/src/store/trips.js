@@ -32,11 +32,8 @@ export const setNewTrip = (tripData) => {
 };
 
 export const getAllTrips = (userId) => async (dispatch) => {
-    console.log('hello....')
     const res = await fetch(`/api/users/${userId}/trips`);
-    console.log(`it's me....`, res)
     let data = await res.json();
-    console.log(`hello from the other side`, data)
     dispatch(getTrips(data.trips));
 };
 

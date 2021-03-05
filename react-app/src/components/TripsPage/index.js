@@ -1,15 +1,15 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 import { getAllTrips } from '../../store/trips';
-import Nav from '../Nav/Nav'
-import Profile from '../Trips/Profile'
-import SingleTrip from '../TripList'
-
+import Nav from '../Nav/Nav';
+import Profile from '../Trips/Profile';
+import SingleTrip from '../TripList';
+import { nanoid } from 'nanoid';
 
 function Trips() {
     const dispatch = useDispatch();
+    const [key] = React.useState(nanoid)
 
     const userId = useSelector((state) => {
         if (state.session.user) {
@@ -19,8 +19,6 @@ function Trips() {
 
     const authenticate = useSelector((state) => state.session.authenticate);
     const trips = useSelector((state) => state.trips.trips);
-    console.log(trips)
-    console.log(userId)
 
     useEffect(() => {
         if (userId) {
@@ -35,12 +33,12 @@ function Trips() {
     return (
         <div className='wrapper'>
         <Nav  />
-        <main className="main">  
+        <main className="main">
         <div className='trip-div'>
             {trips &&
             trips.map(trip => {
                 return (
-                    <SingleTrip title={trip.title} id={trip.id} />
+                    <SingleTrip key={trip ? trip.title:key} title={trip.title} id={trip.id} />
                 )
             })}
         </div>

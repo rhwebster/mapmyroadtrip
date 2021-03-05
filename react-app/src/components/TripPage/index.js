@@ -1,38 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrip } from "../../store/trips";
 import SingleEntry from '../SingleEntry/SingleEntry'
-import { authenticate } from "../../store/session";
 import { setTripEntries } from '../../store/entry';
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
+import { nanoid } from 'nanoid'
 
 function Trip() {
-    
+
     const dispatch = useDispatch();
     const { id } = useParams();
-    const user = useSelector(state => state.session.user);
-
-    const userId = useSelector((state) => {
-        if (state.session.user) {
-            return state.session.user.id
-        }
-    })
-
-    useEffect(async () => {
-        dispatch(getTrip(id))
-    }, []);
+    const [key] = React.useState(nanoid)
 
     useEffect(() => {
+        dispatch(getTrip(id))
         dispatch(setTripEntries(id))
-    }, []);
+    }, [dispatch, id]);
 
-    
+
     const authenticate = useSelector((state) => state.session.authenticate);
     const trip = useSelector((state) => state.trip);
     const tripEntries = useSelector((state) => state.tripEntries.tripEntries);
-    
+
 
     if (!authenticate) {
         return null;
@@ -54,7 +45,7 @@ function Trip() {
                         tripEntries.map(entry => {
                             return (
                                 <>
-                                    <SingleEntry title={entry.title} img={entry.image} entry={entry.entry} />
+                                    <SingleEntry key={entry ? entry.title:key} title={entry.title} img={entry.image} entry={entry.entry} />
                                 </>
                             )
                         })}
