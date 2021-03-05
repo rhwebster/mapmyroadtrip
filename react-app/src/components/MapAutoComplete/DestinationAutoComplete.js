@@ -4,8 +4,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocom
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { addDestinationPoint } from '../../store/map';
 
-const DestinationAutoComplete = ({ ...props }) => {
-    const { GOOGLE_MAP_API_KEY } = process.env;
+const DestinationAutoComplete = () => {
     const dispatch = useDispatch();
 
     const {

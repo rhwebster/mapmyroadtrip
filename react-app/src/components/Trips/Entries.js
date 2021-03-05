@@ -213,8 +213,6 @@ export default function Entry({...props}) {
         }
     }, [dispatch, user]);
 
-  let mostRecentJournalEntry = {};
-
   return (
     <EntriesStyle>
       <section className="section">

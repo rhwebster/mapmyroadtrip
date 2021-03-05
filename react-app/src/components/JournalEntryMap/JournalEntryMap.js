@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-// import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
@@ -26,9 +25,11 @@ const JournalEntryMap = ({setLat, setLon}) => {
         if (user) {
             setLat(addedLat);
             setLon(addedLon);
+            setCenter(center);
+            setZoom(zoom);
             dispatch(mapActions.getAllJournalEntryPoints(user.id))
         }
-    }, [dispatch, user]);
+    }, [dispatch, addedLat, addedLon, setLat, setLon, center, zoom, user]);
 
 
     const getMapOptions = (maps) => {

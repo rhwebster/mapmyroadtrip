@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 const EntriesStyle = styled.div`
 .status {
@@ -209,10 +208,10 @@ export default function SingleEntry({...props}) {
         </header>
         <ul className="entries">
           <li className="entries__item">
-            <a href="#" className="entries__link focus--box-shadow">
+            <div className="entries__link focus--box-shadow">
               <div className="entries__wrapper">
-                <div className="entries__element entries__icon">          
-                   <img src={props.img}></img>                
+                <div className="entries__element entries__icon">
+                   <img src={props.img} alt=""></img>
                   <span className="entries__inform-name">{props.title}</span>
                   <span className="status">Published</span>
                 </div>
@@ -227,7 +226,7 @@ export default function SingleEntry({...props}) {
                 </div>
                 <div className="entries__element entries__setting"></div>
               </div>
-            </a>
+            </div>
           </li>
         </ul>
       </section>

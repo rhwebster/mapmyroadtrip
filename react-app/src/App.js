@@ -3,9 +3,6 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import * as sessionActions from './store/session'
 import RoadTripMap from "./components/Map/RoadTripMap";
 import Dash from "./components/Dash/Dash";

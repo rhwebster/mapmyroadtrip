@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { login } from "../../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-import styled from 'styled-components';
 import './LoginFormModal.css'
 
 

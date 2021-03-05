@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import './SplashPage.css';
 import Background from './Splash.png'
 import Logo from './TKlogo.png'
@@ -14,11 +14,10 @@ const SplashPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const authenticate = useSelector((state) => state.session.authenticate);
-  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     dispatch(sessionActions.logout());
-  }, [])
+  }, [dispatch])
 
   const demoUser = () => {
     dispatch(
@@ -37,7 +36,7 @@ const SplashPage = () => {
         }}>
           <div id="container">
             <div id="center-content">
-            <img id="logo" src={Logo}></img>
+            <img id="logo" src={Logo} alt=""></img>
             <span id="tagline">It's the journal, not the destination</span>
               <div className="options">
                 <div className="links">

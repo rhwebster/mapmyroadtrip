@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { setPic } from "../../store/session";
 import { addProfPic } from "../../store/session";
-import { faRoad, faPencil } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [imgPreview, setImagePreview] = useState(null);
   const [profPic, setProfPic] = useState({ name: null });
 
   const user = useSelector(state => state.session.user);
@@ -24,7 +22,6 @@ export default function Profile() {
       return state.journalEntries.journalEntries.length
     }
   });
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,9 +48,6 @@ export default function Profile() {
     if (file) {
       fileReader.readAsDataURL(file);
     }
-    fileReader.onloadend = () => {
-      setImagePreview(fileReader.result);
-    };
   };
 
   return (
@@ -66,7 +60,7 @@ export default function Profile() {
             <img
               className="profile-main__photo"
               src={profilePic}
-              alt="Profile photo"
+              alt="Profile"
             />
 
           </button>
@@ -96,9 +90,9 @@ export default function Profile() {
             <span className="statistics__entry-quantity">{tripCount}</span>
           </li>
           <li className="statistics__entry">
-            <a className="statistics__entry-description" href="#">
+            <div className="statistics__entry-description">
               Entries
-            </a>
+            </div>
             <span className="statistics__entry-quantity">{entryCount}</span>
           </li>
         </ul>

@@ -4,8 +4,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocom
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { addJournalEntryPoints } from '../../store/map';
 
-const MapAutoComplete = ({...props}) => {
-  const { GOOGLE_MAP_API_KEY } = process.env;
+const MapAutoComplete = () => {
   const dispatch = useDispatch();
 
   const {

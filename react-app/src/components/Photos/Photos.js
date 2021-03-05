@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotos } from "../../store/photos";
 import Nav from '../Nav/Nav'
@@ -28,7 +28,7 @@ const Photos = () => {
         <main className="main">
       {photos.map(url => {
           return (
-              <img src={`${url}`}/>
+              <img src={`${url}`} alt=""/>
           )
     })}
     </main>

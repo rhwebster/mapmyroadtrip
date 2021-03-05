@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import TripMap from './TripMap'
 import { addTrip } from '../../store/trips';
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
 import DestinationAutoComplete from '../MapAutoComplete/DestinationAutoComplete';
 import Nav from '../Nav/Nav'
-import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
 
@@ -139,9 +138,7 @@ function CreateNewTrip () {
     const addedStartLon = useSelector((state) => state.map.addedLon);
     const addedEndLat = useSelector((state) => state.map.addedLat);
     const addedEndLon = useSelector((state) => state.map.addedLon);
-    // onClick = {() => }
-    const [center, setCenter] = useState({ lat: 39.73750267736547, lon: -104.98928358002577 })
-    
+
     const user = useSelector(state => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
 
@@ -152,7 +149,7 @@ function CreateNewTrip () {
             setEndLat(addedEndLat);
             setEndLon(addedEndLon);
         }
-    }, [dispatch, user, startLat,startLon]);
+    }, [dispatch, user, startLat, startLon, addedStartLat, addedStartLon, addedEndLat, addedEndLon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

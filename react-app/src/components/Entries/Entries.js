@@ -1,15 +1,10 @@
-import './Entries.css';
-
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { setPic } from "../../store/session";
-import styled from 'styled-components';
-import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
-import { useParams, useHistory } from 'react-router-dom';
 import { getAllJournalEntries } from '../../store/entry';
 import SingleEntry from '../SingleEntry/SingleEntry'
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
+import './Entries.css';
 
 
 function Entries() {

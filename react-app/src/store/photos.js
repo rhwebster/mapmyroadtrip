@@ -1,7 +1,5 @@
 
 const SET_DATA = 'session/setData';
-const ADD_DATA = 'session/addData';
-const REMOVE_POINT = 'session/removePoint';
 
 const setData = (data) => {
   return {

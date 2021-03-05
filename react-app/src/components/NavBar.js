@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from "react-redux";
 import LoginFormModal from './LoginFormModal/LoginFormModal';
@@ -35,8 +34,6 @@ const Menu = styled.ul`
   }
 `;
 
-const Item = styled.li``;
-
 export const Link = styled.a`
   color: white;
   text-decoration: none;
@@ -49,7 +46,6 @@ export const Link = styled.a`
 
 const NavBar = () => {
   const authenticate = useSelector((state) => state.session.authenticate);
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <>

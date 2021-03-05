@@ -5,7 +5,6 @@ import TripMap from '../CreateTripForm/TripMap';
 export default function SingleTrip({...props}) {
 
   return (
-    // <ul className='trips'>
       <ul className="trips__item">
             <a className="trips__link focus--box-shadow" href="#">
               <div className="trips__header">

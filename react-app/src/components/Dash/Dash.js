@@ -10,7 +10,7 @@ import Profile from '../Trips/Profile'
 const Dash = () => {
 
   const dispatch = useDispatch();
-  
+
   const userId = useSelector((state) => {
     if (state.session.user) {
       return state.session.user.id
@@ -18,7 +18,6 @@ const Dash = () => {
   })
 
   const authenticate = useSelector((state) => state.session.authenticate);
-  const trips = useSelector((state) => state.trips.trips);
 
   useEffect(() => {
     if (userId) {

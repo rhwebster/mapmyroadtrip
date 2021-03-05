@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPic } from "../../store/session";
 import styled from 'styled-components';
 import JournalEntryMap from '../JournalEntryMap/JournalEntryMap';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { addEntry } from '../../store/entry'
 import Nav from '../Nav/Nav'
-import SearchBar from '../SearchBar/index'
 import Profile from '../Trips/Profile'
 
 const JournalEntry = styled.div`
@@ -145,7 +144,7 @@ function CreateJournalEntry() {
             setLat(addedLat);
             setLon(addedLon);
         }
-    }, [dispatch, user, lat, lon]);
+    }, [dispatch, user, lat, lon, addedLat, addedLon, setLat, setLon]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
