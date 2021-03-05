@@ -21,7 +21,6 @@ const setProfilePic = (file) => ({
 
 
 export const login = (user) => async (dispatch) => {
-  console.log(user)
     const { email, password } = user;
     const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -85,8 +84,6 @@ export const addProfPic = (formObj ) => async (dispatch) => {
       body: JSON.stringify(formData),
     });
 
-    console.log('STORE DATA---------->', formData)
-    console.log(res)
     dispatch(setProfilePic(res));
     return res
   };

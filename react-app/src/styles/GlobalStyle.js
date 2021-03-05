@@ -483,7 +483,7 @@ button {
 }
 
 .trips__item {
-  width: calc(100% / 3);
+  width: 100%;
   margin: 0 0.6rem;
 }
 

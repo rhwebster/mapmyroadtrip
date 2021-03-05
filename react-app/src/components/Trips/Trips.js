@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import React from "react";
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import TripMap from '../CreateTripForm/TripMap';
 import './Trips.css';
-import { getAllTrips } from '../../store/trips';
-
 
 export default function Trips() {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => {
-    if (state.session.user) {
-      return state.session.user.id
-    }
-  });
 
-  const authenticate = useSelector((state) => state.session.authenticate);
   const trips = useSelector((state) => state.trips.trips);
   const lastTrip = useSelector((state) => {
     if (state.trips.trips) {
@@ -27,13 +17,6 @@ export default function Trips() {
       return state.trips.trips[trips.length - 2]
     }
   });
-
-
-  // console.log('lastTrip ====>', trips[0])
-
-  // if (!authenticate) {
-    //   return null;
-  // }
 
   return (
 
@@ -58,8 +41,9 @@ export default function Trips() {
         </header>
         <ul className="trips">
           <li className="trips__item">
-            <a className="trips__link focus--box-shadow" href="#">
-              <div className="trips__header">
+            {lastTrip &&
+            <a className="trips__link focus--box-shadow" href={`trip/${lastTrip.id}`}>
+
                 <button
                   className="setting setting--absolute focus--box-shadow"
                   type="button"
@@ -73,15 +57,11 @@ export default function Trips() {
                   >
                   </svg>
                 </button>
-              </div>
-            {lastTrip && (
               <>
-              <NavLink exact to={`trip/${lastTrip.id}`}>
               <div className='map'>
-                <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
-              &markers=color:green%7Clabel:S%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:C%7C${lastTrip.end_lat},${lastTrip.end_lon}
-              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
-                {/* <TripMap /> */}
+                <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat},${lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:A%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:B%7C${lastTrip.end_lat},${lastTrip.end_lon}
+              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`} alt=""></img>
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{lastTrip && lastTrip.title}</p>
@@ -89,14 +69,13 @@ export default function Trips() {
                   {lastTrip && lastTrip.start_date}
                 </time>
               </div>
-            </NavLink>
             </>
-            )}
             </a>
+            }
           </li>
           <li className="trips__item">
-            <a className="trips__link focus--box-shadow" href="#">
-              <div className="trips__header">
+            {secondLastTrip &&
+            <a className="trips__link focus--box-shadow" href={`trip/${secondLastTrip.id}`}>
                 <button
                   className="setting setting--absolute focus--box-shadow"
                   type="button"
@@ -110,14 +89,10 @@ export default function Trips() {
                   >
                   </svg>
                 </button>
-              </div>
-            {secondLastTrip && (
-              <NavLink exact to={`trip/${secondLastTrip.id}`}>
               <div className='map'>
-              <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat,lastTrip.start_lon}&size=600x600&maptype=roadmap
-              &markers=color:green%7Clabel:S%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:C%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
-              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}></img>
-                {/* <TripMap /> */}
+              <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat},${lastTrip.start_lon}&size=600x600&maptype=roadmap
+              &markers=color:green%7Clabel:A%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:B%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
+              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`} alt=""></img>
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{secondLastTrip && secondLastTrip.title}</p>
@@ -125,9 +100,8 @@ export default function Trips() {
                   {secondLastTrip && secondLastTrip.start_date}
                 </time>
               </div>
-            </NavLink>
-            )}
             </a>
+            }
           </li>
         </ul>
       </section>

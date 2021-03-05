@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
-// import MapViewDirections from 'react-native-maps-directions';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
-import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
-import Nav from '../Nav/Nav'
-import Profile from '../Trips/Profile'
+import Nav from '../Nav/Nav';
+import Profile from '../Trips/Profile';
+import { nanoid } from 'nanoid';
 
 const RoadTripMap = () => {
   const dispatch = useDispatch();
+  const [key] = React.useState(nanoid);
   const [markerShown, setMarkerShown] = useState(false)
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
   const [addedMarkers, setAddedMarkers] = useState([{lat: 0, lng: 0 }]);
@@ -24,13 +24,11 @@ const RoadTripMap = () => {
 
   const authenticate = useSelector((state) => state.session.authenticate);
   const journalEntryCoordinates = useSelector((state) => state.map.coordinates);
-  console.log(journalEntryCoordinates);
 
   if (!authenticate) {
     return null;
   }
   const { GOOGLE_MAP_API_KEY } = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-  console.log(GOOGLE_MAP_API_KEY)
   const getMapOptions = (maps) => {
     return {
       disableDefaultUI: true,
@@ -42,9 +40,6 @@ const RoadTripMap = () => {
 
 
   const onMapClick = (e) => {
-    console.log('LATLONG----------->',e)
-    // isMarkerShown:true
-
     return (<Marker
             lat={e.lat}
             lng={e.lng}
@@ -73,9 +68,9 @@ const RoadTripMap = () => {
             color="pink"
             />
           {journalEntryCoordinates &&
-          journalEntryCoordinates.map(feature => {
+          journalEntryCoordinates.map((feature,i) => {
             return (
-              <Marker key={feature[0]}
+              <Marker key={feature? i:key}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"

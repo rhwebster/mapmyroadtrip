@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { addDestinationPoint } from '../../store/map';
+import { nanoid } from 'nanoid';
 
-const DestinationAutoComplete = ({ ...props }) => {
-    const { GOOGLE_MAP_API_KEY } = process.env;
+const DestinationAutoComplete = () => {
     const dispatch = useDispatch();
+    const [key] = React.useState(nanoid);
 
     const {
         ready,
@@ -43,10 +44,7 @@ const DestinationAutoComplete = ({ ...props }) => {
         getGeocode({ address: description })
             .then(results => getLatLng(results[0]))
             .then(({ lat, lng }) => {
-                console.log('📍 Coordinates2: ', { lat, lng });
                 dispatch(addDestinationPoint(lat, lng))
-                // props.setLat(lat);
-                // props.setLon(lng);
             }).catch(error => {
                 console.log('😱 Error: ', error)
             });
@@ -61,7 +59,7 @@ const DestinationAutoComplete = ({ ...props }) => {
 
             return (
                 <li
-                    key={id}
+                    key={suggestion ? id:key}
                     onClick={handleSelect(suggestion)}
                 >
                     <strong>{main_text}</strong> <small>{secondary_text}</small>
@@ -71,7 +69,7 @@ const DestinationAutoComplete = ({ ...props }) => {
 
     return (
         <>
-            <div ref={registerRef}>
+            <div ref={registerRef} key={key}>
                 <input
                     value={value}
                     onChange={handleInput}
@@ -80,7 +78,7 @@ const DestinationAutoComplete = ({ ...props }) => {
                     style={{ borderRadius: 30, textAlign: 'center', fontFamily: 'Reem Kufi,sans-serif', fontSize: '25px', margin: '15px' }}
                 />
                 {/* We can use the "status" to decide whether we should display the dropdown or not */}
-                {status === 'OK' && <ul>{renderSuggestions()}</ul>}
+                {status === 'OK' && <ul key={key}>{renderSuggestions()}</ul>}
             </div>
             {/* <script async defer type="text/javascript"
         src={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}&libraries=places`}

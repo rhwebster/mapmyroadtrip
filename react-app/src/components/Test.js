@@ -10,7 +10,6 @@ export default function Test() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(profPic)
     dispatch(setPic( profPic ))
   };
 
@@ -49,7 +48,7 @@ export default function Test() {
         // method="POST"
         encType="multipart/form-data"
       >
-        
+
         <img className="imgPreview" src={imgPreview} alt=''></img>
         <label  className="custom-file-upload">CLICK HERE TO UPLOAD A PHOTO
           <input onChange={updateProfPic} type="file" name="user_file" />

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../services/auth';
-import styled from 'styled-components';
-import Avatar from '../../styles/Avatar';
 import './SignUpForm.css'
 
 const SignUpForm = ({authenticated}) => {
 
   const history = useHistory();
-  const [newAvatar, setNewAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +41,6 @@ const SignUpForm = ({authenticated}) => {
   }
 
   return (
-    // <StyledAuth className="form">
     <>
       <div id="header" >Sign up! Track your adventures now!</div>
     <form className="form" onSubmit={onSignUp}>
