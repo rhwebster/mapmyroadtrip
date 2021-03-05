@@ -30,7 +30,7 @@ const Photos = () => {
         <main className="main">
       {photos.map(url => {
           return (
-              <img key={key} src={`${url}`} alt=""/>
+              <img key={url ? url:key} src={`${url}`} alt=""/>
           )
     })}
     </main>

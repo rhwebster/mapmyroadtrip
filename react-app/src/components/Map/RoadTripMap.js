@@ -70,7 +70,7 @@ const RoadTripMap = () => {
           {journalEntryCoordinates &&
           journalEntryCoordinates.map((feature,i) => {
             return (
-              <Marker key={key}
+              <Marker key={feature? i:key}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"
