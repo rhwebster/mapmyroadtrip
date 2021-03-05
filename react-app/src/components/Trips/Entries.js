@@ -217,7 +217,6 @@ export default function Entry({...props}) {
 
   return (
     <EntriesStyle>
-      {console.log(mostRecentJournalEntry)}
       <section className="section">
         <header className="section__header">
           <h2 className="section__title">Entries</h2>

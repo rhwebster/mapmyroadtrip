@@ -28,13 +28,6 @@ export default function Trips() {
     }
   });
 
-
-  // console.log('lastTrip ====>', trips[0])
-
-  // if (!authenticate) {
-    //   return null;
-  // }
-
   return (
 
     <section className="section">

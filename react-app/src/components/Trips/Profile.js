@@ -28,7 +28,6 @@ export default function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(profPic)
     dispatch(setPic(profPic))
       .then((file) => {
         dispatch(

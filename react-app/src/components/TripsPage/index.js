@@ -19,8 +19,6 @@ function Trips() {
 
     const authenticate = useSelector((state) => state.session.authenticate);
     const trips = useSelector((state) => state.trips.trips);
-    console.log(trips)
-    console.log(userId)
 
     useEffect(() => {
         if (userId) {
@@ -35,7 +33,7 @@ function Trips() {
     return (
         <div className='wrapper'>
         <Nav  />
-        <main className="main">  
+        <main className="main">
         <div className='trip-div'>
             {trips &&
             trips.map(trip => {

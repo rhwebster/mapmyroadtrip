@@ -21,7 +21,6 @@ const SplashPage = () => {
   }, [])
 
   const demoUser = () => {
-    console.log('HERE')
     dispatch(
       sessionActions.login({ email: "theduke@gmail.com", password: "password" })
     );

@@ -47,7 +47,6 @@ const JournalEntryMap = ({setLat, setLon}) => {
         <>
         {/* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqv0i4MiCzZEjdupXsSQ3sv4oBFdaTSjI&libraries=places"></script> */}
         <MapAutoComplete />
-        {console.log('Marker', addedLat, addedLon)}
         <div style={{ height: '500px', width: '100%' }}>
             <GoogleMapReact id="map"
                 bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}

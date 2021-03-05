@@ -24,13 +24,11 @@ const RoadTripMap = () => {
 
   const authenticate = useSelector((state) => state.session.authenticate);
   const journalEntryCoordinates = useSelector((state) => state.map.coordinates);
-  console.log(journalEntryCoordinates);
 
   if (!authenticate) {
     return null;
   }
   const { GOOGLE_MAP_API_KEY } = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-  console.log(GOOGLE_MAP_API_KEY)
   const getMapOptions = (maps) => {
     return {
       disableDefaultUI: true,
@@ -42,9 +40,6 @@ const RoadTripMap = () => {
 
 
   const onMapClick = (e) => {
-    console.log('LATLONG----------->',e)
-    // isMarkerShown:true
-
     return (<Marker
             lat={e.lat}
             lng={e.lng}

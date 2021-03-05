@@ -13,7 +13,6 @@ const CreateJournalEntryForm = () => {
   const updateProfPic = (e) => {
     const file = e.target.files[0];
     setProfPic(file);
-    console.log("file", file);
   };
 
   return (

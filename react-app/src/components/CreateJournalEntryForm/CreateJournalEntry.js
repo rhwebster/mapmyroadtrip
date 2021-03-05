@@ -121,8 +121,6 @@ label.custom-file-upload:hover {
 function CreateJournalEntry() {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { entryId } = useParams();
-    // console.log('ENTRY:',entryId)
 
     const [title, setTitle] = useState("");
     const [profPic, setProfPic] = useState({'name': null});
@@ -187,7 +185,6 @@ function CreateJournalEntry() {
             <div className='contact-us'>
                 <div className='contact-map'>
                     <JournalEntryMap setLat={setLat} setLon={setLon}/>
-                    {console.log('createJournalEntry:', addedLat, addedLon)}
                 <div className='contact-form'>
                     <h3>New entry</h3>
                     <form onSubmit={handleSubmit}>
