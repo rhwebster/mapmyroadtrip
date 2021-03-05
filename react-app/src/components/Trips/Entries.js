@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJournalEntries } from '../../store/entry';
 import SingleEntry from "../SingleEntry/SingleEntry";
+import { nanoid } from 'nanoid';
 
 const EntriesStyle = styled.div`
 .status {
@@ -204,6 +205,7 @@ const EntriesStyle = styled.div`
 
 export default function Entry({...props}) {
   const dispatch = useDispatch();
+  const [key] = React.useState(nanoid);
 
   const user = useSelector(state => state.session.user);
   const journalEntries = useSelector((state) => state.journalEntries.journalEntries);
@@ -237,10 +239,10 @@ export default function Entry({...props}) {
           </div>
         </header>
         {journalEntries &&
-            journalEntries.slice(0,2).map((entry, i) => {
+            journalEntries.slice(0,2).map(entry => {
               return (
                     <>
-                        <SingleEntry title={(entry.title)} img={entry.image} entry={entry.entry}/>
+                        <SingleEntry key={entry ? entry.title:key} title={(entry.title)} img={entry.image} entry={entry.entry}/>
                     </>
                     )
             }).reverse()}

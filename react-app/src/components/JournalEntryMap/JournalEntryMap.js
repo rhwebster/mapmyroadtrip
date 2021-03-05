@@ -4,12 +4,14 @@ import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
 import MapAutoComplete from '../MapAutoComplete/MapAutoComplete';
+import { nanoid } from 'nanoid';
 import './JournalEntryMap.css'
 
 
 const JournalEntryMap = ({setLat, setLon}) => {
     const { GOOGLE_MAP_API_KEY } = process.env;
     const dispatch = useDispatch();
+    const [key] = React.useState(nanoid);
 
     const user = useSelector((state) => state.session.user);
     const authenticate = useSelector((state) => state.session.authenticate);
@@ -65,6 +67,7 @@ const JournalEntryMap = ({setLat, setLon}) => {
             journalEntryCoordinates.map(feature => {
                 return (
                 <Marker
+                    key={key}
                     lat={feature[0]}
                     lng={feature[1]}
                     name="My Marker"

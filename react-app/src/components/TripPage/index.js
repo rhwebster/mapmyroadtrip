@@ -6,11 +6,13 @@ import SingleEntry from '../SingleEntry/SingleEntry'
 import { setTripEntries } from '../../store/entry';
 import Nav from '../Nav/Nav'
 import Profile from '../Trips/Profile'
+import { nanoid } from 'nanoid'
 
 function Trip() {
 
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [key] = React.useState(nanoid)
 
     useEffect(() => {
         dispatch(getTrip(id))
@@ -43,7 +45,7 @@ function Trip() {
                         tripEntries.map(entry => {
                             return (
                                 <>
-                                    <SingleEntry title={entry.title} img={entry.image} entry={entry.entry} />
+                                    <SingleEntry key={entry ? entry.title:key} title={entry.title} img={entry.image} entry={entry.entry} />
                                 </>
                             )
                         })}

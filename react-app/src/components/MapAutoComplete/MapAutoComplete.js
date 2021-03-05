@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { addJournalEntryPoints } from '../../store/map';
+import { nanoid } from 'nanoid';
 
 const MapAutoComplete = () => {
   const dispatch = useDispatch();
+  const [key] = React.useState(nanoid);
 
   const {
     ready,
@@ -49,7 +51,7 @@ const MapAutoComplete = () => {
   };
 
   const renderSuggestions = () =>
-    data.map(suggestion => {
+    data.map((suggestion,i) => {
       const {
         id,
         structured_formatting: { main_text, secondary_text }
@@ -57,7 +59,7 @@ const MapAutoComplete = () => {
 
       return (
         <li
-          key={id}
+          key={suggestion ? i:key}
           onClick={handleSelect(suggestion)}
         >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
@@ -67,7 +69,7 @@ const MapAutoComplete = () => {
 
   return (
       <>
-        <div ref={registerRef}>
+        <div ref={registerRef} key={key}>
         <input
           style={{borderRadius:30, textAlign:'center', fontFamily:'Reem Kufi,sans-serif', fontSize:'25px', margin:'15px'}}
           value={value}

@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import GoogleMapReact from 'google-map-react';
 import Marker from '../Marker/Marker';
 import * as mapActions from "../../store/map";
-import Nav from '../Nav/Nav'
-import Profile from '../Trips/Profile'
+import Nav from '../Nav/Nav';
+import Profile from '../Trips/Profile';
+import { nanoid } from 'nanoid';
 
 const RoadTripMap = () => {
   const dispatch = useDispatch();
+  const [key] = React.useState(nanoid);
   const [markerShown, setMarkerShown] = useState(false)
   const [center, setCenter] = useState({lat: 39.73750267736547, lng: -104.98928358002577 });
   const [addedMarkers, setAddedMarkers] = useState([{lat: 0, lng: 0 }]);
@@ -66,9 +68,9 @@ const RoadTripMap = () => {
             color="pink"
             />
           {journalEntryCoordinates &&
-          journalEntryCoordinates.map(feature => {
+          journalEntryCoordinates.map((feature,i) => {
             return (
-              <Marker key={feature[0]}
+              <Marker key={key}
               lat={feature[0]}
               lng={feature[1]}
               name="My Marker"

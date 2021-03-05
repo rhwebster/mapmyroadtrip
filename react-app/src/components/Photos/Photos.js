@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotos } from "../../store/photos";
-import Nav from '../Nav/Nav'
-import Profile from '../Trips/Profile'
+import Nav from '../Nav/Nav';
+import Profile from '../Trips/Profile';
+import { nanoid } from 'nanoid';
 
 const Photos = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const [key] = React.useState(nanoid);
 
   useEffect(() => {
     if (user) {
@@ -28,7 +30,7 @@ const Photos = () => {
         <main className="main">
       {photos.map(url => {
           return (
-              <img src={`${url}`} alt=""/>
+              <img key={key} src={`${url}`} alt=""/>
           )
     })}
     </main>
