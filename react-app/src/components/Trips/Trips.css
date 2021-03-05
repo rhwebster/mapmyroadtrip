@@ -3,3 +3,13 @@
     height: 100px;
     overflow: hidden;
 }
+
+.github-button {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.linkedin-button {
+  font-size: 25px;
+  cursor: pointer;
+}

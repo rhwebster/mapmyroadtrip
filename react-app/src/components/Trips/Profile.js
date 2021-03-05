@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { setPic } from "../../store/session";
 import { addProfPic } from "../../store/session";
+import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai';
 import { faRoad, faPencil } from '@fortawesome/free-solid-svg-icons'
+import './Trips.css';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -103,6 +105,72 @@ export default function Profile() {
             <span className="statistics__entry-quantity">{entryCount}</span>
           </li>
         </ul>
+        <div id='links'>
+          View Our Team
+          <br></br>
+          <ul className='social-links'>
+            <h4>Sami Butler</h4>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/Sbutler8"
+            >
+              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/samantha-butler-410675178/"
+            >
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+            </a>
+            <h4>Ahdari Scott</h4>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/koran23"
+            >
+              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/ahdari-scott-916225117/"
+            >
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+            </a>
+            <h4>Ryan Webster</h4>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/rhwebster"
+            >
+              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/ryan-webster-a784509b/"
+            >
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+            </a>
+            <h4>Autumn Wiggins</h4>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/fairy-scary"
+            >
+              <AiOutlineGithub className="github-button" style={{ color: 'purple' }} />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/autumnwiggins/"
+            >
+              <AiOutlineLinkedin className="linkedin-button" style={{ color: 'purple' }} />
+            </a>
+          </ul>
+        </div>
       </section>
     </aside>
   );
