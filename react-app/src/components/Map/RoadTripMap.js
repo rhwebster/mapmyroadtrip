@@ -28,7 +28,7 @@ const RoadTripMap = () => {
   if (!authenticate) {
     return null;
   }
-  const { GOOGLE_MAP_API_KEY } = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+  const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const getMapOptions = (maps) => {
     return {
       disableDefaultUI: true,
