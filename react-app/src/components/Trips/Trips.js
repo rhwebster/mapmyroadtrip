@@ -18,6 +18,8 @@ export default function Trips() {
     }
   });
 
+  const MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+
   return (
 
     <section className="section">
@@ -61,7 +63,7 @@ export default function Trips() {
               <div className='map'>
                 <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${lastTrip.start_lat},${lastTrip.start_lon}&size=600x600&maptype=roadmap
               &markers=color:green%7Clabel:A%7C${lastTrip.start_lat},${lastTrip.start_lon}&markers=color:red%7Clabel:B%7C${lastTrip.end_lat},${lastTrip.end_lon}
-              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`} alt=""></img>
+              &key=${MAP_KEY}`} alt=""></img>
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{lastTrip && lastTrip.title}</p>
@@ -92,7 +94,7 @@ export default function Trips() {
               <div className='map'>
               <img style={{height:"412px", width:"412px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${secondLastTrip.start_lat},${lastTrip.start_lon}&size=600x600&maptype=roadmap
               &markers=color:green%7Clabel:A%7C${secondLastTrip.start_lat},${secondLastTrip.start_lon}&markers=color:red%7Clabel:B%7C${secondLastTrip.end_lat},${secondLastTrip.end_lon}
-              &key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`} alt=""></img>
+              &key=${MAP_KEY}`} alt=""></img>
               </div>
               <div className="trips__inform">
                 <p className="trips__name">{secondLastTrip && secondLastTrip.title}</p>
