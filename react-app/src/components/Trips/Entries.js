@@ -239,7 +239,7 @@ export default function Entry({...props}) {
           </div>
         </header>
         {journalEntries &&
-            journalEntries.slice(0,2).map(entry => {
+            journalEntries.slice(journalEntries.length-2).map(entry => {
               return (
                     <>
                         <SingleEntry key={entry ? entry.title:key} title={(entry.title)} img={entry.image} entry={entry.entry}/>
