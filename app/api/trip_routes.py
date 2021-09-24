@@ -24,7 +24,6 @@ def get_a_trip(trip_id):
 def trip_entries(trip_id):
     entries = JournalEntry.query.filter(JournalEntry.trip_id == trip_id).all()
     entry_list = [entry.to_dict() for entry in entries]
-    print(entries)
     return {'tripEntries': entry_list}
 
 
@@ -53,7 +52,7 @@ def post_trip():
     
 
 #Edit a specific trip
-@trip_routes.route('/<int:trip_id>', methods=['PUT'])
+@trip_routes.route('/<int:trip_id>', methods=['PUT', 'DELETE'])
 @login_required
 def edit_trip(trip_id):
     if request.method == 'PUT':
