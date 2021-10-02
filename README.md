@@ -15,7 +15,7 @@
   
 <h1 align="center"> Trip Keeper </h1>
 
-Trip Keeper is designed for adventure seekers who would love an application to keep track of their previous road trips and all it entails. With the ability to add personalized journal entries to each trip you take users will always have a way to remember their favorite places visited. In addition, the built in photo album tool gives users the capability to walk down memory lane at any time. The interactive google map feature brings all roadtrips to life and allows users to see where they've been and have yet to go. Utilizing Trip Keeper is an easy to use app which allows users to organize and relive some of their most fun adventures. Check out Trip Keeper [here](https://map-my-road-trip.herokuapp.com/login).
+Trip Keeper is designed for adventure seekers who would love an application to keep track of their previous road trips and all it entails. With the ability to add personalized journal entries to each trip you take users will always have a way to remember their favorite places visited. In addition, the built in photo album tool gives users the capability to walk down memory lane at any time. The interactive google map feature brings all roadtrips to life and allows users to see where they've been and have yet to go. Utilizing Trip Keeper is an easy to use app which allows users to organize and relive some of their most fun adventures. Check out Trip Keeper [here](https://map-my-road-trip.herokuapp.com/).
 
 ### Built With
 
