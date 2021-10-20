@@ -15,7 +15,6 @@ def getAllJournalEntries(id):
         entries = JournalEntry.query.filter(JournalEntry.user_id == id).all()
         entry_list = [entry.to_dict() for entry in entries]
 
-        print('JOURNAL ENTRIES------>', entry_list)
 
         return {'journalEntries': entry_list}
     if request.method == 'DELETE':
