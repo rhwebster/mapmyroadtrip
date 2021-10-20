@@ -24,7 +24,6 @@ def user(id):
     if request.method == 'PATCH':
         user = User.query.get(id)
         data = request.get_json(force=True)
-        print('ROUTE DATA------>', data)
         
         user.profile_pic = data['profPic']
         db.session.commit()
